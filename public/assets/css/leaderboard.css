@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Rochester&display=swap');
+
+body {
+    background-image: url('https://brandsbyovo.com/wp-content/uploads/sherlock-holmes-composite-photo.jpg');
+    font-family: 'Rochester', cursive;
+}
+
+table {
+    margin: auto;
+    background-color: #333333;
+    border-collapse: collapse;
+    color: whitesmoke;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th:first-child {
+  width: 33.3%;
+}
+
+h1 {
+    color: whitesmoke;
+    text-align: center;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
