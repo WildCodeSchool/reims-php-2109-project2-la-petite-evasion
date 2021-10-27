@@ -36,3 +36,31 @@ nav{
 .nav-links li a{
     text-decoration: none;
 }
+@media screen and (max-width: 800px){
+    
+    nav{
+        position: fixed;
+        z-index: 3;
+    }
+    .hamburger{
+        display:block;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 2;
+    }
+    .nav-links{
+        position: fixed;
+        background: #131418;
+        height: 80%;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(50px at 100% -10%);
+        transition: all 1s ease-out;
+    }
+    .nav-links.open{
+    clip-path: circle(1000px at 90% -10%);
+    }
+   
+}
