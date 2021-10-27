@@ -8,10 +8,16 @@ body {
     display: flex;
     list-style-type: none;
     color: whitesmoke;
+    
+}
+table {
+    margin: auto;
+}
+td {
+    padding-right: 1rem;
 }
 
-li {
-   
+th {
     padding-right: 2rem;
 }
 
@@ -24,7 +30,7 @@ Leaderboard
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80%;
-    height: 8;
+    height: 35vh;
     background: linear-gradient(to bottom, #3a404d, #181c26);
     border-radius: 10px;
     box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
