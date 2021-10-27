@@ -9,25 +9,31 @@ nav *{
     letter-spacing: 1px;
 }
 nav{
-    height: 11vh;
     width: 100%;
     background-color: #292929;
     display: flex;
+}
+
+.navbar {
+    justify-content: center;
 }
 
 /*Style Links*/
 .nav-links{
     display: flex;
     list-style: none; 
-    width: 88vw;
-    padding: 0 0.7vw;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     text-transform: uppercase;
 }
 .nav-links li a{
     text-decoration: none;
 }
+.nav-links li {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    align-items: center;
+    }
 /*Style burger Icon*/
 .hamburger div{
     width: 30px;
