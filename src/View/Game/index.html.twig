@@ -1,13 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - Game - {{ game.name }}
+    {{ parent() }} - Game - {{ level.name }}
 {% endblock %}
 
 {% block content %}
-    <h1 class="game-name">{{ game.name }}</h1>
-    {% if game.description %}
-        <p class="game-description">{{ game.description }}</p>
+    <h1 class="level-name">{{ level.name }}</h1>
+    {% if level.description %}
+        <p class="level-description">{{ level.description }}</p>
     {% endif %}
     <div class="game"></div>
 {% endblock %}
