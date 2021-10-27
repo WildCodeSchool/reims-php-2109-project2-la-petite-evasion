@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+nav *{
+    margin: 0;
+    padding: 0;
+    color: #f2f5f7;
+    letter-spacing: 1px;
+}
+nav{
+    height: 11vh;
+    width: 100%;
+    background-color: #292929;
+    display: flex;
+}
