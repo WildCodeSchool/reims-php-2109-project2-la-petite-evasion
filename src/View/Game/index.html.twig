@@ -9,5 +9,11 @@
     {% if level.description %}
         <p class="level-description">{{ level.description }}</p>
     {% endif %}
-    <div class="game"></div>
+    <div class="game" style="--grid-dimension: {{ grid|length }};">
+    {% for row in grid %}
+        {% for cell in row %}
+        <div class="{{ cell|join(' ') }}"></div>
+        {% endfor %}
+    {% endfor %}
+    </div>
 {% endblock %}
