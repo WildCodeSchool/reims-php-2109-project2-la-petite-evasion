@@ -5,13 +5,11 @@ Leaderboard
 {% endblock %}
 
 {% block content %}
-{% for record in records %}
-
 <ul>
- <li class="leaderboard-nickname">{{ record.name }}</li>
- <time class="leaderboard-time">{{ record.time }}</time>
-<li class="leaderboard-level">{{ record.level_id }}</li>
+    {% for record in records %}
+        <li class="leaderboard-nickname">{{ record.name }}</li>
+        <time class="leaderboard-time">{{ record.time }}</time>
+        <li class="leaderboard-level">{{ record.level_id }}</li>
+    {% endfor %} 
 </ul>
-
-{% endfor %} 
 {% endblock %} 
