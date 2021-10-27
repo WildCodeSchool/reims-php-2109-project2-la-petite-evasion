@@ -10,7 +10,6 @@ Leaderboard
 {% block content %}
 <div class="leaderboard">
  <h1>Joueurs</h1>
- <ul class="leaderboard-list">
  <table>
  <tr>
     <th>Pseudo</th>
@@ -18,7 +17,6 @@ Leaderboard
     <th>Niveau</th>
  </tr> 
     {% for record in records %}
-
 <tr>
     <td>{{record.name}}</td>
     <td>{{ record.time }}</td>
