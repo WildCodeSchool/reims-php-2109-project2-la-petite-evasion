@@ -11,12 +11,21 @@ Leaderboard
 <div class="leaderboard">
  <h1>Joueurs</h1>
  <ul class="leaderboard-list">
+ <table>
+ <tr>
+    <th>Pseudo</th>
+    <th>Temps</th>
+    <th>Niveau</th>
+ </tr> 
     {% for record in records %}
-        <li class="leaderboard-nickname">{{ record.name }}</li>
-        <time class="leaderboard-time">{{ record.time }}</time>
-        <li class="leaderboard-level">{{ record.level_id }}</li>
+
+<tr>
+    <td>{{record.name}}</td>
+    <td>{{ record.time }}</td>
+    <td>{{ record.level_id }}</td>
+</tr>
     {% endfor %} 
-</ul>
+    </table>
 </div>
 
 
