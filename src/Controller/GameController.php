@@ -6,6 +6,8 @@ use App\Model\LevelManager;
 
 class GameController extends AbstractController
 {
+    private const VIEWPOINT_RADIUS = 2;
+
     /**
      * Show first level
      */
