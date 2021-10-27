@@ -36,6 +36,16 @@ nav{
 .nav-links li a{
     text-decoration: none;
 }
+/*Style burger Icon*/
+.hamburger div{
+    width: 30px;
+    height:3px;
+    background: #f2f5f7;
+    margin: 5px;
+}
+.hamburger{
+    display: none;
+}
 @media screen and (max-width: 800px){
     
     nav{
