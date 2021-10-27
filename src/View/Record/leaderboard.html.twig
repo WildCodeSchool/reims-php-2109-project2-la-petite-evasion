@@ -1,2 +1,14 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+Leaderboard 
+{% endblock %}
+
+{% block content %}
+{% for record in records %}
+
+ <p class="leaderboard-nickname">{{ record.name }}</p>
+ <p class="leaderboard-time">{{ record.time }}</p>
+ 
+{% endfor %} 
+{% endblock %} 
