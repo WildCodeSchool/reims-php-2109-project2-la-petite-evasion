@@ -12,8 +12,8 @@ class RecordController extends AbstractController
     public function index(): string
     {
         $recordManager = new RecordManager();
-        $record = $recordManager->selectAll();
+        $records = $recordManager->selectAll();
 
-        return $this->twig->render('Record/leaderboard.html.twig', ['record' => $record]);
+        return $this->twig->render('Record/leaderboard.html.twig', ['records' => $records]);
     }
 }
