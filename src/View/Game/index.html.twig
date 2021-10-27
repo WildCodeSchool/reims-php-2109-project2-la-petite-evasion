@@ -3,3 +3,11 @@
 {% block title %}
     {{ parent() }} - Game - {{ game.name }}
 {% endblock %}
+
+{% block content %}
+    <h1 class="game-name">{{ game.name }}</h1>
+    {% if game.description %}
+        <p class="game-description">{{ game.description }}</p>
+    {% endif %}
+    <div class="game"></div>
+{% endblock %}
