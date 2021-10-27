@@ -4,7 +4,7 @@
 }
 
 body{
-   background-color: rgb(46, 46, 46); 
+   background-color:#060405; 
    display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -36,16 +36,27 @@ body{
 .titleContext h1{
     margin-bottom: 20px;
     text-align: center;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fffbfb, 0 2px 0 #f9f9f9, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #f7f7f7, -1px 1px 0 #fffefe;
+    color: black;
 }
 
 
 .buttonPlay button{
     text-align: center;
-    padding:10px;
+    padding: 18px;
     color: honeydew;
     background-color: black;
-    border: none;
-    margin-top: 20px;
+    margin-top: 25px;
+    font-size: 25px;
+    border-radius: 40px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+
+.buttonPlay button:hover,
+.buttonPlay button:focus{
+    color: black;
+    background-color:white;
 }
 
 
