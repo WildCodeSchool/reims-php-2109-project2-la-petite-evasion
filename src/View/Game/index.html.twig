@@ -9,5 +9,9 @@
     {% if level.description %}
         <p class="level-description">{{ level.description }}</p>
     {% endif %}
-    <div class="game"></div>
+    <div class="game" data-level-content="{{ level.content }}"></div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="assets/game.js"></script>
 {% endblock %}
