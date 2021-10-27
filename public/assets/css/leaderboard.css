@@ -1,0 +1,20 @@
+
+body {
+    background-color: lightgrey;
+    font-family: 'Monaco';
+}
+
+.leaderboard-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    font-size: xx-large;
+    
+}
+
+li {
+   
+    padding-right: 2rem;
+}
+
