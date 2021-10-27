@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Rochester&display=swap');
+
 
 body {
-    background-color: lightgrey;
-    font-family: 'Monaco';
+    background-image: url('https://brandsbyovo.com/wp-content/uploads/sherlock-holmes-composite-photo.jpg');
+    font-family: 'Rochester', cursive;
 }
 
 .leaderboard-list {
@@ -12,33 +14,22 @@ body {
 }
 table {
     margin: auto;
-}
-td {
-    padding-right: 1rem;
+    background-color: #333333;
+    border-collapse: collapse;
+    color: whitesmoke;
+     border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
 }
 
-th {
-    padding-right: 2rem;
-}
+
+
+th, td {
+    padding: 8px;
+    text-align: center;
+  }
 
 /*--------------------
 Leaderboard
 --------------------*/
-.leaderboard {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 35vh;
-    background: linear-gradient(to bottom, #3a404d, #181c26);
-    border-radius: 10px;
-    box-shadow: 0 7px 30px rgba(62, 9, 11, 0.3);
-}
-
-.leaderboard h1 {
-    font-size: 18px;
-    color: #e1e1e1;
-    padding: 12px 13px 18px;
-}
 
