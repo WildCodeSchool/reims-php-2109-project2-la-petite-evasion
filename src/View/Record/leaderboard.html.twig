@@ -8,6 +8,10 @@ Leaderboard
 <link href="assets/css/leaderboard.css" rel="stylesheet">
 {% endblock %}
 {% block content %}
+<div class="leaderboard">
+ <h1>
+        Joueurs
+    </h1>
 <ul class="leaderboard-list">
     {% for record in records %}
         <li class="leaderboard-nickname">{{ record.name }}</li>
@@ -15,4 +19,7 @@ Leaderboard
         <li class="leaderboard-level">{{ record.level_id }}</li>
     {% endfor %} 
 </ul>
+</div>
+
+
 {% endblock %} 
