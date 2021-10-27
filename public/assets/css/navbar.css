@@ -14,3 +14,12 @@ nav{
     background-color: #292929;
     display: flex;
 }
+/*Style logo*/
+.logo{
+    padding:1vh 1vw;
+    text-align: center;
+}
+.logo img {
+    height: 100%;
+    width: 100%;
+}
