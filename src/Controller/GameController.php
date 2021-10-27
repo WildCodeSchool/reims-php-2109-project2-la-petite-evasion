@@ -14,6 +14,6 @@ class GameController extends AbstractController
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById(1);
 
-        return $this->twig->render('Game/index.html.twig', ['game' => $level]);
+        return $this->twig->render('Game/index.html.twig', ['level' => $level]);
     }
 }
