@@ -6,9 +6,12 @@ Leaderboard
 
 {% block content %}
 {% for record in records %}
+
 <ul>
  <li class="leaderboard-nickname">{{ record.name }}</li>
  <time class="leaderboard-time">{{ record.time }}</time>
+<li class="leaderboard-level">{{ record.level_id }}</li>
 </ul>
+
 {% endfor %} 
 {% endblock %} 
