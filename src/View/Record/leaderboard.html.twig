@@ -9,10 +9,8 @@ Leaderboard
 {% endblock %}
 {% block content %}
 <div class="leaderboard">
- <h1>
-        Joueurs
-    </h1>
-<ul class="leaderboard-list">
+ <h1>Joueurs</h1>
+ <ul class="leaderboard-list">
     {% for record in records %}
         <li class="leaderboard-nickname">{{ record.name }}</li>
         <time class="leaderboard-time">{{ record.time }}</time>
