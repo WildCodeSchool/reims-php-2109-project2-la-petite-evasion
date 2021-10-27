@@ -4,6 +4,10 @@
     {{ parent() }} - Game - {{ level.name }}
 {% endblock %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/game.css">
+{% endblock %}
+
 {% block content %}
     <h1 class="level-name">{{ level.name }}</h1>
     {% if level.description %}
