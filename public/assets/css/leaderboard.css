@@ -10,12 +10,12 @@ table {
     background-color: #333333;
     border-collapse: collapse;
     color: whitesmoke;
-     border-spacing: 0;
+    border-spacing: 0;
     width: 100%;
     border: 1px solid #ddd;
 }
 
-th:first-child{
+th:first-child {
   width: 33.3%;
 }
 
