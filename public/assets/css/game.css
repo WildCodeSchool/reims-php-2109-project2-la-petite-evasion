@@ -1,0 +1,31 @@
+body {
+    text-align: center;
+}
+
+.game {
+    --grid-dimension: 5;
+    --grid-size: 7rem;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-dimension), var(--grid-size));
+    grid-template-rows: repeat(var(--grid-dimension), var(--grid-size));
+    justify-content: center;
+}
+
+.player, .wall, .floor {
+    border: 2px solid black;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.player {
+    background-image: url(../images/moriarty.png);
+}
+
+.floor {
+    background-color: lightgray;
+}
+
+.wall {
+    background-image: url(../images/wall.png);
+}
