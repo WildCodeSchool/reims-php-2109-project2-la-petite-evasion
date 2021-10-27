@@ -1,4 +1,23 @@
 {% extends 'layout.html.twig' %}
 
-{% block content %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/home.css">
 {% endblock %}
+
+{% block content %}
+
+    <div class="homeBackground" >
+        <div class="titleContext">
+            <h1> La petite évasion </h1>
+            <p>Moriarty s'enfuit des égouts de Londres. 
+            Sherlock est à ses trousses! Il faut qu'il s'échappe au plus vite!
+            On compte sur toi! 
+            </p>
+        </div>
+        <div class="buttonPlay">
+            <button type="button">Jouer</button>
+        </div>
+    </div> 
+
+{% endblock %}
+

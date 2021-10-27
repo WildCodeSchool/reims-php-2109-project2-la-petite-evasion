@@ -1,0 +1,61 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+   background-color:#060405; 
+   display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+}
+
+.homeBackground{
+    background-image:url("../images/door.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ 
+.titleContext {
+    background-color: rgba(0, 0, 0, 0.753);
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:20px;
+    width: 70%;
+}
+
+.titleContext h1{
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fffbfb, 0 2px 0 #f9f9f9, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #f7f7f7, -1px 1px 0 #fffefe;
+    color: black;
+}
+
+
+.buttonPlay button{
+    text-align: center;
+    padding: 18px;
+    color: honeydew;
+    background-color: black;
+    margin-top: 25px;
+    font-size: 25px;
+    border-radius: 40px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.buttonPlay button:hover,
+.buttonPlay button:focus{
+    color: black;
+    background-color:white;
+}
+
+
