@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    background-color: #303030;
 }
 
 .game {
@@ -9,6 +10,11 @@ body {
     grid-template-columns: repeat(var(--grid-dimension), var(--grid-size));
     grid-template-rows: repeat(var(--grid-dimension), var(--grid-size));
     justify-content: center;
+    padding-bottom: 1rem;
+}
+
+.level-name {
+    color: whitesmoke;
 }
 
 .player, .wall, .floor {
