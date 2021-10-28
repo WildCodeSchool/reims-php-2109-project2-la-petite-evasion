@@ -39,6 +39,7 @@ class GameController extends AbstractController
         return $grid;
     }
 
+
     /**
      * Show first level
      */
