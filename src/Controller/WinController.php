@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controller;
+
 class WinController extends AbstractController {
     
     public function index(): string
