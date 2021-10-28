@@ -17,7 +17,7 @@ class GameController extends AbstractController
             "linkY" => $playerY,
             "linkText" => '',
         ];
-        if (empty($cellType)) {
+        if ($cellType === '') {
             $cellDetails['classes'][] = "wall";
         } else {
             $deltaX = $cellX - $playerX;
