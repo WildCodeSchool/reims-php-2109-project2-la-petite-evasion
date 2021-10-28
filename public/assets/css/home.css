@@ -3,8 +3,6 @@
     padding:0;
 }
 
-
-
 .homeBackground{
     background-image:url("../images/door.jpg") ;
     background-repeat: no-repeat;
@@ -16,7 +14,6 @@
     align-items: center;
 }
 
- 
 .titleContext {
     background-color: rgba(0, 0, 0, 0.753);
     color: rgb(255, 255, 255);
@@ -33,7 +30,6 @@
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fffbfb, 0 2px 0 #f9f9f9, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #f7f7f7, -1px 1px 0 #fffefe;
     color: black;
 }
-
 
 .buttonPlay button{
     text-align: center;

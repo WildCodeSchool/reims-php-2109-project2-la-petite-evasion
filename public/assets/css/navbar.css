@@ -36,16 +36,45 @@ nav {
     margin-right: 2rem;
     }
 /*Style burger Icon*/
-.hamburger div {
+.hamburger div{
     width: 30px;
     height:3px;
     background: #f2f5f7;
     margin: 5px;
+    transition: all 0.3s ease;
 }
-.hamburger {
+.hamburger{
     display: none;
 }
+
 @media screen and (max-width: 800px){
+    nav{
+        position: fixed;
+        z-index: 3;
+    }
+    .hamburger{
+        display:block;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translate(-0%, 30%);
+        z-index: 2;
+        transition: all 0.7s ease;
+    }
+    .nav-links{
+        position: fixed;
+        background: #131418;
+        height: 80%;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(50px at 90% -20%);
+        -webkit-clip-path: circle(50px at 90% -10%);
+        transition: all 1s ease-out;
+    }
+    .nav-links.open{
+        clip-path: circle(1000px at 90% -10%);
+        -webkit-clip-path: circle(1000px at 90% -10%);
+/* @media screen and (max-width: 800px){
     
     nav {
         position: fixed;
@@ -55,7 +84,7 @@ nav {
         display:block;
         position: absolute;
         right: 5%;
-        top: 50%;
+        top: 20%;
         transform: translate(-5%, -50%);
         z-index: 2;
     }
@@ -67,7 +96,7 @@ nav {
         transition: all 1s ease-out;
     }
     .nav-links.open {
-    clip-path: circle(1000px at 90% -10%);
+    clip-path: circle(1000px at 100% -10%);
     }
    
-}
+} */
