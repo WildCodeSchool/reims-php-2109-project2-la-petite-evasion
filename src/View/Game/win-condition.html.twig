@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
-
+{% block title %}
+ {{ parent() }} - Bravo ! Tu as battu Sherlock !
+{% endblock %}
 {% block content %}
     <h1 class="win">You win !</h1>
 {% endblock %}
