@@ -63,7 +63,18 @@ class GameController extends AbstractController
                 if (isset($cells[$y][$x])) {
                     $cell = $cells[$y][$x];
                 }
-                $row[] = $this->generateCellDetails($cell, $x, $y, $playerX, $playerY);
+
+                $details = $this->generateCellDetails($cell, $x, $y, $playerX, $playerY);
+
+                if ($y === 0 && $x === 0) {
+                    $details['classes'][] = "start";
+                }
+
+                if ($y === count($cells) - 1 && $x === count($cells[$y]) - 1) {
+                    $details['classes'][] = "finish";
+                }
+
+                $row[] = $details;
             }
             $grid[] = $row;
         }
