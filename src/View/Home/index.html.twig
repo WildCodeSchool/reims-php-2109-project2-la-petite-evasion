@@ -3,7 +3,9 @@
 {% block stylesheet %}
 <link rel="stylesheet" href="/assets/css/home.css">
 {% endblock %}
-
+{% block title %}
+ {{ parent() }} - Accueil 
+{% endblock %}
 {% block content %}
 
     <div class="homeBackground" >
