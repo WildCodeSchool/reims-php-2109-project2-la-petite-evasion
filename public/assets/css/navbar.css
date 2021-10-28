@@ -8,7 +8,7 @@ nav *{
     color: #f2f5f7;
     letter-spacing: 1px;
 }
-nav{
+nav {
     width: 100%;
     background-color: #292929;
     display: flex;
@@ -19,38 +19,39 @@ nav{
 }
 
 /*Style Links*/
-.nav-links{
+.nav-links {
     display: flex;
     list-style: none; 
     justify-content: space-between;
     align-items: center;
     text-transform: uppercase;
 }
-.nav-links li a{
+.nav-links li a {
     text-decoration: none;
 }
 .nav-links li {
     padding-top: 2rem;
     padding-bottom: 2rem;
     align-items: center;
+    margin-right: 2rem;
     }
 /*Style burger Icon*/
-.hamburger div{
+.hamburger div {
     width: 30px;
     height:3px;
     background: #f2f5f7;
     margin: 5px;
 }
-.hamburger{
+.hamburger {
     display: none;
 }
 @media screen and (max-width: 800px){
     
-    nav{
+    nav {
         position: fixed;
         z-index: 3;
     }
-    .hamburger{
+    .hamburger { 
         display:block;
         position: absolute;
         right: 5%;
@@ -58,16 +59,14 @@ nav{
         transform: translate(-5%, -50%);
         z-index: 2;
     }
-    .nav-links{
+    .nav-links {
         position: fixed;
         background: #131418;
-        height: 80%;
-        width: 100%;
         flex-direction: column;
         clip-path: circle(50px at 100% -10%);
         transition: all 1s ease-out;
     }
-    .nav-links.open{
+    .nav-links.open {
     clip-path: circle(1000px at 90% -10%);
     }
    
