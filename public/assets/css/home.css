@@ -31,21 +31,16 @@
     color: black;
 }
 
-.buttonPlay button{
+.buttonPlay {
     text-align: center;
-    padding: 18px;
-    color: honeydew;
+    padding: 25px;
+    margin-top: 4rem;
     background-color: black;
-    margin-top: 25px;
-    font-size: 25px;
-    border-radius: 40px;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    font-size: 1cm;
+    border-radius: 4rem;
 }
 
-.buttonPlay button:hover,
-.buttonPlay button:focus{
-    color: black;
-    background-color:white;
-}
+/* box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
 
 
