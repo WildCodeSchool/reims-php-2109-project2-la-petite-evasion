@@ -36,8 +36,14 @@
     padding: 25px;
     margin-top: 4rem;
     background-color: black;
-    font-size: 1cm;
     border-radius: 4rem;
+    font-size: 30px;
+    color: white;
+}
+
+.buttonPlay:hover
+{
+    background-color: darkgray;
 }
 
 /* box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
