@@ -11,7 +11,7 @@ class GameController extends AbstractController
     /**
      * Generate a grid of tiles visible from specified coordinates
      */
-    private function generateViewpoint(array $level, int $playerX, int $playerY)
+    private function generateViewpoint(array $level, int $playerX, int $playerY): array
     {
         $cells = array_map(fn ($playerX) => str_split($playerX), explode(',', $level['content']));
         $grid = [];
