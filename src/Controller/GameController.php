@@ -18,21 +18,27 @@ class GameController extends AbstractController
         for ($y = $playerY - self::VIEWPOINT_RADIUS; $y <= $playerY + self::VIEWPOINT_RADIUS; ++$y) {
             $row = [];
             for ($x = $playerX - self::VIEWPOINT_RADIUS; $x <= $playerX + self::VIEWPOINT_RADIUS; ++$x) {
-                $classes = [];
+                $cellDetails = [
+                    "classes" => [],
+                    "isLink" => false,
+                    "linkX" => $playerX,
+                    "linkY" => $playerY,
+                    "linkText" => '',
+                ];
                 if (!isset($cells[$y][$x])) {
-                    $classes[] = "wall";
+                    $cellDetails['classes'][] = "wall";
                 } else {
                     $cell = $cells[$y][$x];
                     if ($cell === "1") {
-                        $classes[] = "wall";
+                        $cellDetails['classes'][] = "wall";
                     } elseif ($cell === "0") {
-                        $classes[] = "floor";
+                        $cellDetails['classes'][] = "floor";
                     }
                     if ($playerX === $x && $playerY === $y) {
-                        $classes[] = "player";
+                        $cellDetails['classes'][] = "player";
                     }
                 }
-                $row[] = $classes;
+                $row[] = $cellDetails;
             }
             $grid[] = $row;
         }
