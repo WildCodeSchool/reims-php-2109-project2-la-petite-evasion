@@ -28,7 +28,7 @@ class GameController extends AbstractController
                     } elseif ($cell === "0") {
                         $classes[] = "floor";
                     }
-                    if ($y === $playerY && $playerX === $x) {
+                    if ($playerX === $x && $playerY === $y) {
                         $classes[] = "player";
                     }
                 }
