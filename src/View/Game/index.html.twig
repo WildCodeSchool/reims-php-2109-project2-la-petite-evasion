@@ -16,7 +16,11 @@
     <div class="game" style="--grid-dimension: {{ grid|length }};">
     {% for row in grid %}
         {% for cell in row %}
-        <div class="{{ cell|join(' ') }}"></div>
+            {% if cell.isLink %}
+                <a class="{{ cell.classes|join(' ') }}" href="?x={{ cell.linkX }}&y={{ cell.linkY }}">{{ cell.linkText }}</a>
+            {% else %}
+                <div class="{{ cell.classes|join(' ') }}"></div>
+            {% endif %}
         {% endfor %}
     {% endfor %}
     </div>
