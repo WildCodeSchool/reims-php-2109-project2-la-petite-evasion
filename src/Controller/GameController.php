@@ -63,7 +63,18 @@ class GameController extends AbstractController
                 if (isset($cells[$y][$x])) {
                     $cell = $cells[$y][$x];
                 }
-                $row[] = $this->generateCellDetails($cell, $x, $y, $playerX, $playerY);
+
+                $details = $this->generateCellDetails($cell, $x, $y, $playerX, $playerY);
+
+                if ($y === 0 && $x === 0) {
+                    $details['classes'][] = "start";
+                }
+
+                if ($y === count($cells) - 1 && $x === count($cells[$y]) - 1) {
+                    $details['classes'][] = "finish";
+                }
+
+                $row[] = $details;
             }
             $grid[] = $row;
         }
@@ -74,11 +85,14 @@ class GameController extends AbstractController
     /**
      * Show first level
      */
-    public function index(): string
+    public function index(?int $playerX, ?int $playerY): string
     {
+        $playerX = $playerX ?? 0;
+        $playerY = $playerY ?? 0;
+
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById(1);
-        $grid = $this->generateViewpoint($level, 0, 0);
+        $grid = $this->generateViewpoint($level, $playerX, $playerY);
 
         return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
     }
