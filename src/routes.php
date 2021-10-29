@@ -14,6 +14,6 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     'records' => ['RecordController', 'index',],
-    'games' => ['GameController', 'index',],
+    'games' => ['GameController', 'index', ['x', 'y']],
     'win' => ['WinController', 'index',],
 ];
