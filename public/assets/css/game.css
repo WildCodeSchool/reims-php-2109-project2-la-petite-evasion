@@ -17,12 +17,13 @@ body {
     color: whitesmoke;
 }
 
-.player, .wall, .floor {
+.game-tile {
     border: 2px solid black;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    text-decoration: none;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -38,15 +39,8 @@ body {
     background-image: url(../images/wall.png);
 }
 
-.link-position{
-    position: relative;
-}
-
-.link-position-span{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.game-direction {
     font-size: 3rem;
     color: black;
+    text-decoration: none;
 }

@@ -16,16 +16,16 @@
     <div class="game" style="--grid-dimension: {{ grid|length }};">
     {% for row in grid %}
         {% for cell in row %}
+            <div class="{{ cell.classes|join(' ') }} game-tile">
             {% if cell.isLink %}
                 {% if "finish" in cell.classes %}
                     {% set link = "/win" %}
                 {% else %}
                     {% set link = "?x=" ~ cell.linkX ~ "&y=" ~ cell.linkY %}
                 {% endif %}
-                <a class="{{ cell.classes|join(' ') }} link-position" href="{{ link }}"><span class="link-position-span">{{ cell.linkText }}<span></a>
-            {% else %}
-                <div class="{{ cell.classes|join(' ') }}"></div>
+                <a class="game-direction" href="{{ link }}">{{ cell.linkText }}</a>
             {% endif %}
+            </div>
         {% endfor %}
     {% endfor %}
     </div>
