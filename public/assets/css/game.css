@@ -17,11 +17,14 @@ body {
     color: whitesmoke;
 }
 
-.player, .wall, .floor {
+.game-tile {
     border: 2px solid black;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .player {
@@ -34,4 +37,10 @@ body {
 
 .wall {
     background-image: url(../images/wall.png);
+}
+
+.game-direction {
+    font-size: 3rem;
+    color: black;
+    text-decoration: none;
 }
