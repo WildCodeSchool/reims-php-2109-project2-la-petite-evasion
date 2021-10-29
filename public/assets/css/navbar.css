@@ -74,7 +74,7 @@ nav {
 	}
 	.nav-links {
 		position: fixed;
-		background: #131418;
+		background: #131418; 
 		height: 80%;
 		width: 100%;
 		flex-direction: column;
@@ -139,7 +139,7 @@ nav {
     box-shadow: 1px 1px 3px #000;
 }
 .close:hover {
-    background: #00d9ff;
+    background: black;
 }
 
 .modal-title{
