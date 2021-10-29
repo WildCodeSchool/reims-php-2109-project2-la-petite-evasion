@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="level-name">{{ level.name }}</h1>
     {% if level.description %}
         <p class="level-description">{{ level.description }}</p>
     {% endif %}
@@ -27,5 +26,6 @@
             {% endif %}
         {% endfor %}
     {% endfor %}
+        <h1 class="level-name">{{ level.name }}</h1>
     </div>
 {% endblock %}

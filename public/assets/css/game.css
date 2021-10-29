@@ -5,7 +5,7 @@ body {
 
 .game {
     --grid-dimension: 5;
-    --grid-size: 7rem;
+    --grid-size: 5rem;
     display: grid;
     grid-template-columns: repeat(var(--grid-dimension), var(--grid-size));
     grid-template-rows: repeat(var(--grid-dimension), var(--grid-size));
