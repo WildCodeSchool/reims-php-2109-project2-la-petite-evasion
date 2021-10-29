@@ -1,9 +1,16 @@
 {% extends 'layout.html.twig' %}
+
 {% block title %}
  {{ parent() }} - Bravo ! Tu as battu Sherlock !
 {% endblock %}
-{% block stylesheet%} <link rel="stylesheet" href="/assets/css/wincondition.css"> {% endblock %}
-{% block content %}
-    <h1 class="win">You win !</h1>
-    <img class="background" src="assets/images/backgroundwin.png" alt="img sherlock"/>
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/wincondition.css">
 {% endblock %}
+
+{% block content %}
+    <div class="background">
+        <img src="assets/images/backgroundwin.png" alt=""/>
+    </div>
+{% endblock %}
+
