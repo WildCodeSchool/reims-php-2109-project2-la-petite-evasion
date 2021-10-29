@@ -35,6 +35,10 @@ body {
     background-color: lightgray;
 }
 
+.finish {
+    background-color: darkgreen;
+}
+
 .wall {
     background-image: url(../images/wall.png);
 }
