@@ -9,7 +9,7 @@ body {
     grid-template-columns: repeat(var(--grid-dimension), var(--grid-size));
     grid-template-rows: repeat(var(--grid-dimension), var(--grid-size));
     justify-content: center;
-    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
 
 .level-name {
