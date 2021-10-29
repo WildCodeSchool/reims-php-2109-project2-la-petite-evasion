@@ -17,11 +17,12 @@
     {% for row in grid %}
         {% for cell in row %}
             {% if cell.isLink %}
-                {% if "finish" in cell.classes %}
-                    <a class="{{ cell.classes|join(' ') }}" href="/win">{{ cell.linkText }}</a>
+                 {% if "finish" in cell.classes %}
+                    {% set link = "/win" %}
                 {% else %}
-                    <a class="{{ cell.classes|join(' ') }}" href="?x={{ cell.linkX }}&y={{ cell.linkY }}">{{ cell.linkText }}</a>
+                    {% set link = "?x=" ~ cell.linkX ~ "&y=" ~ cell.linkY %}
                 {% endif %}
+                <a class="{{ cell.classes|join(' ') }} link-position" href="{{ link }}"><span class="link-position-span">{{ cell.linkText }}<span></a>
             {% else %}
                 <div class="{{ cell.classes|join(' ') }}"></div>
             {% endif %}
