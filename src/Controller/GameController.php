@@ -74,11 +74,14 @@ class GameController extends AbstractController
     /**
      * Show first level
      */
-    public function index(): string
+    public function index(?int $playerX, ?int $playerY): string
     {
+        $playerX = $playerX ?? 0;
+        $playerY = $playerY ?? 0;
+
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById(1);
-        $grid = $this->generateViewpoint($level, 0, 0);
+        $grid = $this->generateViewpoint($level, $playerX, $playerY);
 
         return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
     }
