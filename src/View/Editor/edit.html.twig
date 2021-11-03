@@ -5,5 +5,17 @@
 {% endblock %}
 
 {% block content %}
-    
+<form action="" method="post">
+    <div>
+        <label for="name">Nom du niveau: </label>
+        <input type="text" name="name" id="name" required>
+    </div>
+    <div>
+        <label for="description">Description: </label>
+        <input type="text" name="description" id="description" required>
+    </div>
+    <div class="level-grid">
+    </div>
+    <button type="submit">Envoyer</button>
+</form>
 {% endblock %}
