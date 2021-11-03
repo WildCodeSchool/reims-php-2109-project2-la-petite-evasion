@@ -4,7 +4,7 @@
 }
 
 .homeBackground{
-    background-image:url("../images/maze-background.png") ;
+    background-image:url("../images/maze-mobile.png");
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -19,6 +19,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 70%;
     height: 50%;
 }
@@ -26,24 +27,24 @@
 .titleContext h1{
     margin-bottom: 25px;
     text-align: center;
-    font-size: xxx-large;
+    font-size: 4rem;
     color: black;
 }
 
 .titleContext p {
     color: black;
-    font-size: large;
+    font-size: 1.5rem;
     text-align: center;
 }
 
 .buttonPlay {
     text-align: center;
-    padding: 25px;
+    padding: 30px;
     margin-top: 2rem;
     background-color: #292929;
     border-color: #292929;
     border-radius: 4rem;
-    font-size: 25px;
+    font-size: 2rem;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
@@ -58,3 +59,26 @@ div a:visited {
 a {
     text-decoration: none;
 }
+
+@media screen and (min-width: 680px) and (max-width: 1300px)  {
+    .titleContext p {
+        font-size: 2.5rem;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
+    }
+    .homeBackground {
+        background-image:url("../images/maze-ipad.png") ;
+    } 
+}
+
+@media screen and (min-width: 1300px) { 
+    .titleContext p {
+        font-size: 2.5rem;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
+    }
+    .homeBackground {
+        background-image:url("../images/maze-desktop.png");
+    } 
+}
+
