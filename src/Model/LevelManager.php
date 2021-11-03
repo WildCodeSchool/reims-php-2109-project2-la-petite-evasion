@@ -47,7 +47,13 @@ class LevelManager extends AbstractManager
      */
     public function update(array $level, array $cells): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `name` = :name,  `description` = :description,  `content` = :content WHERE id=:id");
+        $statement = $this->pdo->prepare(
+            "UPDATE " . self::TABLE .
+            " SET `name` = :name," .
+            " `description` = :description," .
+            " `content` = :content" .
+            " WHERE id=:id"
+        );
         $statement->bindValue('id', $level['id'], \PDO::PARAM_INT);
         $statement->bindValue('name', $level['name'], \PDO::PARAM_STR);
         $statement->bindValue('description', $level['description'], \PDO::PARAM_STR);
