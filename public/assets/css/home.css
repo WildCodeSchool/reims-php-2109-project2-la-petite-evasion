@@ -16,16 +16,15 @@
 .titleContext {
     background-color: #A5A5A5;
     opacity: 0.8;
-    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding:20px;
     width: 70%;
+    height: 50%;
 }
 
 .titleContext h1{
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: center;
     font-size: xxx-large;
     color: black;
@@ -33,14 +32,14 @@
 
 .titleContext p {
     color: black;
-    font-size: x-large;
+    font-size: large;
     text-align: center;
 }
 
 .buttonPlay {
     text-align: center;
-    padding: 20px;
-    margin-top: 4rem;
+    padding: 25px;
+    margin-top: 2rem;
     background-color: #292929;
     border-color: #292929;
     border-radius: 4rem;
