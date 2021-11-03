@@ -8,11 +8,11 @@
 <form action="" method="post">
     <div>
         <label for="name">Nom du niveau: </label>
-        <input type="text" name="name" id="name" required>
+        <input type="text" name="name" id="name" value="{{ level.name }}" required>
     </div>
     <div>
         <label for="description">Description: </label>
-        <input type="text" name="description" id="description">
+        <input type="text" name="description" id="description" value="{{ level.description }}">
     </div>
     <div class="level-grid" style="--grid-dimension: {{ grid|length }};">
     {% for row in grid %}
@@ -21,9 +21,9 @@
                 {% set name = "cell-" ~ loop.index0 ~ "-" ~ loop.parent.loop.index0 %}
                 {% set wallId = name ~ '-wall' %}
                 {% set floorId = name ~ '-floor' %}
-                <input type="radio" name="{{ name }}" value="wall" id="{{ wallId }}" checked>
+                <input type="radio" name="{{ name }}" value="wall" id="{{ wallId }}" {{cell == "wall" ? 'checked' : ""}}>
                 <label for="{{ floorId }}">Wall</label>
-                <input type="radio" name="{{ name }}" value="floor" id="{{ floorId }}">
+                <input type="radio" name="{{ name }}" value="floor" id="{{ floorId }}" {{cell == "floor" ? 'checked' : ""}}>
                 <label for="{{ wallId }}">Floor</label>
             </div>
         {% endfor %}
