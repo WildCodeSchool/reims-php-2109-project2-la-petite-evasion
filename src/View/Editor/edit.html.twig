@@ -12,9 +12,22 @@
     </div>
     <div>
         <label for="description">Description: </label>
-        <input type="text" name="description" id="description" required>
+        <input type="text" name="description" id="description">
     </div>
-    <div class="level-grid">
+    <div class="level-grid" style="--grid-dimension: {{ grid|length }};">
+    {% for row in grid %}
+        {% for cell in row %}
+            <div>
+                {% set name = "cell-" ~ loop.index0 ~ "-" ~ loop.parent.loop.index0 %}
+                {% set wallId = name ~ '-wall' %}
+                {% set floorId = name ~ '-floor' %}
+                <input type="radio" name="{{ name }}" value="wall" id="{{ wallId }}" checked>
+                <label for="{{ floorId }}">Wall</label>
+                <input type="radio" name="{{ name }}" value="floor" id="{{ floorId }}">
+                <label for="{{ wallId }}">Floor</label>
+            </div>
+        {% endfor %}
+    {% endfor %}
     </div>
     <button type="submit">Envoyer</button>
 </form>
