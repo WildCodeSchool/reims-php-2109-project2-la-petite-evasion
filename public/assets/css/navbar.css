@@ -29,7 +29,7 @@ nav {
 .nav-links {
 	display: flex;
 	list-style: none;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	align-items: center;
 	font-size: xx-large;
 }
@@ -77,7 +77,7 @@ nav {
 	.nav-links {
 		position: fixed;
 		background: #131418;
-		height: 80%;
+		height: 100%;
 		width: 100%;
 		flex-direction: column;
 		clip-path: circle(50px at 90% -20%);
