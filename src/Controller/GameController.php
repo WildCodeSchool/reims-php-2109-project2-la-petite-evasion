@@ -35,11 +35,11 @@ class GameController extends AbstractController
             $cellDetails['linkText'] = $arrows[$deltaX * 10 + $deltaY] ?? '';
             $cellDetails['isLink'] = isset($arrows[$deltaX * 10 + $deltaY]);
 
-            if ($cellType === "1") {
+            if ($cellType === LevelManager::CELL_WALL) {
                 $cellDetails['linkX'] = $playerX;
                 $cellDetails['linkY'] = $playerY;
                 $cellDetails['classes'][] = "wall";
-            } elseif ($cellType === "0") {
+            } elseif ($cellType === LevelManager::CELL_FLOOR) {
                 $cellDetails['classes'][] = "floor";
             }
             if ($playerX === $cellX && $playerY === $cellY) {
@@ -52,9 +52,8 @@ class GameController extends AbstractController
     /**
      * Generate a grid of tiles visible from specified coordinates
      */
-    private function generateViewpoint(array $level, int $playerX, int $playerY): array
+    private function generateViewpoint(array $cells, int $playerX, int $playerY): array
     {
-        $cells = array_map(fn ($playerX) => str_split($playerX), explode(',', $level['content']));
         $grid = [];
         for ($y = $playerY - self::VIEWPOINT_RADIUS; $y <= $playerY + self::VIEWPOINT_RADIUS; ++$y) {
             $row = [];
@@ -92,7 +91,8 @@ class GameController extends AbstractController
 
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById(1);
-        $grid = $this->generateViewpoint($level, $playerX, $playerY);
+        $cells = LevelManager::parseContent($level['content']);
+        $grid = $this->generateViewpoint($cells, $playerX, $playerY);
 
         return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
     }
