@@ -96,4 +96,5 @@ class GameController extends AbstractController
 
         return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
     }
+
 }

@@ -16,4 +16,5 @@ return [
     'records' => ['RecordController', 'index',],
     'games' => ['GameController', 'index', ['x', 'y']],
     'win' => ['WinController', 'index',],
+    'editor' => ['LevelEditorController', 'edit', ['id']],
 ];
