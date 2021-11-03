@@ -4,8 +4,7 @@
 }
 
 .homeBackground{
-    background-image:url("../images/door.jpg") ;
-    background-repeat: no-repeat;
+    background-image:url("../images/maze-background.png") ;
     background-size: cover;
     height: 100vh;
     display: flex;
@@ -15,26 +14,32 @@
 }
 
 .titleContext {
-    background-color: rgba(0, 0, 0, 0.753);
-    color: rgb(255, 255, 255);
+    background-color: #A5A5A5;
+    opacity: 0.8;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding:20px;
     width: 70%;
+    height: 50%;
 }
 
 .titleContext h1{
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     text-align: center;
-    text-shadow: 2px 0 0 #fff, -2px 0 0 #fffbfb, 0 2px 0 #f9f9f9, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #f7f7f7, -1px 1px 0 #fffefe;
+    font-size: xxx-large;
     color: black;
+}
+
+.titleContext p {
+    color: black;
+    font-size: large;
+    text-align: center;
 }
 
 .buttonPlay {
     text-align: center;
-    padding: 20px;
-    margin-top: 4rem;
+    padding: 25px;
+    margin-top: 2rem;
     background-color: #292929;
     border-color: #292929;
     border-radius: 4rem;
