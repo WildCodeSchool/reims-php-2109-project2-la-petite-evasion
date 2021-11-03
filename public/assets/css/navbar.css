@@ -29,7 +29,7 @@ nav {
 	list-style: none;
 	justify-content: space-between;
 	align-items: center;
-	text-transform: uppercase;
+	font-size: xx-large;
 }
 
 .nav-links li a {
