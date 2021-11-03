@@ -4,8 +4,7 @@
 }
 
 .homeBackground{
-    background-image:url("../images/maze-background.jpg") ;
-    background-repeat: no-repeat;
+    background-image:url("../images/maze-background.png") ;
     background-size: cover;
     height: 100vh;
     display: flex;
