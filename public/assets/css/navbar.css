@@ -111,9 +111,13 @@ nav {
     pointer-events: auto;
 }
 .modalDialog > div {
-    width: 400px;
+	display: flex;
+	flex-direction: column;
+	margin-right: 2rem;
+	margin-left: 2rem;
+	margin-top: 4rem;
+    width: auto;
     position: relative;
-    margin: 10% auto;
     padding: 5px 20px 13px 20px;
     border-radius: 10px;
     background: #fff;
@@ -153,4 +157,11 @@ nav {
 	color:black;
 	text-align: center;
 	font-size: x-large;
+}
+
+@media screen and (min-width: 800px) {
+	.modalDialog > div {
+		width: 600px;
+		margin: 10% auto;
+	}
 }
