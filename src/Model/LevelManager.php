@@ -8,7 +8,7 @@ class LevelManager extends AbstractManager
     public const CELL_WALL = 'wall';
     public const CELL_FLOOR = 'floor';
 
-    public static function parseContent(string $content): array 
+    public static function parseContent(string $content): array
     {
         $cells = [];
         foreach (explode(',', $content) as $row) {
@@ -23,5 +23,22 @@ class LevelManager extends AbstractManager
             $cells[] = $cellRow;
         }
         return $cells;
+    }
+
+    public static function createContent(array $cells): string
+    {
+        $rows = [];
+        foreach ($cells as $row) {
+            $rowText = '';
+            foreach ($row as $cell) {
+                if ($cell === self::CELL_WALL) {
+                    $rowText .= '1';
+                } else {
+                    $rowText .= '0';
+                }
+            }
+            $rows[] = $rowText;
+        }
+        return implode(',', $rows);
     }
 }
