@@ -4,6 +4,10 @@
  {{ parent() }} - Editeur de niveau
 {% endblock %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/game.css">
+{% endblock %}
+
 {% block content %}
 <form action="" method="post">
     <div>
@@ -17,14 +21,14 @@
     <div class="level-grid" style="--grid-dimension: {{ grid|length }};">
     {% for row in grid %}
         {% for cell in row %}
-            <div>
+            <div class="level-tile">
                 {% set name = "cell-" ~ loop.index0 ~ "-" ~ loop.parent.loop.index0 %}
                 {% set wallId = name ~ '-wall' %}
                 {% set floorId = name ~ '-floor' %}
                 <input type="radio" name="{{ name }}" value="wall" id="{{ wallId }}" {{cell == "wall" ? 'checked' : ""}}>
-                <label for="{{ floorId }}">Wall</label>
+                <label class="wall level-label" for="{{ floorId }}"></label>
                 <input type="radio" name="{{ name }}" value="floor" id="{{ floorId }}" {{cell == "floor" ? 'checked' : ""}}>
-                <label for="{{ wallId }}">Floor</label>
+                <label class="floor level-label" for="{{ wallId }}"></label>
             </div>
         {% endfor %}
     {% endfor %}
