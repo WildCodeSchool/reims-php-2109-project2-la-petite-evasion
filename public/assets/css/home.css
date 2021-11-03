@@ -60,9 +60,25 @@ a {
     text-decoration: none;
 }
 
-@media screen and (min-width: 680px)  {
+@media screen and (min-width: 680px) and (max-width: 1300px)  {
     .titleContext p {
         font-size: 2.5rem;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
     }
+    .homeBackground {
+        background-image:url("../images/maze-ipad.png") ;
+    } 
+}
+
+@media screen and (min-width: 1300px) { 
+    .titleContext p {
+        font-size: 2.5rem;
+        padding-left: 0.1rem;
+        padding-right: 0.1rem;
+    }
+    .homeBackground {
+        background-image:url("../images/maze-desktop.png");
+    } 
 }
 
