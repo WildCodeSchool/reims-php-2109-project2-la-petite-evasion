@@ -50,3 +50,7 @@ body {
     color: black;
     text-decoration: none;
 }
+
+.wall .game-direction {
+    display: none;
+}
