@@ -3,28 +3,41 @@ body {
     background-color: #303030;
 }
 
-.game {
+.game,
+.level-grid {
     --grid-dimension: 5;
-    --grid-size: 7rem;
+    --grid-size: 5rem;
     display: grid;
     grid-template-columns: repeat(var(--grid-dimension), var(--grid-size));
     grid-template-rows: repeat(var(--grid-dimension), var(--grid-size));
+    margin-bottom: 1rem;
+}
+
+.game {
     justify-content: center;
-    padding-bottom: 1rem;
+}
+
+.level-grid {
+    align-self: flex-start;
 }
 
 .level-name {
-    color: whitesmoke;
+    color: #a5a5a5;
 }
 
-.game-tile {
+.game-tile,
+.level-tile {
     border: 2px solid black;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.player,
+.wall {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .player {
@@ -55,4 +68,40 @@ body {
 
 .wall .game-direction {
     display: none;
+}
+
+.editor-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1rem;
+}
+
+.editor-label {
+    color: #a5a5a5;
+    font-size: 2rem;
+}
+
+.editor-submit {
+    color: #292929;
+    font-size: 4rem;
+}
+
+.editor-input {
+    width: min(40rem, 90vw);
+    margin-bottom: 1rem;
+}
+
+.level-input,
+.level-input + .level-label {
+    display: none;
+}
+
+.level-input:checked + .level-label {
+    display: block;
+}
+
+.level-label {
+    height: 100%;
+    width: 100%;
 }
