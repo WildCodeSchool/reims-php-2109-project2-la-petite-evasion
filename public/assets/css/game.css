@@ -34,7 +34,8 @@ body {
 }
 
 .player,
-.wall, .finish {
+.wall,
+.finish {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
