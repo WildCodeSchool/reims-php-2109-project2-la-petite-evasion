@@ -1,6 +1,8 @@
 
 body {
-    background-image: url('https://brandsbyovo.com/wp-content/uploads/sherlock-holmes-composite-photo.jpg');
+    background-image: url('../images/maze-mobile.png');
+    background-size: cover;
+    height: 100vh;
 }
 
 table {
