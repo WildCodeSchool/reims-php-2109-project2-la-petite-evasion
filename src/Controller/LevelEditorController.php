@@ -14,21 +14,10 @@ class LevelEditorController extends AbstractController
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $cells = [];
-            $this->parsePost($level, $cells, $errors);
-            array_walk($cells, function ($row) {
-                ksort($row);
-                if (count($row) - 1 !== array_key_last($row)) {
-                    $errors[] = 'Cellules invalides';
-                }
-            });
-            ksort($cells);
-            if (count($cells) - 1 !== array_key_last($cells)) {
-                $errors[] = 'Lignes invalides';
-            }
+            $this->parsePost($level, $grid, $errors);
             if (!$errors) {
                 $levelManager = new LevelManager();
-                $levelManager->update($level, $cells);
+                $levelManager->update($level, $grid);
             }
         }
         return $this->twig->render('Editor/edit.html.twig', ['level' => $level, 'grid' => $grid]);
@@ -48,13 +37,19 @@ class LevelEditorController extends AbstractController
         }
 
         foreach ($_POST as $entry => $value) {
+            if (!in_array($value, [LevelManager::CELL_FLOOR, LevelManager::CELL_WALL])) {
+                $errors[] = 'Type de cellule invalide';
+                continue;
+            }
             $capture = [];
-            $matched = preg_match("/^cell-(?<x>[0-9]+)-(?<y>[0-9]+)$/", $entry, $capture);
-            if ($matched === 1 && array_key_exists('x', $capture) && array_key_exists('y', $capture)) {
+            if (preg_match("/^cell-(?<x>[0-9]+)-(?<y>[0-9]+)$/", $entry, $capture)) {
                 $posX = intval($capture['x']);
                 $posY = intval($capture['y']);
-                $cells[$posY] = $cells[$posY] ?? [];
-                $cells[$posY][$posX] = $value;
+                if (isset($cells[$posY][$posX])) {
+                    $cells[$posY][$posX] = $value;
+                } else {
+                    $errors[] = 'Position invalide';
+                }
             }
         }
     }
