@@ -61,36 +61,36 @@ nav {
 }
 
 @media screen and (max-width: 800px) {
-	nav {
-		position: fixed;
-		z-index: 3;
-	}
-	.hamburger {
-		display: block;
-		position: absolute;
-		right: 5%;
-		top: 50%;
-		transform: translate(-0%, 30%);
-		z-index: 2;
-		transition: all 0.7s ease;
-	}
-	.nav-links {
-		position: fixed;
-		background: #131418;
-		height: 100%;
-		width: 100%;
-		flex-direction: column;
-		clip-path: circle(50px at 90% -20%);
-		-webkit-clip-path: circle(50px at 90% -10%);
-		transition: all 1s ease-out;
-	}
-	.nav-links.open {
-		clip-path: circle(1000px at 90% -10%);
-		-webkit-clip-path: circle(1000px at 90% -10%);
-	}
-	.modalDialog {
-		display: none;
-	}
+	
+nav {
+	position: fixed;
+	z-index: 3;
+}
+.hamburger {
+	display: block;
+	position: absolute;
+	right: 5%;
+	top: 50%;
+	transform: translate(-0%, 30%);
+	z-index: 2;
+	transition: all 0.7s ease;
+}
+.nav-links {
+	position: fixed;
+	background: #131418;
+height: 100%;
+	width: 100%;
+	flex-direction: column;
+	clip-path: circle(50px at 90% -20%);
+	-webkit-clip-path: circle(50px at 90% -10%);
+	transition: all 1s ease-out;
+}
+.nav-links.open {
+	clip-path: circle(1000px at 90% -10%);
+	-webkit-clip-path: circle(1000px at 90% -10%);
+}
+.modalDialog {
+	display: none;
 }
 
 /* Modal */

@@ -46,6 +46,7 @@ body {
 
 .floor {
     background-color: lightgray;
+    border: none;
 }
 
 .finish {
