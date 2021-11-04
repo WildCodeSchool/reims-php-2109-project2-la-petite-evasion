@@ -31,9 +31,33 @@ body {
     color: black;
     border-radius: 2rem;
     padding: 0.5rem;
-    width: 10rem;
-    font-size: 19px;
+    width: 11.5rem;
+    font-size: 1.5rem;
     text-align: center;
     margin-top: 3rem;
     margin-bottom: 0;
+}
+
+@media screen and (min-width: 500px) and (max-width: 800px) {
+    .winSherlock {
+        width: auto;
+    }
+    .bubleText {
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .winSherlock {
+        width: auto;
+        padding-right: 15rem;
+    }
+    .buble {
+        padding-left: 20rem;
+    }
+    .bubleText {
+        margin-top: 0;
+        font-size: 2rem;
+        width: 20rem;
+    }
 }
