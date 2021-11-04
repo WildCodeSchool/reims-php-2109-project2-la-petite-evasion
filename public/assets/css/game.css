@@ -33,6 +33,7 @@ body {
 
 .floor {
     background-color: lightgray;
+    border: none;
 }
 
 .finish {
@@ -42,7 +43,7 @@ body {
     
 
 .wall {
-    background-image: url(../images/mur.png);
+    background-image: url(../images/wall.png);
 }
 
 .game-direction {
