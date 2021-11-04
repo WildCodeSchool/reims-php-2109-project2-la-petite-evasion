@@ -42,7 +42,8 @@ nav {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 	align-items: center;
-	margin-right: 2rem;
+	margin-right: 3rem;
+	margin-left: 3rem;
 }
 
 
@@ -66,6 +67,7 @@ nav {
 	position: fixed;
 	z-index: 3;
 }
+
 .hamburger {
 	display: block;
 	position: absolute;
