@@ -13,20 +13,22 @@
     {% if level.description %}
         <p class="level-description">{{ level.description }}</p>
     {% endif %}
-    <div class="game" style="--grid-dimension: {{ grid|length }};">
-    {% for row in grid %}
-        {% for cell in row %}
-            <div class="{{ cell.classes|join(' ') }} game-tile">
-            {% if cell.isLink %}
-                {% if "finish" in cell.classes %}
-                    {% set link = "/win" %}
-                {% else %}
-                    {% set link = "?x=" ~ cell.linkX ~ "&y=" ~ cell.linkY %}
+    <div class="game-container">
+        <div class="game" style="--grid-dimension: {{ grid|length }};">
+        {% for row in grid %}
+            {% for cell in row %}
+                <div class="{{ cell.classes|join(' ') }} game-tile">
+                {% if cell.isLink %}
+                    {% if "finish" in cell.classes %}
+                        {% set link = "/win" %}
+                    {% else %}
+                        {% set link = "?x=" ~ cell.linkX ~ "&y=" ~ cell.linkY %}
+                    {% endif %}
+                    <a class="game-direction" href="{{ link }}">{{ cell.linkText }}</a>
                 {% endif %}
-                <a class="game-direction" href="{{ link }}">{{ cell.linkText }}</a>
-            {% endif %}
-            </div>
+                </div>
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
+        </div>
     </div>
 {% endblock %}
