@@ -37,12 +37,12 @@ class LevelEditorController extends AbstractController
         }
 
         foreach ($_POST as $entry => $value) {
-            if (!in_array($value, [LevelManager::CELL_FLOOR, LevelManager::CELL_WALL])) {
-                $errors[] = 'Type de cellule invalide';
-                continue;
-            }
             $capture = [];
             if (preg_match("/^cell-(?<x>[0-9]+)-(?<y>[0-9]+)$/", $entry, $capture)) {
+                if (!in_array($value, [LevelManager::CELL_FLOOR, LevelManager::CELL_WALL])) {
+                    $errors[] = 'Type de cellule invalide';
+                    continue;
+                }
                 $posX = intval($capture['x']);
                 $posY = intval($capture['y']);
                 if (isset($cells[$posY][$posX])) {
