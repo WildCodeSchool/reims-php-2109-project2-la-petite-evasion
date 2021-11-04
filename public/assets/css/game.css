@@ -1,4 +1,7 @@
 body {
+    background-image: url('../images/maze-mobile.png');
+    background-size: cover;
+    height: 100vh;
     text-align: center;
     background-color: #303030;
 }
@@ -6,11 +9,15 @@ body {
 .game,
 .level-grid {
     --grid-dimension: 5;
-    --grid-size: 5rem;
+    --grid-size: 3rem;
     display: grid;
     grid-template-columns: repeat(var(--grid-dimension), var(--grid-size));
     grid-template-rows: repeat(var(--grid-dimension), var(--grid-size));
     margin-bottom: 1rem;
+}
+
+.level-grid {
+    --grid-size: 5rem;
 }
 
 .game {
@@ -104,4 +111,28 @@ body {
 .level-label {
     height: 100%;
     width: 100%;
+}
+
+@media screen and (min-width: 400px) and (max-width: 680px) {
+    .game {
+        --grid-size: 4rem;
+    }
+}
+
+@media screen and (min-width: 680px) and (max-width: 1300px)  {
+    body {
+        background-image:url("../images/maze-ipad.png") ;
+    } 
+    .game {
+        --grid-size: 5.5rem;
+    }
+}
+
+@media screen and (min-width: 1300px) { 
+    body {
+        background-image:url("../images/maze-desktop.png");
+    } 
+    .game {
+        --grid-size: 6rem;
+    }
 }
