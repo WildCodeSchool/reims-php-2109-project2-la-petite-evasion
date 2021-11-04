@@ -29,3 +29,14 @@ th, td {
     text-align: center;
 }
 
+@media screen and (min-width: 680px) and (max-width: 1300px)  {
+    body {
+        background-image:url("../images/maze-ipad.png") ;
+    } 
+}
+
+@media screen and (min-width: 1300px) { 
+    body {
+        background-image:url("../images/maze-desktop.png");
+    } 
+}
