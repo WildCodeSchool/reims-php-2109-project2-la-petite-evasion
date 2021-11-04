@@ -34,7 +34,7 @@ body {
 }
 
 .player,
-.wall {
+.wall, .finish {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,15 +46,12 @@ body {
 
 .floor {
     background-color: lightgray;
-    border: none;
 }
 
 .finish {
-    background-color: lightgrey;
     background-image: url(../images/echelle.png);
-    }
+}
     
-
 .wall {
     background-image: url(../images/wall.png);
 }
