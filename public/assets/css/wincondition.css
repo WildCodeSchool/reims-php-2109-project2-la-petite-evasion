@@ -7,43 +7,33 @@ body {
 .winBackground{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
     height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
-.winSherlock {
-    width: 15rem;  
-    height: 25rem;
-    margin-right: 6rem;
+.winSherlock { 
+    height: 50%;
+    width: 55%;
+    margin-left: 0.5rem;
+    padding-right: 10rem;
+    margin-left: 0; 
 }
 
 .buble {
-    margin-left: 7rem;
-    margin-bottom: 2rem;
+    padding-left: 10rem;
 }
 
 .bubleText {
     background-color: rgb(255, 255, 255);
     color: black;
     border-radius: 2rem;
-    padding: 1rem;
+    padding: 0.5rem;
     width: 10rem;
     font-size: 19px;
-}
-
-@media screen and (min-width: 800px) {
-    
-    .winSherlock {
-        margin-right: 19rem;
-        margin-bottom: 4rem;
-    }
-
-    .buble {
-        margin-left: 21rem;
-    }
-    .bubleText {
-        width: 24rem;
-        font-size: 22px;
-    }
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 0;
 }
