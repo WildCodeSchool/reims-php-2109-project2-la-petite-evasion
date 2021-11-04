@@ -9,15 +9,14 @@
 {% endblock %}
 
 {% block content %}
-<form action="" method="post">
-    <div>
-        <label for="name">Nom du niveau: </label>
-        <input type="text" name="name" id="name" value="{{ level.name }}" required>
-    </div>
-    <div>
-        <label for="description">Description: </label>
-        <input type="text" name="description" id="description" value="{{ level.description }}">
-    </div>
+{% for error in errors %}
+    <p>{{ error }}</p>
+{% endfor %}
+<form class="editor-form" action="" method="post">
+    <label class="editor-label" for="name">Nom du niveau: </label>
+    <input class="editor-input" type="text" name="name" id="name" value="{{ level.name }}" required>
+    <label class="editor-label" for="description">Description: </label>
+    <textarea class="editor-input" name="description" id="description">{{ level.description }}</textarea>
     <div class="level-grid" style="--grid-dimension: {{ grid|length }};">
     {% for row in grid %}
         {% for cell in row %}
@@ -25,14 +24,14 @@
                 {% set name = "cell-" ~ loop.index0 ~ "-" ~ loop.parent.loop.index0 %}
                 {% set wallId = name ~ '-wall' %}
                 {% set floorId = name ~ '-floor' %}
-                <input type="radio" name="{{ name }}" value="wall" id="{{ wallId }}" {{cell == "wall" ? 'checked' : ""}}>
-                <label class="wall level-label" for="{{ floorId }}"></label>
-                <input type="radio" name="{{ name }}" value="floor" id="{{ floorId }}" {{cell == "floor" ? 'checked' : ""}}>
-                <label class="floor level-label" for="{{ wallId }}"></label>
+                <input class="level-input" type="radio" name="{{ name }}" value="wall" id="{{ wallId }}" {{cell == "wall" ? 'checked' : ""}}>
+                <label class="level-label wall" for="{{ floorId }}"></label>
+                <input class="level-input" type="radio" name="{{ name }}" value="floor" id="{{ floorId }}" {{cell == "floor" ? 'checked' : ""}}>
+                <label class="level-label floor" for="{{ wallId }}"></label>
             </div>
         {% endfor %}
     {% endfor %}
     </div>
-    <button type="submit">Envoyer</button>
+    <button class="editor-submit" type="submit">Envoyer</button>
 </form>
 {% endblock %}

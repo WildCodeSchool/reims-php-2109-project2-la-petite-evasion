@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 
+html {
+    min-width: min-content;
+}
+
 body {
     font-family: 'Parisienne', cursive;
 }
