@@ -23,7 +23,7 @@ body {
 }
 
 .buble {
-    padding-left: 10rem;
+    padding-left: 8rem;
 }
 
 .bubleText {
@@ -31,8 +31,8 @@ body {
     color: black;
     border-radius: 2rem;
     padding: 0.5rem;
-    width: 11.5rem;
-    font-size: 1.5rem;
+    width: 13rem;
+    font-size: 27px;
     text-align: center;
     margin-top: 3rem;
     margin-bottom: 0;
@@ -41,6 +41,9 @@ body {
 @media screen and (min-width: 500px) and (max-width: 800px) {
     .winSherlock {
         width: auto;
+    }
+    .buble {
+        padding-left: 15rem;
     }
     .bubleText {
         margin-top: 0;
