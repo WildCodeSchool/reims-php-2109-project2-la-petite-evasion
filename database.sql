@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.26, for macos11.4 (arm64)
 --
--- Host: localhost    Database: maze
+-- Host: localhost    Database: demo
 -- ------------------------------------------------------
 -- Server version	8.0.26
 
@@ -65,6 +65,7 @@ CREATE TABLE `record` (
 
 LOCK TABLES `record` WRITE;
 /*!40000 ALTER TABLE `record` DISABLE KEYS */;
+INSERT INTO `record` VALUES (1,15,'Mario',1),(2,15,'Amandine',1),(3,15,'Kévin',1),(4,15,'Mauricia',1),(5,15,'Sophie',1),(6,15,'Marvin',1);
 /*!40000 ALTER TABLE `record` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -77,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-27  9:15:44
+-- Dump completed on 2021-11-05 10:04:07
