@@ -5,6 +5,11 @@ body {
     height: 100vh;
 }
 
+.leaderboard {
+    padding: 0 10%;
+}
+
+
 table {
     margin: auto;
     background-color: #333333;
