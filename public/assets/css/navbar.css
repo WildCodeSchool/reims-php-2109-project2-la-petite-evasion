@@ -86,8 +86,8 @@ nav {
 	transition: all 1s ease-out;
 }
 .nav-links.open {
-	clip-path: circle(1000px at 90% -10%);
-	-webkit-clip-path: circle(1000px at 90% -10%);
+	clip-path: circle(200% at 90% -10%);
+	-webkit-clip-path: circle(200% at 90% -10%);
 }
 
 }
