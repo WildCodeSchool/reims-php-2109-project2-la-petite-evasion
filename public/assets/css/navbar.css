@@ -16,7 +16,6 @@ nav * {
 nav {
 	width: 100%;
 	background-color: #454545;
-	display: flex;
 }
 
 .navbar {
@@ -29,7 +28,6 @@ nav {
 .nav-links {
 	display: flex;
 	list-style: none;
-	justify-content: space-evenly;
 	align-items: center;
 	font-size: xx-large;
 }
@@ -37,13 +35,16 @@ nav {
 .nav-links li a {
 	text-decoration: none;
 }
+.logo {
+	margin-left: 1rem;
+	height: 13vh;
+}
 
 .nav-links li {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	align-items: center;
-	margin-right: 3rem;
-	margin-left: 3rem;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 
@@ -67,6 +68,10 @@ nav {
 	position: fixed;
 	top: 0;
 	z-index: 3;
+}
+
+.logo {
+	display: none;
 }
 
 .hamburger {
