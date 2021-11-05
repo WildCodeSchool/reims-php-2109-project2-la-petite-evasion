@@ -5,13 +5,18 @@ body {
     height: 100vh;
 }
 
+.leaderboard {
+    padding: 0 10%;
+}
+
+
 table {
     margin: auto;
     background-color: #333333;
     border-collapse: collapse;
     color: whitesmoke;
     border-spacing: 0;
-    width: 80%;
+    width: 100%;
     border: 1px solid #ddd;
 }
 
