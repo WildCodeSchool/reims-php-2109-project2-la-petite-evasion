@@ -10,9 +10,6 @@
 
 {% block content %}
     <h1 class="level-name">{{ level.name }}</h1>
-    {% if level.description %}
-        <p class="level-description">{{ level.description }}</p>
-    {% endif %}
     <div class="game-container">
         <div class="game" style="--grid-dimension: {{ grid|length }};">
         {% for row in grid %}
@@ -31,4 +28,7 @@
         {% endfor %}
         </div>
     </div>
+    {% if level.description %}
+        <p class="level-description">{{ level.description }}</p>
+    {% endif %}
 {% endblock %}
