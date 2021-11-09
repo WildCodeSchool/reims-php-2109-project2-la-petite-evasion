@@ -18,4 +18,5 @@ return [
     'win' => ['WinController', 'index',],
     'editor/edit' => ['LevelEditorController', 'edit', ['id']],
     'editor/create' => ['LevelEditorController', 'createLevel',],
+    'editor/delete' => ['LevelEditorController', 'delete',],
 ];
