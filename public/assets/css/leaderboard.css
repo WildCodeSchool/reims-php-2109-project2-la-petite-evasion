@@ -40,7 +40,11 @@ th, td {
     padding: 8px;
     text-align: center;
 }
-
+@media screen and (max-width: 700px) { 
+ .leaderboard {
+     padding: 0 0;
+ }
+}
 @media screen and (min-width: 680px) and (max-width: 1300px)  {
     body {
         background-image:url("../images/maze-ipad.png") ;
