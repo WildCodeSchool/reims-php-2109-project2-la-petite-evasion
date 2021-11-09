@@ -49,14 +49,14 @@ class LevelManager extends AbstractManager
                 $row = array_slice($row, 0, $width);
             } else {
                 $difference = $width - count($row);
-                $row = array_merge($row, array_fill(0, $difference, "floor"));
+                $row = array_merge($row, array_fill(0, $difference, self::CELL_FLOOR));
             }
         }
         if (count($cells) >= $height) {
             $cells = array_slice($cells, 0, $height);
         } else {
             $difference = $height - count($cells);
-            $row = array_fill(0, $width, "floor");
+            $row = array_fill(0, $width, self::CELL_FLOOR);
             $cells = array_merge($cells, array_fill(0, $difference, $row));
         }
         return $cells;
