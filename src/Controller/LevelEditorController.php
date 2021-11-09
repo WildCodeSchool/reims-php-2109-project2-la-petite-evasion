@@ -6,6 +6,13 @@ use App\Model\LevelManager;
 
 class LevelEditorController extends AbstractController
 {
+    public function list()
+    {
+        $levelManager = new LevelManager();
+        $levels = $levelManager->selectAll('id');
+        return $this->twig->render('Editor/index.html.twig', ['levels' => $levels]);
+    }
+
     public function edit(int $id)
     {
         $levelManager = new LevelManager();
