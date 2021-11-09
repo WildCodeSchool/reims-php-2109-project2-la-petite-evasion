@@ -60,4 +60,16 @@ class LevelManager extends AbstractManager
         $statement->bindValue('content', self::createContent($cells), \PDO::PARAM_STR);
         return $statement->execute();
     }
+
+    public function create(array $level, array $cells): bool
+    {
+        $statement = $this->pdo->prepare(
+            "INSERT INTO " . self::TABLE .
+            " (name, description, content) VALUES (:name, :description, :content)"
+        );
+        $statement->bindValue('name', $level['name'], \PDO::PARAM_STR);
+        $statement->bindValue('description', $level['description'], \PDO::PARAM_STR);
+        $statement->bindValue('content', self::createContent($cells), \PDO::PARAM_STR);
+        return $statement->execute();
+    }
 }
