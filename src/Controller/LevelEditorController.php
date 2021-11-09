@@ -84,7 +84,8 @@ class LevelEditorController extends AbstractController
             'width' => self::DEFAULT_LEVEL_SIZE,
             'height' => self::DEFAULT_LEVEL_SIZE
         ];
-        $cells = array_fill(0, self::DEFAULT_LEVEL_SIZE, array_fill(0, self::DEFAULT_LEVEL_SIZE, "floor"));
+        $row = array_fill(0, self::DEFAULT_LEVEL_SIZE, LevelManager::CELL_FLOOR);
+        $cells = array_fill(0, self::DEFAULT_LEVEL_SIZE, $row);
         $id = $levelManager->create($level, $cells);
         header('Location: /editor/edit?id=' . $id);
     }
