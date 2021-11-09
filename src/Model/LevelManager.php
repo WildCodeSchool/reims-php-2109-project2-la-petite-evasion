@@ -61,6 +61,9 @@ class LevelManager extends AbstractManager
         return $statement->execute();
     }
 
+     /**
+     * Create Level in database
+     */
     public function create(array $level, array $cells): int
     {
         $statement = $this->pdo->prepare(
@@ -72,5 +75,16 @@ class LevelManager extends AbstractManager
         $statement->bindValue('content', self::createContent($cells), \PDO::PARAM_STR);
         $statement->execute();
         return intval($this->pdo->lastInsertId());
+    }
+
+     /**
+     * Delete row form an ID
+     */
+    public function delete(int $id): bool
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        return $statement->execute();
     }
 }
