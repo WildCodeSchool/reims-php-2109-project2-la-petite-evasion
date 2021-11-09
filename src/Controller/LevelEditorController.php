@@ -62,7 +62,7 @@ class LevelEditorController extends AbstractController
         $id = $levelManager->create($level, $cells);
         header('Location: /editor/edit?id=' . $id);
     }
- 
+
     public function delete(): void
     {
         $levelManager = new LevelManager();
