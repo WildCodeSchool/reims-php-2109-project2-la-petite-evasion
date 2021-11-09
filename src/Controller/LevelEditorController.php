@@ -27,6 +27,8 @@ class LevelEditorController extends AbstractController
                 $levelManager->update($level, $grid);
             }
         }
+        $level['height'] = count($grid);
+        $level['width'] = count($grid[0]);
         return $this->twig->render('Editor/edit.html.twig', ['level' => $level, 'grid' => $grid]);
     }
 
@@ -42,6 +44,7 @@ class LevelEditorController extends AbstractController
             $level['description'] = $description;
             array_map('trim', $level);
         }
+        $this->parsePostDimensions($cells);
 
         foreach ($_POST as $entry => $value) {
             $capture = [];
@@ -54,9 +57,18 @@ class LevelEditorController extends AbstractController
                 $posY = intval($capture['y']);
                 if (isset($cells[$posY][$posX])) {
                     $cells[$posY][$posX] = $value;
-                } else {
-                    $errors[] = 'Position invalide';
                 }
+            }
+        }
+    }
+
+    private function parsePostDimensions(array &$cells): void
+    {
+        if (!empty($_POST["width"]) && !empty($_POST["height"])) {
+            $width = filter_var($_POST['width'], FILTER_VALIDATE_INT);
+            $height = filter_var($_POST['height'], FILTER_VALIDATE_INT);
+            if ($width !== false && $height !== false && $width > 2 && $height > 2) {
+                $cells = LevelManager::resizeCells($cells, $width, $height);
             }
         }
     }

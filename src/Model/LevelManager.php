@@ -41,7 +41,7 @@ class LevelManager extends AbstractManager
         }
         return implode(',', $rows);
     }
-    
+
     public static function resizeCells(array $cells, int $width, int $height): array
     {
         foreach ($cells as &$row) {
