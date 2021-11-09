@@ -4,6 +4,10 @@
  {{ parent() }} - Editeur de niveau
 {% endblock %}
 
+{% block stylesheet %}
+<link href="assets/css/editor.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <form action="/editor/delete" class="level-list" method="POST">
    <h1>Niveaux</h1>
