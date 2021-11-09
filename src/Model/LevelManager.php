@@ -71,13 +71,17 @@ class LevelManager extends AbstractManager
             "UPDATE " . self::TABLE .
             " SET `name` = :name," .
             " `description` = :description," .
-            " `content` = :content" .
+            " `content` = :content," .
+            " `width` = :width," .
+            " `height` = :height" .
             " WHERE id=:id"
         );
         $statement->bindValue('id', $level['id'], \PDO::PARAM_INT);
         $statement->bindValue('name', $level['name'], \PDO::PARAM_STR);
         $statement->bindValue('description', $level['description'], \PDO::PARAM_STR);
         $statement->bindValue('content', self::createContent($cells), \PDO::PARAM_STR);
+        $statement->bindValue('width', $level['width'], \PDO::PARAM_INT);
+        $statement->bindValue('height', $level['height'], \PDO::PARAM_INT);
         return $statement->execute();
     }
 
@@ -88,11 +92,13 @@ class LevelManager extends AbstractManager
     {
         $statement = $this->pdo->prepare(
             "INSERT INTO " . self::TABLE .
-            " (name, description, content) VALUES (:name, :description, :content)"
+            " (name, description, content, width, height) VALUES (:name, :description, :content, :width, :height)"
         );
         $statement->bindValue('name', $level['name'], \PDO::PARAM_STR);
         $statement->bindValue('description', $level['description'], \PDO::PARAM_STR);
         $statement->bindValue('content', self::createContent($cells), \PDO::PARAM_STR);
+        $statement->bindValue('width', $level['width'], \PDO::PARAM_INT);
+        $statement->bindValue('height', $level['height'], \PDO::PARAM_INT);
         $statement->execute();
         return intval($this->pdo->lastInsertId());
     }

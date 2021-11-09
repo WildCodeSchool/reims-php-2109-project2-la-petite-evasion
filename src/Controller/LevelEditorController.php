@@ -6,6 +6,8 @@ use App\Model\LevelManager;
 
 class LevelEditorController extends AbstractController
 {
+    private const DEFAULT_LEVEL_SIZE = 15;
+
     public function list()
     {
         $levelManager = new LevelManager();
@@ -27,8 +29,6 @@ class LevelEditorController extends AbstractController
                 $levelManager->update($level, $grid);
             }
         }
-        $level['height'] = count($grid);
-        $level['width'] = count($grid[0]);
         return $this->twig->render('Editor/edit.html.twig', ['level' => $level, 'grid' => $grid]);
     }
 
@@ -44,7 +44,7 @@ class LevelEditorController extends AbstractController
             $level['description'] = $description;
             array_map('trim', $level);
         }
-        $this->parsePostDimensions($cells);
+        $this->parsePostDimensions($level, $cells);
 
         foreach ($_POST as $entry => $value) {
             $capture = [];
@@ -62,13 +62,15 @@ class LevelEditorController extends AbstractController
         }
     }
 
-    private function parsePostDimensions(array &$cells): void
+    private function parsePostDimensions(array &$level, array &$cells): void
     {
         if (!empty($_POST["width"]) && !empty($_POST["height"])) {
             $width = filter_var($_POST['width'], FILTER_VALIDATE_INT);
             $height = filter_var($_POST['height'], FILTER_VALIDATE_INT);
             if ($width !== false && $height !== false && $width > 2 && $height > 2) {
                 $cells = LevelManager::resizeCells($cells, $width, $height);
+                $level['width'] = $width;
+                $level['height'] = $height;
             }
         }
     }
@@ -76,8 +78,13 @@ class LevelEditorController extends AbstractController
     public function createLevel(): void
     {
         $levelManager = new LevelManager();
-        $level = ['name' => 'Nouveau niveau', 'description' => ''];
-        $cells = array_fill(0, 15, array_fill(0, 15, "floor"));
+        $level = [
+            'name' => 'Nouveau niveau',
+            'description' => '',
+            'width' => self::DEFAULT_LEVEL_SIZE,
+            'height' => self::DEFAULT_LEVEL_SIZE
+        ];
+        $cells = array_fill(0, self::DEFAULT_LEVEL_SIZE, array_fill(0, self::DEFAULT_LEVEL_SIZE, "floor"));
         $id = $levelManager->create($level, $cells);
         header('Location: /editor/edit?id=' . $id);
     }

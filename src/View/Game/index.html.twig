@@ -11,7 +11,7 @@
 {% block content %}
     <h1 class="level-name">{{ level.name }}</h1>
     <div class="game-container">
-        <div class="game" style="--grid-dimension: {{ grid|length }};">
+        <div class="game" style="--grid-width: {{ grid|length }}; --grid-height: {{ grid|length }};">
         {% for row in grid %}
             {% for cell in row %}
                 <div class="{{ cell.classes|join(' ') }} game-tile">
