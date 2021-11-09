@@ -28,8 +28,13 @@ body {
     align-self: flex-start;
 }
 
-.level-name {
-    color: #a5a5a5;
+.level-name,
+.level-description {
+    color: whitesmoke;
+}
+
+.level-description {
+    font-size: 2rem;
 }
 
 .game-tile,
