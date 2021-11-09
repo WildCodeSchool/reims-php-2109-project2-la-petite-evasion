@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<form actiton="/editor/delete" class="level-list" method="POST">
+<form action="/editor/delete" class="level-list" method="POST">
    <h1>Niveaux</h1>
    <table>
       <tr>
@@ -16,10 +16,12 @@
       {% for level in levels %}
       <tr>
          <td>{{ level.name }}</td>
-         <td>{{ level.description }}</td>
+         <td>{{ level.description|truncate(50) }}</td>
          <td><input type="checkbox" value="delete" name="{{ level.id }}"</td>
       </tr>
       {% endfor %} 
    </table>
+   <button type="submit" formaction="/editor/create">Créer</button>
+   <button type="submit">Supprimer</button>
 </form>
 {% endblock %}
