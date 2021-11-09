@@ -62,5 +62,29 @@ class LevelEditorController extends AbstractController
             $levelManager->delete($level);
         }
         return $this->twig->render('Editor/edit.html.twig');
+
+
+    public function createLevel(): void
+    {
+        $levelManager = new LevelManager();
+        $level = ['name' => 'Nouveau niveau', 'description' => ''];
+        $cells = array_fill(0, 15, array_fill(0, 15, "floor"));
+        $id = $levelManager->create($level, $cells);
+        header('Location: /editor/edit?id=' . $id);
+    }
+      
+    public function delete(): void
+    {
+        $levelManager = new LevelManager();
+        $levels = $levelManager->selectAll('id');
+        $levelsId = array_column($levels, 'id');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            foreach ($_POST['id'] as $id) {
+                if (in_array($_POST['id'], $levelsId)) {
+                    $levelManager->delete($id);
+                }
+            }
+        }
+        header('Location: /editor');
     }
 }
