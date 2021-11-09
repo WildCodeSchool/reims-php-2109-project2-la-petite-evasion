@@ -21,7 +21,7 @@
       <tr>
          <td><a href="/editor/edit?id={{ level.id }}">{{ level.name }}</a></td>
          <td>{{ level.description|length > 50 ? level.description|slice(0, 50) ~ '...' : level.description }}</td>
-         <td><input type="checkbox" value="delete" name="{{ level.id }}"</td>
+         <td><input class="checkbox" type="checkbox" value="delete" name="{{ level.id }}"></td>
       </tr>
       {% endfor %} 
    </table>

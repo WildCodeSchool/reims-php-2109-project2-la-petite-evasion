@@ -4,10 +4,6 @@ body {
     height: 100vh;
 }
 
-.leaderboard {
-    padding: 0 10%;
-}
-
 table {
     margin: auto;
     background-color: #333333;
@@ -39,6 +35,19 @@ td {
 th, td {
     padding: 8px;
     text-align: center;
+}
+
+a {
+    color: whitesmoke;
+}
+
+a:visited {
+    color: #A5A5A5;
+}
+
+input.checkbox {
+    width: 25px;
+    height: 25px;
 }
 
 @media screen and (min-width: 680px) and (max-width: 1300px)  {
