@@ -60,4 +60,14 @@ class LevelManager extends AbstractManager
         $statement->bindValue('content', self::createContent($cells), \PDO::PARAM_STR);
         return $statement->execute();
     }
+        /**
+     * Delete row form an ID
+     */
+    public function delete(int $id): void
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
