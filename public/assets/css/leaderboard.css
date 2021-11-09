@@ -41,7 +41,7 @@ th, td {
     text-align: center;
 }
 @media screen and (max-width: 700px) { 
- .leaderboard {
+.leaderboard {
      padding: 0 0;
  }
 }
