@@ -59,6 +59,7 @@ class LevelEditorController extends AbstractController
         $levelManager = new LevelManager();
         $level = ['name' => 'Nouveau niveau', 'description' => ''];
         $cells = array_fill(0, 15, array_fill(0, 15, "floor"));
-        $levelManager->create($level, $cells);
+        $id = $levelManager->create($level, $cells);
+        header('Location: /editor/edit?id=' . $id);
     }
 }
