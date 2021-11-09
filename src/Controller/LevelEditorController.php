@@ -57,11 +57,10 @@ class LevelEditorController extends AbstractController
     {
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById($id);
-       
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-           $levelManager = new LevelManager();
-           $levelManager->delete();
+            $levelManager = new LevelManager();
+            $levelManager->delete($level);
         }
-        return $this->twig->render('Editor/edit.html.twig', ['level' => $level, 'grid' => $grid]);
+        return $this->twig->render('Editor/edit.html.twig');
     }
 }
