@@ -3,7 +3,9 @@ body {
     background-size: cover;
     height: 100vh;
 }
-
+form {
+    padding: 0% 10%;
+}
 table {
     margin: auto;
     background-color: #333333;
