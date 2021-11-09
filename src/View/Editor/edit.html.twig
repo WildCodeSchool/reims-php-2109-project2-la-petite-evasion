@@ -21,7 +21,7 @@
     <input class="editor-input" type="number" name="width" id="width" value="{{ level.width }}" required>
     <label class="editor-label" for="height">Hauteur: </label>
     <input class="editor-input" type="number" name="height" id="height" value="{{ level.height }}" required>
-    <div class="level-grid" style="--grid-dimension: {{ grid|length }};">
+    <div class="level-grid" style="--grid-width: {{ level.width }}; --grid-height: {{ level.height }};">
     {% for row in grid %}
         {% for cell in row %}
             <div class="level-tile">

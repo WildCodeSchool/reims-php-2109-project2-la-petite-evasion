@@ -8,11 +8,12 @@ body {
 
 .game,
 .level-grid {
-    --grid-dimension: 5;
+    --grid-width: 5;
+    --grid-height: 5;
     --grid-size: 3rem;
     display: grid;
-    grid-template-columns: repeat(var(--grid-dimension), var(--grid-size));
-    grid-template-rows: repeat(var(--grid-dimension), var(--grid-size));
+    grid-template-columns: repeat(var(--grid-width), var(--grid-size));
+    grid-template-rows: repeat(var(--grid-height), var(--grid-size));
     margin-bottom: 1rem;
 }
 
