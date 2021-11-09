@@ -41,10 +41,6 @@ a {
     color: whitesmoke;
 }
 
-a:visited {
-    color: #A5A5A5;
-}
-
 input.checkbox {
     width: 25px;
     height: 25px;
@@ -65,14 +61,38 @@ button {
     border-radius: 3rem;
 }
 
+button:first-child {
+    margin-top: 4rem;
+}
+
 @media screen and (min-width: 680px) and (max-width: 1300px)  {
     body {
         background-image:url("../images/maze-ipad.png") ;
     } 
+    button {
+        font-size: 2rem;
+        padding: 1rem;
+    }
+    th {
+        font-size: 3rem;
+    }
+    td {
+        font-size: 2rem;
+    }
 }
 
 @media screen and (min-width: 1300px) { 
     body {
         background-image:url("../images/maze-desktop.png");
     } 
+    button {
+        font-size: 2rem;
+        padding: 1rem;
+    }
+    th {
+        font-size: 3.5rem;
+    }
+    td {
+        font-size: 3rem;
+    }
 }
