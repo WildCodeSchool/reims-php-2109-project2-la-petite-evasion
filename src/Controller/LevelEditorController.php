@@ -59,12 +59,12 @@ class LevelEditorController extends AbstractController
         $levels = $levelManager->selectAll('id');
         $levelsId = array_column($levels, 'id');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            foreach ($_POST['id'] as $id){
-                if(in_array($_POST['id'], $levelsId)){
+            foreach ($_POST['id'] as $id) {
+                if (in_array($_POST['id'], $levelsId)) {
                     $levelManager->delete($id);
                 }
             }
-        } 
-            header('Location: /editor');
+        }
+        header('Location: /editor');
     }
 }
