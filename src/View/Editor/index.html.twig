@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+ {{ parent() }} - Editeur de niveau
+{% endblock %}
+
+{% block content %}
+<form action="/editor/delete" class="level-list" method="POST">
+   <h1>Niveaux</h1>
+   <table>
+      <tr>
+         <th>Nom</th>
+         <th>Description</th>
+         <th>🗑</th>
+      </tr>
+      {% for level in levels %}
+      <tr>
+         <td><a href="/editor/edit?id={{ level.id }}">{{ level.name }}</a></td>
+         <td>{{ level.description|length > 50 ? level.description|slice(0, 50) ~ '...' : level.description }}</td>
+         <td><input type="checkbox" value="delete" name="{{ level.id }}"</td>
+      </tr>
+      {% endfor %} 
+   </table>
+   <button type="submit" formaction="/editor/create">Créer</button>
+   <button type="submit">Supprimer</button>
+</form>
+{% endblock %}
