@@ -1,4 +1,3 @@
-
 body {
     background-image: url('../images/maze-mobile.png');
     background-size: cover;
@@ -8,7 +7,6 @@ body {
 .leaderboard {
     padding: 0 10%;
 }
-
 
 table {
     margin: auto;
@@ -27,6 +25,15 @@ th:first-child {
 h1 {
     color: whitesmoke;
     text-align: center;
+    font-size: 2.5rem;
+}
+th {
+    font-size: 2rem;
+    background-color: #575757;
+}
+
+td {
+    font-size: 1.5rem;
 }
 
 th, td {
