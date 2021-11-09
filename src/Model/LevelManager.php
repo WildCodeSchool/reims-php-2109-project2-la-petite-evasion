@@ -80,11 +80,11 @@ class LevelManager extends AbstractManager
      /**
      * Delete row form an ID
      */
-    public function delete(int $id): bool
+    public function delete(int $id): void
     {
         // prepared request
         $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        return $statement->execute();
+        $statement->execute();
     }
 }
