@@ -53,7 +53,7 @@ class LevelEditorController extends AbstractController
             }
         }
     }
-  
+
     public function createLevel(): void
     {
         $levelManager = new LevelManager();
@@ -62,15 +62,15 @@ class LevelEditorController extends AbstractController
         $id = $levelManager->create($level, $cells);
         header('Location: /editor/edit?id=' . $id);
     }
-      
+ 
     public function delete(): void
     {
         $levelManager = new LevelManager();
         $levels = $levelManager->selectAll('id');
         $levelsId = array_column($levels, 'id');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            foreach ($_POST['id'] as $id) {
-                if (in_array($_POST['id'], $levelsId)) {
+            foreach ($_POST['id'] as $id => $value) {
+                if (in_array($_POST['id'], $levelsId) && $value === 'delete') {
                     $levelManager->delete($id);
                 }
             }
