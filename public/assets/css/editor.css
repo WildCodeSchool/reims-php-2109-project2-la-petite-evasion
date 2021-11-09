@@ -1,0 +1,98 @@
+body {
+    background-image: url('../images/maze-mobile.png');
+    background-size: cover;
+    height: 100vh;
+}
+
+table {
+    margin: auto;
+    background-color: #333333;
+    border-collapse: collapse;
+    color: whitesmoke;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th:first-child {
+  width: 33.3%;
+}
+
+h1 {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 2.5rem;
+}
+th {
+    font-size: 2rem;
+    background-color: #575757;
+}
+
+td {
+    font-size: 1.5rem;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+a {
+    color: whitesmoke;
+}
+
+input.checkbox {
+    width: 25px;
+    height: 25px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    background-color: #A5A5A5;
+    opacity: 70%;
+    margin-top: 2rem;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 3rem;
+}
+
+button:first-child {
+    margin-top: 4rem;
+}
+
+@media screen and (min-width: 680px) and (max-width: 1300px)  {
+    body {
+        background-image:url("../images/maze-ipad.png") ;
+    } 
+    button {
+        font-size: 2rem;
+        padding: 1rem;
+    }
+    th {
+        font-size: 3rem;
+    }
+    td {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 1300px) { 
+    body {
+        background-image:url("../images/maze-desktop.png");
+    } 
+    button {
+        font-size: 2rem;
+        padding: 1rem;
+    }
+    th {
+        font-size: 3.5rem;
+    }
+    td {
+        font-size: 3rem;
+    }
+}

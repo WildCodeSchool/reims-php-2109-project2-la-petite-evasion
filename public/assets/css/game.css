@@ -94,9 +94,12 @@ body {
 }
 
 .editor-submit {
+    background-color: #A5A5A5;
+    opacity: 70%;
     color: #292929;
     font-size: 1rem;
     padding: 1rem 3rem;
+    border-radius: 3rem;
 }
 
 .editor-input {
