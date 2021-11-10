@@ -168,7 +168,10 @@ class GameController extends AbstractController
             if ($this->isFinish($cells, $position)) {
                 header('Location: /win');
                 $this->finishGame();
-            } elseif ($cells[$position['y']][$position['x']] === LevelManager::CELL_WALL) {
+            } elseif (
+                !isset($cells[$position['y']][$position['x']]) ||
+                $cells[$position['y']][$position['x']] === LevelManager::CELL_WALL
+            ) {
                 $position = self::getPosition();
             }
         }
