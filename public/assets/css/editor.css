@@ -66,6 +66,11 @@ button {
 button:first-child {
     margin-top: 4rem;
 }
+@media screen and (max-width: 700px) { 
+    .level-list {
+        padding: 0 0;
+    }
+}
 
 @media screen and (min-width: 680px) and (max-width: 1300px)  {
     body {
