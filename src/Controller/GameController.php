@@ -91,7 +91,7 @@ class GameController extends AbstractController
         return $_SESSION['position'] ?? ['x' => 0, 'y' => 0];
     }
 
-    private function move(string $action): void
+    private function move(array $cells, string $action): void
     {
         $position = $this->getPosition();
 
@@ -99,6 +99,10 @@ class GameController extends AbstractController
             $offsets = self::ACTION_OFFSETS[$action];
             $position['x'] += $offsets['x'];
             $position['y'] += $offsets['y'];
+
+            if ($cells[$position['y']][$position['x']] === LevelManager::CELL_WALL) {
+                $position = $this->getPosition();
+            }
         }
 
         $_SESSION['position'] = $position;
@@ -111,12 +115,13 @@ class GameController extends AbstractController
     {
         session_start();
 
-        $this->move($action ?? "");
-        $position = $this->getPosition();
-
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById(1);
         $cells = LevelManager::parseContent($level['content']);
+
+        $this->move($cells, $action ?? "");
+        $position = $this->getPosition();
+
         $grid = $this->generateViewpoint($cells, $position['x'], $position['y']);
 
         return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
