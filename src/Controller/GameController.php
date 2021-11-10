@@ -82,6 +82,12 @@ class GameController extends AbstractController
         return $grid;
     }
 
+    private function reset(): void
+    {
+        session_destroy();
+        $_SESSION = [];
+    }
+
     private function getPosition(): array
     {
         return $_SESSION['position'] ?? ['x' => 0, 'y' => 0];
@@ -89,6 +95,10 @@ class GameController extends AbstractController
 
     private function move(array $cells, string $action): void
     {
+        if ($action === 'reset') {
+            $this->reset();
+        }
+
         $position = $this->getPosition();
 
         if (isset(self::ACTION_OFFSETS[$action])) {
