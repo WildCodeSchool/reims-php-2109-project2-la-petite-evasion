@@ -71,7 +71,7 @@ class GameController extends AbstractController
                     $details['classes'][] = "start";
                 }
 
-                if ($y === count($cells) - 1 && $x === count($cells[$y]) - 1) {
+                if ($this->isFinish($cells, ['x' => $x, 'y' => $y])) {
                     $details['classes'][] = "finish";
                 }
 
@@ -80,6 +80,13 @@ class GameController extends AbstractController
             $grid[] = $row;
         }
         return $grid;
+    }
+
+    private function isFinish(array $cells, array $position): bool
+    {
+        $lastRow = end($cells);
+        return $position['y'] === array_key_last($cells) &&
+               $position['x'] === array_key_last($lastRow);
     }
 
     private function reset(): void
@@ -106,7 +113,10 @@ class GameController extends AbstractController
             $position['x'] += $offsets['x'];
             $position['y'] += $offsets['y'];
 
-            if ($cells[$position['y']][$position['x']] === LevelManager::CELL_WALL) {
+            if ($this->isFinish($cells, $position)) {
+                header('Location: /win');
+                $this->reset();
+            } elseif ($cells[$position['y']][$position['x']] === LevelManager::CELL_WALL) {
                 $position = $this->getPosition();
             }
         }
