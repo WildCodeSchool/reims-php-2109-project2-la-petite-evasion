@@ -19,8 +19,7 @@ class GameController extends AbstractController
         $cellDetails = [
             "classes" => [],
             "isLink" => false,
-            "linkX" => $playerX,
-            "linkY" => $playerY,
+            "action" => '',
             "linkText" => '',
         ];
         if ($cellType === '') {
@@ -29,21 +28,18 @@ class GameController extends AbstractController
             $deltaX = $cellX - $playerX;
             $deltaY = $cellY - $playerY;
 
-            $cellDetails['linkX'] += $deltaX;
-            $cellDetails['linkY'] += $deltaY;
-
-            $arrows = [
-                -1 => "↑",
-                1 => "↓",
-                -10 => "←",
-                10 => "→",
+            $actions = [
+                -1 => ["text" => "↑", "action" => "up"],
+                1 => ["text" => "↓", "action" => "down"],
+                -10 => ["text" => "←", "action" => "left"],
+                10 => ["text" => "→", "action" => "right"],
             ];
-            $cellDetails['linkText'] = $arrows[$deltaX * 10 + $deltaY] ?? '';
-            $cellDetails['isLink'] = isset($arrows[$deltaX * 10 + $deltaY]);
+
+            $cellDetails['action'] = $actions[$deltaX * 10 + $deltaY]['action'] ?? '';
+            $cellDetails['linkText'] = $actions[$deltaX * 10 + $deltaY]['text'] ?? '';
+            $cellDetails['isLink'] = isset($actions[$deltaX * 10 + $deltaY]);
 
             if ($cellType === LevelManager::CELL_WALL) {
-                $cellDetails['linkX'] = $playerX;
-                $cellDetails['linkY'] = $playerY;
                 $cellDetails['classes'][] = "wall";
             } elseif ($cellType === LevelManager::CELL_FLOOR) {
                 $cellDetails['classes'][] = "floor";

@@ -19,7 +19,7 @@
                     {% if "finish" in cell.classes %}
                         {% set link = "/win" %}
                     {% else %}
-                        {% set link = "?x=" ~ cell.linkX ~ "&y=" ~ cell.linkY %}
+                        {% set link = "?action=" ~ cell.action %}
                     {% endif %}
                     <a class="game-direction" href="{{ link }}">{{ cell.linkText }}</a>
                 {% endif %}
