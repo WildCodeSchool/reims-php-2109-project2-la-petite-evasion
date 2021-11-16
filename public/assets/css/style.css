@@ -19,6 +19,7 @@ body {
     align-items: center;
 }
 .button {
+    color: white;
     text-align: center;
     padding: 30px;
     margin-top: 2rem;
@@ -29,6 +30,7 @@ body {
     font-size: 1rem;
     opacity: 80%;
     font-weight: bold;
+    font-family: 'Parisienne', cursive;
 }
 
 .button:hover {
@@ -39,7 +41,7 @@ body {
 
 .buttonEditor {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
     
 .button {

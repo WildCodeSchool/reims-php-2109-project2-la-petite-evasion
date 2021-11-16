@@ -58,10 +58,6 @@ input.checkbox {
     body {
         background-image:url("../images/maze-ipad.png") ;
     } 
-    button {
-        font-size: 2rem;
-        padding: 1rem;
-    }
     th {
         font-size: 3rem;
     }
@@ -74,10 +70,6 @@ input.checkbox {
     body {
         background-image:url("../images/maze-desktop.png");
     } 
-    button {
-        font-size: 2rem;
-        padding: 1rem;
-    }
     th {
         font-size: 3.5rem;
     }
