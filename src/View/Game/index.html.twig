@@ -16,11 +16,7 @@
             {% for cell in row %}
                 <div class="{{ cell.classes|join(' ') }} game-tile">
                 {% if cell.isLink %}
-                    {% if "finish" in cell.classes %}
-                        {% set link = "/win" %}
-                    {% else %}
-                        {% set link = "?x=" ~ cell.linkX ~ "&y=" ~ cell.linkY %}
-                    {% endif %}
+                    {% set link = "?action=" ~ cell.action %}
                     <a class="game-direction" href="{{ link }}">{{ cell.linkText }}</a>
                 {% endif %}
                 </div>
