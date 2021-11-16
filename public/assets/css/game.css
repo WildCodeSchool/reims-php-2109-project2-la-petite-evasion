@@ -47,6 +47,10 @@ body {
 }
 
 .player,
+.player-down,
+.player-left,
+.player-right,
+.player-up,
 .wall,
 .finish {
     background-size: contain;

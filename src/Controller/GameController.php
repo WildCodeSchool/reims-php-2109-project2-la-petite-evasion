@@ -20,6 +20,15 @@ class GameController extends AbstractController
         "right" => ['x' => 1, 'y' => 0],
     ];
 
+    private const ACTION_PLAYER_CLASS = [
+        "up" => 'player-up',
+        "down" => 'player-down',
+        "left" => 'player-left',
+        "right" => 'player-right',
+    ];
+
+    private string $playerClass;
+
     /**
      * Show first level
      */
@@ -40,6 +49,7 @@ class GameController extends AbstractController
         $this->move($cells, $action ?? "");
         $position = self::getPosition();
 
+        $this->playerClass = self::ACTION_PLAYER_CLASS[$action] ?? "player";
         $grid = $this->generateViewpoint($cells, $position['x'], $position['y']);
 
         return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
@@ -96,7 +106,7 @@ class GameController extends AbstractController
                 $cellDetails['classes'][] = "floor";
             }
             if ($playerX === $cellX && $playerY === $cellY) {
-                $cellDetails['classes'][] = "player";
+                $cellDetails['classes'][] = $this->playerClass;
             }
         }
         return $cellDetails;
