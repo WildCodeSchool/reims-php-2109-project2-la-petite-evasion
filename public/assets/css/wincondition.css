@@ -1,66 +1,9 @@
-body {
-    background-color:#292929;
-    padding: 0%;
-    margin: 0%;
-}
 
-.winBackground{
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-}
-
-.winSherlock { 
-    height: 50%;
-    width: 55%;
-    margin-left: 0.5rem;
-    padding-right: 10rem;
-    margin-left: 0; 
-}
-
-.buble {
-    padding-left: 8rem;
-}
-
-.bubleText {
-    background-color: rgb(255, 255, 255);
-    color: black;
-    border-radius: 2rem;
-    padding: 0.5rem;
-    width: 13rem;
-    font-size: 27px;
-    text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 0;
-}
 
 @media screen and (min-width: 500px) and (max-width: 800px) {
-    .winSherlock {
-        width: auto;
-    }
-    .buble {
-        padding-left: 15rem;
-    }
-    .bubleText {
-        margin-top: 0;
-    }
+
 }
 
 @media screen and (min-width: 800px) {
-    .winSherlock {
-        width: auto;
-        padding-right: 15rem;
-    }
-    .buble {
-        padding-left: 20rem;
-    }
-    .bubleText {
-        margin-top: 0;
-        font-size: 2rem;
-        width: 20rem;
-    }
+
 }
