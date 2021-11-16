@@ -10,11 +10,22 @@
 
 {% block content %}
     <div class="winBackground">
-    <div class="buble">
-    <p class="bubleText">Rien n'est petit pour un grand esprit Moriarty. Tu as réussi aujourd'hui,
-    mais nos chemins se croiseront à nouveau...</p>
-    </div>
-        <img class="winSherlock" src="assets/images/sherlock.png" alt=""/>
+
+        <div class="pictures">
+            <img class="sherlockPicture" src="assets/images/sherlock.png" alt=""/>
+            <h1 class="congrats">Félicitations</h1>
+            <img class="moriartyPicture" src="assets/images/moriarty2.png" alt=""/>
+        </div>
+
+        <div class="formRecord">
+            <h2 class="timeSentence">Vous avez fini le niveau en XX minutes et XX secondes</h2>
+            <p class="formInformations">Veuillez entrer votre nom afin de l'enregistrer dans le classement</p>
+            <form action="" method='post'>
+                <div class="input-container"><input type='text' placeholder='Paul' name='name'></div>
+                <button type='submit' class="buttonEnvoyer">Envoyer</button>
+            </form>
+        </div>
+
     </div>
 {% endblock %}
 
