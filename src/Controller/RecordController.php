@@ -12,15 +12,25 @@ class RecordController extends AbstractController
     private function insertRecord()
     {
         $errors = [];
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (empty($_POST['name']) || strlen($_POST['name']) > 30) {
                 $errors[] = "Ton nom ne peut pas être vide";
             }
+            if (GameController::getGameState() !== GameController::GAME_STATE_FINISHED) {
+                $errors[] = "Le niveau n'est pas terminé";
+            }
 
             if (!$errors) {
-                $recordName = $_POST['name'];
+                
+                $record = [
+                    'name' => $_POST['name'],
+                    'time' => GameController::getFinishInterval(),
+                    'levelid' => GameController::getGameLevelId(),
+                ];
+               
                 $recordManager = new RecordManager();
-                $recordManager->insert($recordName);
+                $recordManager->insert($record);
             }
         }
     }
