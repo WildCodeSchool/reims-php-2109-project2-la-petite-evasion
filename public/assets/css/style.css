@@ -27,7 +27,7 @@ body {
     border-color: #413e3e;
     border-radius: 100% 100% 100% 100%;
     width: 17rem;
-    font-size: 1rem;
+    font-size: 2rem;
     opacity: 80%;
     font-weight: bold;
     font-family: 'Parisienne', cursive;
@@ -41,6 +41,7 @@ body {
 
 .buttonEditor {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
 }
     
