@@ -12,10 +12,14 @@
 .pictures {
     display: flex;
     justify-content: space-between;
-    background-color: #A5A5A5;
-    opacity: 80%;
+    align-items: center;
+    background-color: rgba(165, 165, 165, 0.2);
     padding: 0.2rem;
     margin-bottom: 2rem;
+}
+
+.congrats {
+    opacity: none;
 }
 
 .moriartyPicture {
@@ -67,10 +71,56 @@ input {
     align-items: center;
 }
 
-@media screen and (min-width: 500px) and (max-width: 800px) {
-
+@media screen and (min-width: 680px) and (max-width: 1300px)  {
+    .winBackground {
+        background-image:url("../images/maze-ipad.png");
+        padding: 0 10%;
+    } 
+    .pictures {
+        height: 15%;
+    }
+    .congrats {
+        font-size: 4rem;
+    }
+    .timeSentence {
+        font-size: 3rem;
+    }
+    .formInformations {
+        font-size: 2rem;
+    }
+    input {
+        height: 3rem;
+        font-size: 2rem;
+    }
+    .buttonEnvoyer {
+        font-size: 2rem;
+        padding: 15px;
+    }
 }
 
-@media screen and (min-width: 800px) {
-
+@media screen and (min-width: 1300px) {
+    .winBackground {
+        background-image:url("../images/maze-desktop.png");
+        padding: 0 20%;
+    } 
+    .pictures {
+        height: 15%;
+    }
+    .congrats {
+        font-size: 4rem;
+    }
+    .timeSentence {
+        font-size: 3rem;
+    }
+    .formInformations {
+        font-size: 2rem;
+    }
+    input {
+        height: 2.5rem;
+        font-size: 2rem;
+    }
+    .buttonEnvoyer {
+        font-size: 2rem;
+        padding: 15px;
+    }
 }
