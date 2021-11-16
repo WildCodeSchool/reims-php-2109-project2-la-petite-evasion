@@ -6,7 +6,7 @@
 .homeBackground{
     background-image:url("../images/maze-mobile.png");
     background-size: cover;
-    height: 100vh;
+    height: calc(100vh - var(--navbar-height));
     display: flex;
     flex-direction: column;
     justify-content: center;
