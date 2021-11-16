@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `record`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `record` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `time` int DEFAULT NULL,
+  `time` timestamp DEFAULT NULL,
   `name` varchar(30) DEFAULT NULL,
   `level_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
