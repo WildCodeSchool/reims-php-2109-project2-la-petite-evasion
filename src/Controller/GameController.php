@@ -26,10 +26,10 @@ class GameController extends AbstractController
     public function index(?string $action): string
     {
         $levelId = 1;
-
         session_start();
+
         $state = self::getGameState();
-        if ($state !== self::GAME_STATE_STARTED) {
+        if ($action === 'reset' || $state !== self::GAME_STATE_STARTED) {
             $this->startGame($levelId);
         }
 
@@ -55,7 +55,7 @@ class GameController extends AbstractController
         return $_SESSION['position'];
     }
 
-    public static function getGameTime(): DateInterval
+    public static function getFinishInterval(): DateInterval
     {
         return $_SESSION['finishTime']->diff($_SESSION['startTime']);
     }
@@ -142,24 +142,22 @@ class GameController extends AbstractController
 
     private function startGame(int $levelId): void
     {
-        $_SESSION['state'] = self::GAME_STATE_STARTED;
-        $_SESSION['position'] = ['x' => 0, 'y' => 0];
-        $_SESSION['levelId'] = $levelId;
-        $_SESSION['startTime'] = new DateTime();
+        $_SESSION = [
+            'state' => self::GAME_STATE_STARTED,
+            'position' => ['x' => 0, 'y' => 0],
+            'levelId' => $levelId,
+            'startTime' => new DateTime(),
+        ];
     }
 
-    private function reset(): void
+    private function finishGame(): void
     {
-        session_destroy();
-        $_SESSION = [];
+        $_SESSION['state'] = self::GAME_STATE_FINISHED;
+        $_SESSION['finishTime'] = new DateTime();
     }
 
     private function move(array $cells, string $action): void
     {
-        if ($action === 'reset') {
-            $this->reset();
-        }
-
         $position = self::getPosition();
 
         if (isset(self::ACTION_OFFSETS[$action])) {
@@ -169,7 +167,7 @@ class GameController extends AbstractController
 
             if ($this->isFinish($cells, $position)) {
                 header('Location: /win');
-                $this->reset();
+                $this->finishGame();
             } elseif ($cells[$position['y']][$position['x']] === LevelManager::CELL_WALL) {
                 $position = self::getPosition();
             }
