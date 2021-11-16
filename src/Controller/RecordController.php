@@ -22,7 +22,6 @@ class RecordController extends AbstractController
             }
 
             if (!$errors) {
-
                 $record = [
                     'name' => $_POST['name'],
                     'time' => GameController::getFinishInterval(),
