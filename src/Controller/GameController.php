@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Model\LevelManager;
 
 class GameController extends AbstractController
@@ -98,6 +99,14 @@ class GameController extends AbstractController
         return $_SESSION['state'] ?? self::GAME_STATE_STOPPED;
     }
 
+    private function startGame(int $levelId): void
+    {
+        $_SESSION['state'] = self::GAME_STATE_STARTED;
+        $_SESSION['position'] = ['x' => 0, 'y' => 0];
+        $_SESSION['levelId'] = $levelId;
+        $_SESSION['startTime'] = new DateTime();
+    }
+
     private function reset(): void
     {
         session_destroy();
@@ -106,7 +115,7 @@ class GameController extends AbstractController
 
     private function getPosition(): array
     {
-        return $_SESSION['position'] ?? ['x' => 0, 'y' => 0];
+        return $_SESSION['position'];
     }
 
     private function move(array $cells, string $action): void
@@ -138,11 +147,16 @@ class GameController extends AbstractController
      */
     public function index(?string $action): string
     {
+        $levelId = 1;
+
         session_start();
-        $this->getGameState();
+        $state = $this->getGameState();
+        if ($state !== self::GAME_STATE_STARTED) {
+            $this->startGame($levelId);
+        }
 
         $levelManager = new LevelManager();
-        $level = $levelManager->selectOneById(1);
+        $level = $levelManager->selectOneById($levelId);
         $cells = LevelManager::parseContent($level['content']);
 
         $this->move($cells, $action ?? "");
