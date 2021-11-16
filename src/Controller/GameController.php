@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateInterval;
 use DateTime;
 use App\Model\LevelManager;
 
@@ -94,9 +95,24 @@ class GameController extends AbstractController
                $position['x'] === array_key_last($lastRow);
     }
 
-    private function getGameState(): int
+    public static function getGameState(): int
     {
         return $_SESSION['state'] ?? self::GAME_STATE_STOPPED;
+    }
+
+    public static function getPosition(): array
+    {
+        return $_SESSION['position'];
+    }
+
+    public static function getGameTime(): DateInterval
+    {
+        return $_SESSION['finishTime']->diff($_SESSION['startTime']);
+    }
+
+    public static function getGameLevelId(): int
+    {
+        return $_SESSION['levelId'];
     }
 
     private function startGame(int $levelId): void
@@ -113,18 +129,13 @@ class GameController extends AbstractController
         $_SESSION = [];
     }
 
-    private function getPosition(): array
-    {
-        return $_SESSION['position'];
-    }
-
     private function move(array $cells, string $action): void
     {
         if ($action === 'reset') {
             $this->reset();
         }
 
-        $position = $this->getPosition();
+        $position = self::getPosition();
 
         if (isset(self::ACTION_OFFSETS[$action])) {
             $offsets = self::ACTION_OFFSETS[$action];
@@ -135,7 +146,7 @@ class GameController extends AbstractController
                 header('Location: /win');
                 $this->reset();
             } elseif ($cells[$position['y']][$position['x']] === LevelManager::CELL_WALL) {
-                $position = $this->getPosition();
+                $position = self::getPosition();
             }
         }
 
@@ -150,7 +161,7 @@ class GameController extends AbstractController
         $levelId = 1;
 
         session_start();
-        $state = $this->getGameState();
+        $state = self::getGameState();
         if ($state !== self::GAME_STATE_STARTED) {
             $this->startGame($levelId);
         }
@@ -160,7 +171,7 @@ class GameController extends AbstractController
         $cells = LevelManager::parseContent($level['content']);
 
         $this->move($cells, $action ?? "");
-        $position = $this->getPosition();
+        $position = self::getPosition();
 
         $grid = $this->generateViewpoint($cells, $position['x'], $position['y']);
 
