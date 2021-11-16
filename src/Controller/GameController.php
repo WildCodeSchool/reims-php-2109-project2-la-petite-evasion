@@ -6,6 +6,10 @@ use App\Model\LevelManager;
 
 class GameController extends AbstractController
 {
+    private const GAME_STATE_STOPPED = 0;
+    private const GAME_STATE_STARTED = 1;
+    private const GAME_STATE_FINISHED = 2;
+
     private const VIEWPOINT_RADIUS = 2;
     private const ACTION_OFFSETS = [
         "up" => ['x' => 0, 'y' => -1],
@@ -89,6 +93,11 @@ class GameController extends AbstractController
                $position['x'] === array_key_last($lastRow);
     }
 
+    private function getGameState(): int
+    {
+        return $_SESSION['state'] ?? self::GAME_STATE_STOPPED;
+    }
+
     private function reset(): void
     {
         session_destroy();
@@ -130,6 +139,7 @@ class GameController extends AbstractController
     public function index(?string $action): string
     {
         session_start();
+        $this->getGameState();
 
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById(1);
