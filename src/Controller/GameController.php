@@ -8,9 +8,9 @@ use App\Model\LevelManager;
 
 class GameController extends AbstractController
 {
-    private const GAME_STATE_STOPPED = 0;
-    private const GAME_STATE_STARTED = 1;
-    private const GAME_STATE_FINISHED = 2;
+    public const GAME_STATE_STOPPED = 0;
+    public const GAME_STATE_STARTED = 1;
+    public const GAME_STATE_FINISHED = 2;
 
     private const VIEWPOINT_RADIUS = 2;
     private const ACTION_OFFSETS = [
