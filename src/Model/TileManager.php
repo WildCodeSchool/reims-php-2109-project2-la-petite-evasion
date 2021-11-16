@@ -28,11 +28,23 @@ class TileManager extends AbstractManager
             foreach ($row as $x => $type) {
                 $statement->bindValue("x_$index", $x, \PDO::PARAM_INT);
                 $statement->bindValue("y_$index", $y, \PDO::PARAM_INT);
-                $statement->bindValue("typz_$index", $tiles[$y][$x], \PDO::PARAM_STR);
+                $statement->bindValue("type_$index", $tiles[$y][$x], \PDO::PARAM_STR);
                 ++$index;
             }
         }
 
         $statement->execute();
+    }
+
+    public function selectAllByLevelId(int $levelId): array
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE level_id=:level_id");
+        $statement->bindValue('level_id', $levelId, \PDO::PARAM_INT);
+        $statement->execute();
+        $tiles = [];
+        foreach ($statement->fetchAll() as $tile) {
+            $tiles[$tile['y']][$tile['x']] = $tile['type'];
+        }
+        return $tiles;
     }
 }
