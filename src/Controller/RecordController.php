@@ -37,7 +37,7 @@ class RecordController extends AbstractController
     {
         $this->insertRecord();
         $recordManager = new RecordManager();
-        $records = $recordManager->selectAll('TIME');
+        $records = $recordManager->selectRecords();
 
         return $this->twig->render('Record/leaderboard.html.twig', ['records' => $records,]);
     }
