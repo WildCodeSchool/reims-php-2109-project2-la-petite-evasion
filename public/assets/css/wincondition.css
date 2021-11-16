@@ -1,4 +1,71 @@
+.winBackground {
+    background-image:url("../images/maze-mobile.png");
+    background-size: cover;
+    height: 100vh;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.pictures {
+    display: flex;
+    justify-content: space-between;
+    background-color: #A5A5A5;
+    opacity: 80%;
+    padding: 0.2rem;
+    margin-bottom: 2rem;
+}
+
+.moriartyPicture {
+    width: 4rem;
+}
+
+.sherlockPicture {
+    width: 3.7rem;
+}
+
+.formRecord {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.timeSentence {
+    margin-bottom: 1.5rem;
+    font-size: 1.9rem;
+}
+
+.formInformations {
+    font-size: 1.4rem;
+    padding: 0 10%;
+}
+
+.input-container {
+    padding: 0 10%;
+}
+
+input {
+    width: 100%;
+    height: 1.8rem;
+    font-size: 1.6rem;
+    font-family: Parisienne;
+}
+
+.buttonEnvoyer {
+    text-align: center;
+    font-family: Parisienne;
+    padding: 15px;
+    background-color: #A5A5A5;
+    border-radius: 3rem;
+    font-size: 1.3rem;
+    opacity: 70%;
+    margin-top: 2rem;
+    align-items: center;
+}
 
 @media screen and (min-width: 500px) and (max-width: 800px) {
 

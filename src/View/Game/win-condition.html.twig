@@ -10,19 +10,22 @@
 
 {% block content %}
     <div class="winBackground">
-        <div class="congrats">
-            <img class="moriartyPicture" src="assets/images/moriarty2.png" alt=""/>
+
+        <div class="pictures">
             <img class="sherlockPicture" src="assets/images/sherlock.png" alt=""/>
             <h1>Félicitations</h1>
+            <img class="moriartyPicture" src="assets/images/moriarty2.png" alt=""/>
         </div>
-        <h2 class="timeSentence">Vous avez fini le niveau en XX minutes et XX secondes</h2>
-        <p class="formInformations">Veuillez entrer votre nom afin de l'enregistrer dans le classement</p>
+
         <div class="formRecord">
+            <h2 class="timeSentence">Vous avez fini le niveau en XX minutes et XX secondes</h2>
+            <p class="formInformations">Veuillez entrer votre nom afin de l'enregistrer dans le classement</p>
             <form action="" method='post'>
-                <input type='text' placeholder='Paul'>
-                <button type='submit'>Envoyer</button>
+                <div class="input-container"><input type='text' placeholder='Paul'></div>
+                <button type='submit' class="buttonEnvoyer">Envoyer</button>
             </form>
         </div>
+
     </div>
 {% endblock %}
 
