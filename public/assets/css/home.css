@@ -40,15 +40,22 @@
     padding-right: 0.1rem;
 }
 
-.buttonPlay {
+#play, #createButton, #deletteButton {
+    color: white;
+    font-size: 3rem;
+}
+
+
+.button {
     text-align: center;
     padding: 30px;
     margin-top: 2rem;
-    background-color: #A5A5A5;
-    border-color: #292929;
-    border-radius: 3rem;
+    background-color: #3b3b3b;
+    border-color: #413e3e;
+    border-radius: 100% 100% 100% 100%;
+    width: 20rem;
     font-size: 2rem;
-    opacity: 70%;
+    opacity: 80%;
     font-weight: bold;
 }
 
