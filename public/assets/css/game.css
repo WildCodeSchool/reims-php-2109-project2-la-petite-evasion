@@ -54,20 +54,20 @@ body {
     background-repeat: no-repeat;
 }
 
-.player-start {
+.player {
     background-image: url(../images/moriarty.png);
 }
 .player-left {
-    background-image: url(../images/moryturnleft.png);
+    background-image: url(../images/moriarty-left.png);
 }
 .player-right {
-    background-image: url(../images/moryturnright.png);
+    background-image: url(../images/moriarty-right.png);
 }
 .player-up {
-    background-image: url(../images/moryup.png);
+    background-image: url(../images/moriarty-up.png);
 }
-.player-bottom {
-    background-image: url(../images/moryMarcheAvant.png);
+.player-down {
+    background-image: url(../images/moriarty-down.png);
 }
 
 .floor {
