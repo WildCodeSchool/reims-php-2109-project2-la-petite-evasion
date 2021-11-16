@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateInterval;
 use DateTime;
 use App\Model\LevelManager;
+use App\Model\TileManager;
 
 class GameController extends AbstractController
 {
@@ -44,13 +45,15 @@ class GameController extends AbstractController
 
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById($levelId);
-        $cells = LevelManager::parseContent($level['content']);
 
-        $this->move($cells, $action ?? "");
+        $tileManager = new TileManager();
+        $tiles = $tileManager->selectAllByLevelId($levelId);
+
+        $this->move($tiles, $action ?? "");
         $position = self::getPosition();
 
         $this->playerClass = self::ACTION_PLAYER_CLASS[$action] ?? "player";
-        $grid = $this->generateViewpoint($cells, $position['x'], $position['y']);
+        $grid = $this->generateViewpoint($tiles, $position['x'], $position['y']);
 
         return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
     }
@@ -100,9 +103,9 @@ class GameController extends AbstractController
             $cellDetails['linkText'] = $actions[$deltaX * 10 + $deltaY]['text'] ?? '';
             $cellDetails['isLink'] = isset($actions[$deltaX * 10 + $deltaY]);
 
-            if ($cellType === LevelManager::CELL_WALL) {
+            if ($cellType === TileManager::TYPE_WALL) {
                 $cellDetails['classes'][] = "wall";
-            } elseif ($cellType === LevelManager::CELL_FLOOR) {
+            } elseif ($cellType === TileManager::TYPE_FLOOR) {
                 $cellDetails['classes'][] = "floor";
             }
             if ($playerX === $cellX && $playerY === $cellY) {
@@ -115,15 +118,15 @@ class GameController extends AbstractController
     /**
      * Generate a grid of tiles visible from specified coordinates
      */
-    private function generateViewpoint(array $cells, int $playerX, int $playerY): array
+    private function generateViewpoint(array $tiles, int $playerX, int $playerY): array
     {
         $grid = [];
         for ($y = $playerY - self::VIEWPOINT_RADIUS; $y <= $playerY + self::VIEWPOINT_RADIUS; ++$y) {
             $row = [];
             for ($x = $playerX - self::VIEWPOINT_RADIUS; $x <= $playerX + self::VIEWPOINT_RADIUS; ++$x) {
                 $cell = '';
-                if (isset($cells[$y][$x])) {
-                    $cell = $cells[$y][$x];
+                if (isset($tiles[$y][$x])) {
+                    $cell = $tiles[$y][$x];
                 }
 
                 $details = $this->generateCellDetails($cell, $x, $y, $playerX, $playerY);
@@ -132,7 +135,7 @@ class GameController extends AbstractController
                     $details['classes'][] = "start";
                 }
 
-                if ($this->isFinish($cells, ['x' => $x, 'y' => $y])) {
+                if ($this->isFinish($tiles, ['x' => $x, 'y' => $y])) {
                     $details['classes'][] = "finish";
                 }
 
@@ -143,10 +146,10 @@ class GameController extends AbstractController
         return $grid;
     }
 
-    private function isFinish(array $cells, array $position): bool
+    private function isFinish(array $tiles, array $position): bool
     {
-        $lastRow = end($cells);
-        return $position['y'] === array_key_last($cells) &&
+        $lastRow = end($tiles);
+        return $position['y'] === array_key_last($tiles) &&
             $position['x'] === array_key_last($lastRow);
     }
 
@@ -166,7 +169,7 @@ class GameController extends AbstractController
         $_SESSION['finishTime'] = new DateTime();
     }
 
-    private function move(array $cells, string $action): void
+    private function move(array $tiles, string $action): void
     {
         $position = self::getPosition();
 
@@ -175,12 +178,12 @@ class GameController extends AbstractController
             $position['x'] += $offsets['x'];
             $position['y'] += $offsets['y'];
 
-            if ($this->isFinish($cells, $position)) {
+            if ($this->isFinish($tiles, $position)) {
                 header('Location: /win');
                 $this->finishGame();
             } elseif (
-                !isset($cells[$position['y']][$position['x']]) ||
-                $cells[$position['y']][$position['x']] === LevelManager::CELL_WALL
+                !isset($tiles[$position['y']][$position['x']]) ||
+                $tiles[$position['y']][$position['x']] === TileManager::TYPE_WALL
             ) {
                 $position = self::getPosition();
             }
