@@ -40,28 +40,6 @@
     padding-right: 0.1rem;
 }
 
-#play, #createButton, #deletteButton {
-    color: white;
-    font-size: 3rem;
-}
-
-
-.button {
-    text-align: center;
-    padding: 30px;
-    margin-top: 2rem;
-    background-color: #3b3b3b;
-    border-color: #413e3e;
-    border-radius: 100% 100% 100% 100%;
-    width: 20rem;
-    font-size: 2rem;
-    opacity: 80%;
-    font-weight: bold;
-}
-
-.buttonPlay:hover {
-    background-color: #7F7F7F;
-}
 
 div a:visited {
     color: #292929;
@@ -89,4 +67,3 @@ a {
         background-image:url("../images/maze-desktop.png");
     } 
 }
-

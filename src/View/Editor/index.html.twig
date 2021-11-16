@@ -6,7 +6,6 @@
 
 {% block stylesheet %}
 <link href="assets/css/editor.css" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/home.css">
 {% endblock %}
 
 {% block content %}
@@ -26,9 +25,9 @@
       </tr>
       {% endfor %} 
    </table>
-   <div>
+   <div class="buttonEditor">
       <button class="button" id="createButton" type="submit" formaction="/editor/create">Créer</button>
-      <button class="button" id="deletteButton" type="submit">Supprimer</button>
+      <button class="button" id="deleteButton" type="submit">Supprimer</button>
    </div>
 </form>
 {% endblock %}
