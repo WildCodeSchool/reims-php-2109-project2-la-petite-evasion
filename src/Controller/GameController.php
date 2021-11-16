@@ -20,6 +20,51 @@ class GameController extends AbstractController
         "right" => ['x' => 1, 'y' => 0],
     ];
 
+    /**
+     * Show first level
+     */
+    public function index(?string $action): string
+    {
+        $levelId = 1;
+
+        session_start();
+        $state = self::getGameState();
+        if ($state !== self::GAME_STATE_STARTED) {
+            $this->startGame($levelId);
+        }
+
+        $levelManager = new LevelManager();
+        $level = $levelManager->selectOneById($levelId);
+        $cells = LevelManager::parseContent($level['content']);
+
+        $this->move($cells, $action ?? "");
+        $position = self::getPosition();
+
+        $grid = $this->generateViewpoint($cells, $position['x'], $position['y']);
+
+        return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
+    }
+
+    public static function getGameState(): int
+    {
+        return $_SESSION['state'] ?? self::GAME_STATE_STOPPED;
+    }
+
+    public static function getPosition(): array
+    {
+        return $_SESSION['position'];
+    }
+
+    public static function getGameTime(): DateInterval
+    {
+        return $_SESSION['finishTime']->diff($_SESSION['startTime']);
+    }
+
+    public static function getGameLevelId(): int
+    {
+        return $_SESSION['levelId'];
+    }
+
     private function generateCellDetails(string $cellType, int $cellX, int $cellY, int $playerX, int $playerY): array
     {
         $cellDetails = [
@@ -92,27 +137,7 @@ class GameController extends AbstractController
     {
         $lastRow = end($cells);
         return $position['y'] === array_key_last($cells) &&
-               $position['x'] === array_key_last($lastRow);
-    }
-
-    public static function getGameState(): int
-    {
-        return $_SESSION['state'] ?? self::GAME_STATE_STOPPED;
-    }
-
-    public static function getPosition(): array
-    {
-        return $_SESSION['position'];
-    }
-
-    public static function getGameTime(): DateInterval
-    {
-        return $_SESSION['finishTime']->diff($_SESSION['startTime']);
-    }
-
-    public static function getGameLevelId(): int
-    {
-        return $_SESSION['levelId'];
+            $position['x'] === array_key_last($lastRow);
     }
 
     private function startGame(int $levelId): void
@@ -151,30 +176,5 @@ class GameController extends AbstractController
         }
 
         $_SESSION['position'] = $position;
-    }
-
-    /**
-     * Show first level
-     */
-    public function index(?string $action): string
-    {
-        $levelId = 1;
-
-        session_start();
-        $state = self::getGameState();
-        if ($state !== self::GAME_STATE_STARTED) {
-            $this->startGame($levelId);
-        }
-
-        $levelManager = new LevelManager();
-        $level = $levelManager->selectOneById($levelId);
-        $cells = LevelManager::parseContent($level['content']);
-
-        $this->move($cells, $action ?? "");
-        $position = self::getPosition();
-
-        $grid = $this->generateViewpoint($cells, $position['x'], $position['y']);
-
-        return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
     }
 }
