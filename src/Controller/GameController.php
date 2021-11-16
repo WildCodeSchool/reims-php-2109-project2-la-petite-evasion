@@ -2,10 +2,16 @@
 
 namespace App\Controller;
 
+use DateInterval;
+use DateTime;
 use App\Model\LevelManager;
 
 class GameController extends AbstractController
 {
+    public const GAME_STATE_STOPPED = 0;
+    public const GAME_STATE_STARTED = 1;
+    public const GAME_STATE_FINISHED = 2;
+
     private const VIEWPOINT_RADIUS = 2;
     private const ACTION_OFFSETS = [
         "up" => ['x' => 0, 'y' => -1],
@@ -13,6 +19,51 @@ class GameController extends AbstractController
         "left" => ['x' => -1, 'y' => 0],
         "right" => ['x' => 1, 'y' => 0],
     ];
+
+    /**
+     * Show first level
+     */
+    public function index(?string $action): string
+    {
+        $levelId = 1;
+        session_start();
+
+        $state = self::getGameState();
+        if ($action === 'reset' || $state !== self::GAME_STATE_STARTED) {
+            $this->startGame($levelId);
+        }
+
+        $levelManager = new LevelManager();
+        $level = $levelManager->selectOneById($levelId);
+        $cells = LevelManager::parseContent($level['content']);
+
+        $this->move($cells, $action ?? "");
+        $position = self::getPosition();
+
+        $grid = $this->generateViewpoint($cells, $position['x'], $position['y']);
+
+        return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
+    }
+
+    public static function getGameState(): int
+    {
+        return $_SESSION['state'] ?? self::GAME_STATE_STOPPED;
+    }
+
+    public static function getPosition(): array
+    {
+        return $_SESSION['position'];
+    }
+
+    public static function getFinishInterval(): DateInterval
+    {
+        return $_SESSION['finishTime']->diff($_SESSION['startTime']);
+    }
+
+    public static function getGameLevelId(): int
+    {
+        return $_SESSION['levelId'];
+    }
 
     private function generateCellDetails(string $cellType, int $cellX, int $cellY, int $playerX, int $playerY): array
     {
@@ -86,27 +137,28 @@ class GameController extends AbstractController
     {
         $lastRow = end($cells);
         return $position['y'] === array_key_last($cells) &&
-               $position['x'] === array_key_last($lastRow);
+            $position['x'] === array_key_last($lastRow);
     }
 
-    private function reset(): void
+    private function startGame(int $levelId): void
     {
-        session_destroy();
-        $_SESSION = [];
+        $_SESSION = [
+            'state' => self::GAME_STATE_STARTED,
+            'position' => ['x' => 0, 'y' => 0],
+            'levelId' => $levelId,
+            'startTime' => new DateTime(),
+        ];
     }
 
-    private function getPosition(): array
+    private function finishGame(): void
     {
-        return $_SESSION['position'] ?? ['x' => 0, 'y' => 0];
+        $_SESSION['state'] = self::GAME_STATE_FINISHED;
+        $_SESSION['finishTime'] = new DateTime();
     }
 
     private function move(array $cells, string $action): void
     {
-        if ($action === 'reset') {
-            $this->reset();
-        }
-
-        $position = $this->getPosition();
+        $position = self::getPosition();
 
         if (isset(self::ACTION_OFFSETS[$action])) {
             $offsets = self::ACTION_OFFSETS[$action];
@@ -115,31 +167,12 @@ class GameController extends AbstractController
 
             if ($this->isFinish($cells, $position)) {
                 header('Location: /win');
-                $this->reset();
+                $this->finishGame();
             } elseif ($cells[$position['y']][$position['x']] === LevelManager::CELL_WALL) {
-                $position = $this->getPosition();
+                $position = self::getPosition();
             }
         }
 
         $_SESSION['position'] = $position;
-    }
-
-    /**
-     * Show first level
-     */
-    public function index(?string $action): string
-    {
-        session_start();
-
-        $levelManager = new LevelManager();
-        $level = $levelManager->selectOneById(1);
-        $cells = LevelManager::parseContent($level['content']);
-
-        $this->move($cells, $action ?? "");
-        $position = $this->getPosition();
-
-        $grid = $this->generateViewpoint($cells, $position['x'], $position['y']);
-
-        return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
     }
 }
