@@ -54,8 +54,20 @@ body {
     background-repeat: no-repeat;
 }
 
-.player {
+.player-start {
     background-image: url(../images/moriarty.png);
+}
+.player-left {
+    background-image: url(../images/moryturnleft.png);
+}
+.player-right {
+    background-image: url(../images/moryturnright.png);
+}
+.player-up {
+    background-image: url(../images/moryup.png);
+}
+.player-bottom {
+    background-image: url(../images/moryMarcheAvant.png);
 }
 
 .floor {
