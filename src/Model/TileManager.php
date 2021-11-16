@@ -6,6 +6,9 @@ class TileManager extends AbstractManager
 {
     public const TABLE = 'tile';
 
+    public const TYPE_WALL = 'wall';
+    public const TYPE_FLOOR = 'floor';
+
     public function insert(int $levelId, array $tiles): void
     {
         $query =
