@@ -155,6 +155,10 @@ body {
 @media screen and (min-width: 1300px) { 
     body {
         background-image:url("../images/maze-desktop.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #292929;
+        background-position: center;
     } 
     .game {
         --grid-size: 6rem;

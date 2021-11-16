@@ -65,5 +65,9 @@ a {
     }
     .homeBackground {
         background-image:url("../images/maze-desktop.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #292929;
+        background-position: center;
     } 
 }

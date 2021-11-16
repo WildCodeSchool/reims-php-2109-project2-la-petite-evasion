@@ -69,6 +69,10 @@ input.checkbox {
 @media screen and (min-width: 1300px) { 
     body {
         background-image:url("../images/maze-desktop.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #292929;
+        background-position: center;
     } 
     th {
         font-size: 3.5rem;
