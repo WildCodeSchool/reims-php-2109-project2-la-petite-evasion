@@ -12,7 +12,7 @@ class RecordController extends AbstractController
     private function insertRecord()
     {
         $errors = [];
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (empty($_POST['name']) || strlen($_POST['name']) > 30) {
                 $errors[] = "Ton nom ne peut pas être vide";
@@ -22,13 +22,13 @@ class RecordController extends AbstractController
             }
 
             if (!$errors) {
-                
+
                 $record = [
                     'name' => $_POST['name'],
                     'time' => GameController::getFinishInterval(),
                     'levelid' => GameController::getGameLevelId(),
                 ];
-               
+
                 $recordManager = new RecordManager();
                 $recordManager->insert($record);
             }
