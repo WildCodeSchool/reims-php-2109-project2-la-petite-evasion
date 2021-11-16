@@ -25,9 +25,9 @@
       </tr>
       {% endfor %} 
    </table>
-   <div class="button-container">
-      <button type="submit" formaction="/editor/create">Créer</button>
-      <button type="submit">Supprimer</button>
+   <div class="buttonEditor">
+      <button class="button" id="createButton" type="submit" formaction="/editor/create">Créer</button>
+      <button class="button" id="deleteButton" type="submit">Supprimer</button>
    </div>
 </form>
 {% endblock %}

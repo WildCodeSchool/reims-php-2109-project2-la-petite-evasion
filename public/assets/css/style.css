@@ -7,3 +7,53 @@ html {
 body {
     font-family: 'Parisienne', cursive;
 }
+
+#play, #createButton, #deleteButton {
+    color: white;
+    font-size: 2rem;
+}
+
+.buttonEditor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.button {
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 2rem;
+    background-color: #3b3b3b;
+    border-color: #413e3e;
+    border-radius: 100% 100% 100% 100%;
+    width: 17rem;
+    font-size: 2rem;
+    opacity: 80%;
+    font-weight: bold;
+    font-family: 'Parisienne', cursive;
+}
+
+.button:hover {
+    background-color: #7F7F7F;
+}
+
+@media screen and (min-width: 700px) { 
+
+.buttonEditor {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+    
+.button {
+    text-align: center;
+    padding: 30px;
+    margin-top: 2rem;
+    background-color: #3b3b3b;
+    border-color: #413e3e;
+    border-radius: 100% 100% 100% 100%;
+    width: 17rem;
+    opacity: 80%;
+    font-weight: bold;
+ }
+}
