@@ -47,6 +47,10 @@ body {
 }
 
 .player,
+.player-down,
+.player-left,
+.player-right,
+.player-up,
 .wall,
 .finish {
     background-size: contain;
@@ -56,6 +60,18 @@ body {
 
 .player {
     background-image: url(../images/moriarty.png);
+}
+.player-left {
+    background-image: url(../images/moriarty-left.png);
+}
+.player-right {
+    background-image: url(../images/moriarty-right.png);
+}
+.player-up {
+    background-image: url(../images/moriarty-up.png);
+}
+.player-down {
+    background-image: url(../images/moriarty-down.png);
 }
 
 .floor {
