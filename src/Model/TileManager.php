@@ -8,11 +8,20 @@ class TileManager extends AbstractManager
 
     public const TYPE_WALL = 'wall';
     public const TYPE_FLOOR = 'floor';
+    public const TYPE_START = 'start';
+    public const TYPE_FINISH = 'finish';
+
+    public const TYPES = [
+        self::TYPE_WALL,
+        self::TYPE_FLOOR,
+        self::TYPE_START,
+        self::TYPE_FINISH,
+    ];
 
     public function insert(int $levelId, array $tiles): void
     {
         $query =
-            "DELETE FROM " . self::TABLE . "WHERE level_id = :level_id;" .
+            "DELETE FROM " . self::TABLE . " WHERE level_id = :level_id;" .
             "INSERT INTO " . self::TABLE . " (level_id, x, y, type) VALUES ";
         $queryPlaceholders = [];
         $index = 0;
