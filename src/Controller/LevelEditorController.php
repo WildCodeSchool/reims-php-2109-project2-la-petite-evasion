@@ -27,6 +27,11 @@ class LevelEditorController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->parsePost($level, $tiles);
             if (!$errors) {
+                // TODO: dont hardcode finish position
+                $maxY = max(array_keys($tiles));
+                $maxX = max(array_keys($tiles[$maxY]));
+                $tiles[$maxY][$maxX] = 'finish';
+
                 $levelManager->update($level);
                 $tileManager->insert($tiles);
             }
@@ -105,7 +110,9 @@ class LevelEditorController extends AbstractController
             'name' => 'Nouveau niveau',
             'description' => '',
             'width' => self::DEFAULT_LEVEL_SIZE,
-            'height' => self::DEFAULT_LEVEL_SIZE
+            'height' => self::DEFAULT_LEVEL_SIZE,
+            'start_x' => 0,
+            'start_y' => 0,
         ];
         $id = $levelManager->create($level);
 
