@@ -15,6 +15,12 @@ html {
 
 body {
     font-family: 'Parisienne', cursive;
+    background-image: url('../images/maze-mobile.png');
+    background-size: cover;
+    background-color: #292929;
+    background-repeat: no-repeat;
+    height: 100vh;
+    text-align: center;
 }
 
 #play, #createButton, #deleteButton {
@@ -49,9 +55,6 @@ body {
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Home.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .homeBackground{
-    background-image:url("../images/maze-mobile.png");
-    height: 100vh;
-    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,22 +101,157 @@ a {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~game.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+.game,
+.level-grid {
+    --grid-width: 5;
+    --grid-height: 5;
+    --grid-size: 3rem;
+    display: grid;
+    grid-template-columns: repeat(var(--grid-width), var(--grid-size));
+    grid-template-rows: repeat(var(--grid-height), var(--grid-size));
+    margin-bottom: 1rem;
+}
+
+.level-grid {
+    --grid-size: 5rem;
+}
+
+.game {
+    justify-content: center;
+}
+
+.level-grid {
+    align-self: flex-start;
+}
+
+.level-name,
+.level-description {
+    color: whitesmoke;
+}
+
+.level-description {
+    font-size: 2rem;
+}
+
+.game-tile,
+.level-tile {
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player,
+.player-down,
+.player-left,
+.player-right,
+.player-up,
+.wall,
+.finish {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.player {
+    background-image: url(../images/moriarty.png);
+}
+.player-left {
+    background-image: url(../images/moriarty-left.png);
+}
+.player-right {
+    background-image: url(../images/moriarty-right.png);
+}
+.player-up {
+    background-image: url(../images/moriarty-up.png);
+}
+.player-down {
+    background-image: url(../images/moriarty-down.png);
+}
+
+.floor {
+    background-color: lightgray;
+}
+
+.finish {
+    background-image: url(../images/echelle.png);
+}
+    
+.wall {
+    background-image: url(../images/wall.png);
+}
+
+.game-direction {
+    font-size: 3rem;
+    color: black;
+    text-decoration: none;
+    padding: 30%;
+}
+
+.wall .game-direction {
+    display: none;
+}
+
+.editor-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1rem;
+}
+
+.editor-label {
+    color: #a5a5a5;
+    font-size: 2rem;
+}
+
+.editor-submit {
+    background-color: #A5A5A5;
+    opacity: 70%;
+    color: #292929;
+    font-size: 1rem;
+    padding: 1rem 3rem;
+    border-radius: 3rem;
+}
+
+.editor-input {
+    width: min(40rem, 90vw);
+    margin-bottom: 1rem;
+}
+
+.level-input,
+.level-input + .level-label {
+    display: none;
+}
+
+.level-input:checked + .level-label {
+    display: block;
+}
+
+.level-label {
+    height: 100%;
+    width: 100%;
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Media Queries~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+@media screen and (min-width: 400px) and (max-width: 680px) {
+    .game {
+        --grid-size: 4rem;
+    }
+}
 
 @media screen and (min-width: 680px) and (max-width: 1000px)  {
     .titleContext p {
         font-size: 2.5rem;
     }
-    .homeBackground {
+    body {
         background-image:url("../images/maze-ipad.png") ;
     } 
     .buttonEditor {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-    }
-        
+    }  
     .button {
         text-align: center;
         padding: 30px;
@@ -124,7 +262,10 @@ a {
         width: 17rem;
         opacity: 80%;
         font-weight: bold;
-     }
+    }
+    .game {
+        --grid-size: 5.5rem;
+    }
 }
 
 @media screen and (min-width: 1000px) { 
@@ -135,12 +276,18 @@ a {
         background-image:url("../images/maze-desktop.png");
         height: calc(100vh - var(--navbar-height));
     } 
+    body {
+        background-image:url("../images/maze-desktop.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #292929;
+        background-position: center;
+    } 
     .buttonEditor {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-    }
-        
+    }  
     .button {
         text-align: center;
         padding: 30px;
@@ -151,5 +298,8 @@ a {
         width: 17rem;
         opacity: 80%;
         font-weight: bold;
-     }
+    }
+    .game {
+        --grid-size: 6rem;
+    }
 }
