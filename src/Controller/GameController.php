@@ -53,6 +53,7 @@ class GameController extends AbstractController
             'tiles' => $tiles, 
             'action' => $action ?? '',
             'position' => $position,
+            'radius' => self::VIEWPOINT_RADIUS,
         ]);
     }
 
