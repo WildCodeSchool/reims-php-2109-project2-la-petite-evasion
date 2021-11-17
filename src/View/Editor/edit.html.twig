@@ -22,21 +22,19 @@
     <label class="editor-label" for="height">Hauteur: </label>
     <input class="editor-input" type="number" name="height" id="height" value="{{ level.height }}" required>
     <div class="level-grid" style="--grid-width: {{ level.width }}; --grid-height: {{ level.height }};">
-    {% for y, row in grid %}
-        {% for x, cell in row %}
-            <div class="level-tile">
-                {% set name = "cell-" ~ x ~ "-" ~ y %}
-                {% set wallId = name ~ '-wall' %}
-                {% set floorId = name ~ '-floor' %}
-                {% set finishId = name ~ '-finish' %}
-                <input class="level-input" type="radio" name="{{ name }}" value="wall" id="{{ wallId }}" {{cell == "wall" ? 'checked' : ""}}>
-                <label class="level-label wall" for="{{ floorId }}"></label>
-                <input class="level-input" type="radio" name="{{ name }}" value="floor" id="{{ floorId }}" {{cell == "floor" ? 'checked' : ""}}>
-                <label class="level-label floor" for="{{ wallId }}"></label>
-                <input class="level-input" type="radio" name="{{ name }}" value="finish" id="{{ finishId }}" {{cell == "finish" ? 'checked' : ""}}>
-                <label class="level-label finish" for="{{ floorId }}"></label>
-            </div>
-        {% endfor %}
+    {% for tile in tiles %}
+        <div class="level-tile">
+            {% set name = "cell-" ~ tile.x ~ "-" ~ tile.y %}
+            {% set wallId = name ~ '-wall' %}
+            {% set floorId = name ~ '-floor' %}
+            {% set finishId = name ~ '-finish' %}
+            <input class="level-input" type="radio" name="{{ name }}" value="wall" id="{{ wallId }}" {{tile.type == "wall" ? 'checked' : ""}}>
+            <label class="level-label wall" for="{{ floorId }}"></label>
+            <input class="level-input" type="radio" name="{{ name }}" value="floor" id="{{ floorId }}" {{tile.type == "floor" ? 'checked' : ""}}>
+            <label class="level-label floor" for="{{ wallId }}"></label>
+            <input class="level-input" type="radio" name="{{ name }}" value="finish" id="{{ finishId }}" {{tile.type == "finish" ? 'checked' : ""}}>
+            <label class="level-label finish" for="{{ floorId }}"></label>
+        </div>
     {% endfor %}
     </div>
     <button class="button" type="submit">Sauvegarder</button>
