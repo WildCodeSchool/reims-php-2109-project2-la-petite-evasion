@@ -52,6 +52,60 @@ body {
     background-color: #7F7F7F;
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~navbar.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+nav * {
+	margin: 0;
+	padding: 0;
+	color: #f2f5f7;
+	letter-spacing: 2px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.navbar {
+	width: 100%;
+	height: var(--navbar-height);
+	background-color: #454545;
+}
+
+/*Style Links*/
+
+.nav-links {
+	display: flex;
+	list-style: none;
+	align-items: center;
+	font-size: 2.5rem;
+	justify-content: space-around;
+}
+
+.nav-links li a {
+	text-decoration: none;
+}
+
+.logo-image {
+	margin-left: 0rem;
+	height: 6rem;
+}
+
+.nav-links li {
+	align-items: center;
+}
+
+/*Style burger Icon*/
+
+.hamburger div {
+	width: 30px;
+	height: 3px;
+	background: #f2f5f7;
+	margin: 5px;
+	transition: all 0.3s ease;
+}
+
+.hamburger {
+	display: none;
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Home.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .homeBackground{
@@ -97,8 +151,6 @@ div a:visited {
 a {
     text-decoration: none;
 }
-
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~navbar.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~leaderboard.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -359,9 +411,94 @@ input.checkbox {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Media Queries~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+@media screen and (max-width: 400px) {
+    :root {
+        --navbar-height: 0rem;
+    }
+    
+    .navbar {
+        position: fixed;
+        height: revert;
+        top: 0;
+        z-index: 3;
+    }
+    
+    .logo {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translate(-0%, 30%);
+        z-index: 2;
+        transition: all 0.7s ease;
+    }
+    
+    .nav-links {
+        position: fixed;
+        background: #292929;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        clip-path: circle(50px at 90% -20%);
+        -webkit-clip-path: circle(50px at 90% -10%);
+        transition: all 1s ease-out;
+    }
+    
+    .nav-links.open {
+        clip-path: circle(200% at 90% -10%);
+        -webkit-clip-path: circle(200% at 90% -10%);
+    }
+}
+
 @media screen and (min-width: 400px) and (max-width: 680px) {
     .game {
         --grid-size: 4rem;
+    }
+    :root {
+        --navbar-height: 0rem;
+    }
+    
+    .navbar {
+        position: fixed;
+        height: revert;
+        top: 0;
+        z-index: 3;
+    }
+    
+    .logo {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translate(-0%, 30%);
+        z-index: 2;
+        transition: all 0.7s ease;
+    }
+    
+    .nav-links {
+        position: fixed;
+        background: #292929;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        clip-path: circle(50px at 90% -20%);
+        -webkit-clip-path: circle(50px at 90% -10%);
+        transition: all 1s ease-out;
+    }
+    
+    .nav-links.open {
+        clip-path: circle(200% at 90% -10%);
+        -webkit-clip-path: circle(200% at 90% -10%);
     }
 }
 
@@ -411,6 +548,47 @@ input.checkbox {
     .win-input {
         height: 3rem;
         font-size: 2rem;
+    }
+    :root {
+        --navbar-height: 0rem;
+    }
+    
+    .navbar {
+        position: fixed;
+        height: revert;
+        top: 0;
+        z-index: 3;
+    }
+    
+    .logo {
+        display: none;
+    }
+    
+    .hamburger {
+        display: block;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translate(-0%, 30%);
+        z-index: 2;
+        transition: all 0.7s ease;
+    }
+    
+    .nav-links {
+        position: fixed;
+        background: #292929;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        clip-path: circle(50px at 90% -20%);
+        -webkit-clip-path: circle(50px at 90% -10%);
+        transition: all 1s ease-out;
+    }
+    
+    .nav-links.open {
+        clip-path: circle(200% at 90% -10%);
+        -webkit-clip-path: circle(200% at 90% -10%);
     }
 }
 
