@@ -21,15 +21,6 @@ class GameController extends AbstractController
         "right" => ['x' => 1, 'y' => 0],
     ];
 
-    private const ACTION_PLAYER_CLASS = [
-        "up" => 'player-up',
-        "down" => 'player-down',
-        "left" => 'player-left',
-        "right" => 'player-right',
-    ];
-
-    private string $playerClass;
-
     /**
      * Show first level
      */
@@ -57,10 +48,13 @@ class GameController extends AbstractController
             $tiles = $this->getViewpointTiles($tileManager, $position);
         }
 
-        $this->playerClass = self::ACTION_PLAYER_CLASS[$action] ?? "player";
-        $grid = $this->generateViewpoint($tiles, $position['x'], $position['y']);
-
-        return $this->twig->render('Game/index.html.twig', ['level' => $level, 'grid' => $grid]);
+        return $this->twig->render('Game/index.html.twig', [
+            'level' => $level,
+            'tiles' => $tiles,
+            'action' => $action ?? '',
+            'position' => $position,
+            'radius' => self::VIEWPOINT_RADIUS,
+        ]);
     }
 
     public static function getGameState(): int
@@ -110,61 +104,6 @@ class GameController extends AbstractController
             return false;
         }
         return $tiles[$position['y']][$position['x']] !== TileManager::TYPE_WALL;
-    }
-
-    private function generateCellDetails(string $cellType, int $cellX, int $cellY, int $playerX, int $playerY): array
-    {
-        $cellDetails = [
-            "classes" => [],
-            "isLink" => false,
-            "action" => '',
-            "linkText" => '',
-        ];
-        if ($cellType === '') {
-            $cellDetails['classes'][] = "wall";
-        } else {
-            $deltaX = $cellX - $playerX;
-            $deltaY = $cellY - $playerY;
-
-            $actions = [
-                -1 => ["text" => "↑", "action" => "up"],
-                1 => ["text" => "↓", "action" => "down"],
-                -10 => ["text" => "←", "action" => "left"],
-                10 => ["text" => "→", "action" => "right"],
-            ];
-
-            $cellDetails['action'] = $actions[$deltaX * 10 + $deltaY]['action'] ?? '';
-            $cellDetails['linkText'] = $actions[$deltaX * 10 + $deltaY]['text'] ?? '';
-            $cellDetails['isLink'] = isset($actions[$deltaX * 10 + $deltaY]);
-
-            $cellDetails['classes'][] = $cellType;
-            if ($playerX === $cellX && $playerY === $cellY) {
-                $cellDetails['classes'][] = $this->playerClass;
-            }
-        }
-        return $cellDetails;
-    }
-
-    /**
-     * Generate a grid of tiles visible from specified coordinates
-     */
-    private function generateViewpoint(array $tiles, int $playerX, int $playerY): array
-    {
-        $grid = [];
-        for ($y = $playerY - self::VIEWPOINT_RADIUS; $y <= $playerY + self::VIEWPOINT_RADIUS; ++$y) {
-            $row = [];
-            for ($x = $playerX - self::VIEWPOINT_RADIUS; $x <= $playerX + self::VIEWPOINT_RADIUS; ++$x) {
-                $cell = '';
-                if (isset($tiles[$y][$x])) {
-                    $cell = $tiles[$y][$x];
-                }
-
-                $details = $this->generateCellDetails($cell, $x, $y, $playerX, $playerY);
-                $row[] = $details;
-            }
-            $grid[] = $row;
-        }
-        return $grid;
     }
 
     private function isFinish(array $tiles, array $position): bool

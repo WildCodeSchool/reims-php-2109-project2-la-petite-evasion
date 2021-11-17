@@ -5,20 +5,20 @@
 {% endblock %}
 
 {% block stylesheet %}
-<link href="assets/css/editor.css" rel="stylesheet">
+<link href="assets/css/leaderboard.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 <form action="/editor/delete" class="level-list" method="POST">
-   <h1>Éditeur</h1>
-   <table>
-      <tr>
-         <th>Nom</th>
+   <h1 class="h1-leaderboard-editor">Éditeur</h1>
+   <table class="table-leaderboard-editor">
+      <tr class="first-tr-leaderboard-editor">
+         <th class="th-leaderboard-editor">Nom</th>
          <th>Description</th>
          <th>🗑</th>
       </tr>
       {% for level in levels %}
-      <tr>
+      <tr class="second-tr-leaderboard-editor">
          <td><a href="/editor/edit?id={{ level.id }}">{{ level.name }}</a></td>
          <td>{{ level.description|length > 50 ? level.description|slice(0, 50) ~ '...' : level.description }}</td>
          <td><input class="checkbox" type="checkbox" value="delete" name="{{ level.id }}"></td>
