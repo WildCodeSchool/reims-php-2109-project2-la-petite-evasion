@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Model\LevelManager;
+use App\Model\TileManager;
 
 class LevelEditorController extends AbstractController
 {
+    private const DEFAULT_LEVEL_SIZE = 15;
+
     public function list()
     {
         $levelManager = new LevelManager();
@@ -17,68 +20,100 @@ class LevelEditorController extends AbstractController
     {
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById($id);
-        $grid = LevelManager::parseContent($level['content']);
+        $tileManager = new TileManager($id);
+        $tiles = $tileManager->selectAllTiles();
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->parsePost($level, $grid, $errors);
+            $errors = $this->parsePost($level, $tiles);
             if (!$errors) {
-                $levelManager = new LevelManager();
-                $levelManager->update($level, $grid);
+                $levelManager->update($level);
+                $tileManager->insert($tiles);
             }
         }
-        $level['height'] = count($grid);
-        $level['width'] = count($grid[0]);
-        return $this->twig->render('Editor/edit.html.twig', ['level' => $level, 'grid' => $grid]);
+        return $this->twig->render('Editor/edit.html.twig', [
+            'level' => $level,
+            'grid' => $tiles,
+            'errors' => $errors
+        ]);
     }
 
-    private function parsePost(array &$level, array &$cells, array &$errors): void
+    private function parsePost(array &$level, array &$tiles): array
     {
-        if (empty($_POST['name']) || strlen($_POST['name']) > 30) {
+        $errors = [];
+        if (!$this->parsePostNameDescription($level)) {
             $errors[] = 'Le nom est invalide';
         }
-        if (!$errors) {
-            $name = $_POST['name'];
-            $description = $_POST['description'] ?? '';
-            $level['name'] = $name;
-            $level['description'] = $description;
-            array_map('trim', $level);
+        if (!$errors && !$this->parsePostDimensions($level)) {
+            $errors[] = 'Les dimensions sont invalides';
         }
-        $this->parsePostDimensions($cells);
-
-        foreach ($_POST as $entry => $value) {
-            $capture = [];
-            if (preg_match("/^cell-(?<x>[0-9]+)-(?<y>[0-9]+)$/", $entry, $capture)) {
-                if (!in_array($value, [LevelManager::CELL_FLOOR, LevelManager::CELL_WALL])) {
-                    $errors[] = 'Type de cellule invalide';
-                    continue;
-                }
-                $posX = intval($capture['x']);
-                $posY = intval($capture['y']);
-                if (isset($cells[$posY][$posX])) {
-                    $cells[$posY][$posX] = $value;
-                }
-            }
+        if (!$errors && !$this->parsePostTiles($level, $tiles)) {
+            $errors[] = 'Les tuiles sont invalides';
         }
+        return $errors;
     }
 
-    private function parsePostDimensions(array &$cells): void
+    private function parsePostNameDescription(&$level): bool
+    {
+        if (empty($_POST['name']) || strlen($_POST['name']) > 30) {
+            return false;
+        }
+        $level['name'] = trim($_POST['name']);
+        $level['description'] = trim($_POST['description'] ?? '');
+        return true;
+    }
+
+    private function parsePostDimensions(array &$level): bool
     {
         if (!empty($_POST["width"]) && !empty($_POST["height"])) {
             $width = filter_var($_POST['width'], FILTER_VALIDATE_INT);
             $height = filter_var($_POST['height'], FILTER_VALIDATE_INT);
-            if ($width !== false && $height !== false && $width > 2 && $height > 2) {
-                $cells = LevelManager::resizeCells($cells, $width, $height);
+            if ($width === false || $height === false || $width <= 2 || $height <= 2) {
+                return false;
+            }
+            $level['width'] = $width;
+            $level['height'] = $height;
+        }
+        return true;
+    }
+
+    private function parsePostTiles(array &$level, array &$tiles): bool
+    {
+        $row = array_fill(0, $level['width'], TileManager::TYPE_FLOOR);
+        $tiles = array_fill(0, $level['height'], $row);
+
+        foreach ($_POST as $entry => $value) {
+            $capture = [];
+            if (preg_match("/^cell-(?<x>[0-9]+)-(?<y>[0-9]+)$/", $entry, $capture)) {
+                if (!in_array($value, TileManager::TYPES)) {
+                    return false;
+                }
+                $posX = intval($capture['x']);
+                $posY = intval($capture['y']);
+                if (isset($tiles[$posY][$posX])) {
+                    $tiles[$posY][$posX] = $value;
+                }
             }
         }
+        return true;
     }
 
     public function createLevel(): void
     {
         $levelManager = new LevelManager();
-        $level = ['name' => 'Nouveau niveau', 'description' => ''];
-        $cells = array_fill(0, 15, array_fill(0, 15, "floor"));
-        $id = $levelManager->create($level, $cells);
+        $level = [
+            'name' => 'Nouveau niveau',
+            'description' => '',
+            'width' => self::DEFAULT_LEVEL_SIZE,
+            'height' => self::DEFAULT_LEVEL_SIZE
+        ];
+        $id = $levelManager->create($level);
+
+        $tileManager = new TileManager($id);
+        $row = array_fill(0, self::DEFAULT_LEVEL_SIZE, TileManager::TYPE_FLOOR);
+        $tiles = array_fill(0, self::DEFAULT_LEVEL_SIZE, $row);
+        $tileManager->insert($tiles);
+
         header('Location: /editor/edit?id=' . $id);
     }
 
