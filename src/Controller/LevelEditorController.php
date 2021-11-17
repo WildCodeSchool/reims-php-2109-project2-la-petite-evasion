@@ -27,13 +27,16 @@ class LevelEditorController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->parsePost($level, $tiles);
             if (!$errors) {
+                // TODO: dont hardcode finish position
+                $tiles[($level['height'] * $level['width']) - 1]['type'] = 'finish';
+
                 $levelManager->update($level);
                 $tileManager->insert($tiles);
             }
         }
         return $this->twig->render('Editor/edit.html.twig', [
             'level' => $level,
-            'grid' => $tiles,
+            'tiles' => $tiles,
             'errors' => $errors
         ]);
     }
@@ -77,11 +80,22 @@ class LevelEditorController extends AbstractController
         return true;
     }
 
+    private function createFloorTiles(int $width, int $height): array
+    {
+        $tiles = [];
+        for ($i = 0; $i < $width * $height; ++$i) {
+            $tiles[] = [
+                'x' => $i % $width,
+                'y' => intval($i / $width),
+                'type' => TileManager::TYPE_FLOOR,
+            ];
+        }
+        return $tiles;
+    }
+
     private function parsePostTiles(array &$level, array &$tiles): bool
     {
-        $row = array_fill(0, $level['width'], TileManager::TYPE_FLOOR);
-        $tiles = array_fill(0, $level['height'], $row);
-
+        $tiles = $this->createFloorTiles($level['width'], $level['height']);
         foreach ($_POST as $entry => $value) {
             $capture = [];
             if (preg_match("/^cell-(?<x>[0-9]+)-(?<y>[0-9]+)$/", $entry, $capture)) {
@@ -90,8 +104,8 @@ class LevelEditorController extends AbstractController
                 }
                 $posX = intval($capture['x']);
                 $posY = intval($capture['y']);
-                if (isset($tiles[$posY][$posX])) {
-                    $tiles[$posY][$posX] = $value;
+                if ($posX < $level['width'] && $posY < $level['height']) {
+                    $tiles[($posY * $level['width']) + $posX]['type'] = $value;
                 }
             }
         }
@@ -105,13 +119,14 @@ class LevelEditorController extends AbstractController
             'name' => 'Nouveau niveau',
             'description' => '',
             'width' => self::DEFAULT_LEVEL_SIZE,
-            'height' => self::DEFAULT_LEVEL_SIZE
+            'height' => self::DEFAULT_LEVEL_SIZE,
+            'start_x' => 0,
+            'start_y' => 0,
         ];
         $id = $levelManager->create($level);
 
         $tileManager = new TileManager($id);
-        $row = array_fill(0, self::DEFAULT_LEVEL_SIZE, TileManager::TYPE_FLOOR);
-        $tiles = array_fill(0, self::DEFAULT_LEVEL_SIZE, $row);
+        $tiles = $this->createFloorTiles(self::DEFAULT_LEVEL_SIZE, self::DEFAULT_LEVEL_SIZE);
         $tileManager->insert($tiles);
 
         header('Location: /editor/edit?id=' . $id);

@@ -29,13 +29,13 @@ class GameController extends AbstractController
         $levelId = 1;
         session_start();
 
-        $state = self::getGameState();
-        if ($action === 'reset' || $state !== self::GAME_STATE_STARTED) {
-            $this->startGame($levelId);
-        }
-
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById($levelId);
+
+        $state = self::getGameState();
+        if ($action === 'reset' || $state !== self::GAME_STATE_STARTED) {
+            $this->startGame($level);
+        }
 
         $tileManager = new TileManager($levelId);
         $position = $this->getMovePosition($action ?? '');
@@ -108,17 +108,18 @@ class GameController extends AbstractController
 
     private function isFinish(array $tiles, array $position): bool
     {
-        $lastRow = end($tiles);
-        return $position['y'] === array_key_last($tiles) &&
-            $position['x'] === array_key_last($lastRow);
+        if (!isset($tiles[$position['y']][$position['x']])) {
+            return false;
+        }
+        return $tiles[$position['y']][$position['x']] === TileManager::TYPE_FINISH;
     }
 
-    private function startGame(int $levelId): void
+    private function startGame(array $level): void
     {
         $_SESSION = [
             'state' => self::GAME_STATE_STARTED,
-            'position' => ['x' => 0, 'y' => 0],
-            'levelId' => $levelId,
+            'position' => ['x' => $level['start_x'], 'y' => $level['start_y']],
+            'levelId' => $level['id'],
             'startTime' => new DateTime(),
         ];
     }

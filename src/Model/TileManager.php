@@ -8,13 +8,11 @@ class TileManager extends AbstractManager
 
     public const TYPE_WALL = 'wall';
     public const TYPE_FLOOR = 'floor';
-    public const TYPE_START = 'start';
     public const TYPE_FINISH = 'finish';
 
     public const TYPES = [
         self::TYPE_WALL,
         self::TYPE_FLOOR,
-        self::TYPE_START,
         self::TYPE_FINISH,
     ];
 
@@ -31,26 +29,18 @@ class TileManager extends AbstractManager
         $query =
             "DELETE FROM " . self::TABLE . " WHERE level_id = :level_id;" .
             "INSERT INTO " . self::TABLE . " (level_id, x, y, type) VALUES ";
-        $queryPlaceholders = [];
-        $index = 0;
-        foreach ($tiles as $row) {
-            foreach ($row as $type) {
-                $queryPlaceholders[] = "(:level_id, :x_$index, :y_$index, :type_$index)";
-                ++$index;
-            }
-        }
+        $queryPlaceholders = array_map(
+            fn ($index) => "(:level_id, :x_$index, :y_$index, :type_$index)",
+            array_keys($tiles)
+        );
         $query .= implode(', ', $queryPlaceholders) . ";";
 
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('level_id', $this->levelId, \PDO::PARAM_INT);
-        $index = 0;
-        foreach ($tiles as $y => $row) {
-            foreach ($row as $x => $type) {
-                $statement->bindValue("x_$index", $x, \PDO::PARAM_INT);
-                $statement->bindValue("y_$index", $y, \PDO::PARAM_INT);
-                $statement->bindValue("type_$index", $type, \PDO::PARAM_STR);
-                ++$index;
-            }
+        foreach ($tiles as $index => $tile) {
+            $statement->bindValue("x_$index", $tile['x'], \PDO::PARAM_INT);
+            $statement->bindValue("y_$index", $tile['y'], \PDO::PARAM_INT);
+            $statement->bindValue("type_$index", $tile['type'], \PDO::PARAM_STR);
         }
 
         $statement->execute();
@@ -62,11 +52,7 @@ class TileManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('level_id', $this->levelId, \PDO::PARAM_INT);
         $statement->execute();
-        $tiles = [];
-        foreach ($statement->fetchAll() as $tile) {
-            $tiles[$tile['y']][$tile['x']] = $tile['type'];
-        }
-        return $tiles;
+        return $statement->fetchAll();
     }
 
     /*
