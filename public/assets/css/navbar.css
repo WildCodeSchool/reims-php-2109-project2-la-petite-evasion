@@ -32,6 +32,7 @@ nav * {
 	list-style: none;
 	align-items: center;
 	font-size: 2.5rem;
+	justify-content: space-around;
 }
 
 .nav-links li a {
@@ -39,16 +40,14 @@ nav * {
 }
 
 .logo {
-	margin-left: 1rem;
-	height: 12vh;
+	margin-left: 0rem;
+	height: 6rem;
 }
 
 .nav-links li {
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-	margin-right: auto;
-	margin-left: auto;
+	align-items: center;
 }
+
 
 /*Style burger Icon*/
 
@@ -90,16 +89,19 @@ nav * {
 	z-index: 2;
 	transition: all 0.7s ease;
 }
+
 .nav-links {
 	position: fixed;
 	background: #292929;
 	height: 100%;
 	width: 100%;
 	flex-direction: column;
+	justify-content: space-evenly;
 	clip-path: circle(50px at 90% -20%);
 	-webkit-clip-path: circle(50px at 90% -10%);
 	transition: all 1s ease-out;
 }
+
 .nav-links.open {
 	clip-path: circle(200% at 90% -10%);
 	-webkit-clip-path: circle(200% at 90% -10%);
