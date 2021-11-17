@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 
+*{
+    margin:0;
+    padding:0;
+}
+
 html {
     min-width: min-content;
 }
@@ -37,24 +42,107 @@ body {
     background-color: #7F7F7F;
 }
 
-@media screen and (min-width: 700px) { 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Home.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-.buttonEditor {
+.homeBackground{
+    background-image:url("../images/maze-mobile.png");
+    background-size: cover;
+    height: calc(100vh - var(--navbar-height));
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-    
-.button {
+
+.titleContext {
+    background-color: #A5A5A5;
+    opacity: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    padding: 2rem;
+    border-radius: 3rem;
+}
+
+.titleContext h1{
+    margin-bottom: 25px;
     text-align: center;
-    padding: 30px;
-    margin-top: 2rem;
-    background-color: #3b3b3b;
-    border-color: #413e3e;
-    border-radius: 100% 100% 100% 100%;
-    width: 17rem;
-    opacity: 80%;
-    font-weight: bold;
-    margin-bottom: 1rem;
- }
+    font-size: 3rem;
+    color: black;
+}
+
+.titleContext p {
+    color: black;
+    font-size: 2rem;
+    text-align: center;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+}
+
+
+div a:visited {
+    color: #292929;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+@media screen and (min-width: 680px) and (max-width: 1300px)  {
+    .titleContext p {
+        font-size: 2.5rem;
+    }
+    .homeBackground {
+        background-image:url("../images/maze-ipad.png") ;
+    } 
+    .buttonEditor {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+        
+    .button {
+        text-align: center;
+        padding: 30px;
+        margin-top: 2rem;
+        background-color: #3b3b3b;
+        border-color: #413e3e;
+        border-radius: 100% 100% 100% 100%;
+        width: 17rem;
+        opacity: 80%;
+        font-weight: bold;
+     }
+}
+
+@media screen and (min-width: 1300px) { 
+    .titleContext p {
+        font-size: 2.5rem;
+    }
+    .homeBackground {
+        background-image:url("../images/maze-desktop.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #292929;
+        background-position: center;
+    } 
+    .buttonEditor {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+        
+    .button {
+        text-align: center;
+        padding: 30px;
+        margin-top: 2rem;
+        background-color: #3b3b3b;
+        border-color: #413e3e;
+        border-radius: 100% 100% 100% 100%;
+        width: 17rem;
+        opacity: 80%;
+        font-weight: bold;
+     }
 }
