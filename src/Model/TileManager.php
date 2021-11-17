@@ -18,7 +18,15 @@ class TileManager extends AbstractManager
         self::TYPE_FINISH,
     ];
 
-    public function insert(int $levelId, array $tiles): void
+    private int $levelId;
+
+    public function __construct(int $levelId)
+    {
+        parent::__construct();
+        $this->levelId = $levelId;
+    }
+
+    public function insert(array $tiles): void
     {
         $query =
             "DELETE FROM " . self::TABLE . " WHERE level_id = :level_id;" .
@@ -34,13 +42,13 @@ class TileManager extends AbstractManager
         $query .= implode(', ', $queryPlaceholders) . ";";
 
         $statement = $this->pdo->prepare($query);
-        $statement->bindValue('level_id', $levelId, \PDO::PARAM_INT);
+        $statement->bindValue('level_id', $this->levelId, \PDO::PARAM_INT);
         $index = 0;
         foreach ($tiles as $y => $row) {
             foreach ($row as $x => $type) {
                 $statement->bindValue("x_$index", $x, \PDO::PARAM_INT);
                 $statement->bindValue("y_$index", $y, \PDO::PARAM_INT);
-                $statement->bindValue("type_$index", $tiles[$y][$x], \PDO::PARAM_STR);
+                $statement->bindValue("type_$index", $type, \PDO::PARAM_STR);
                 ++$index;
             }
         }
@@ -48,15 +56,26 @@ class TileManager extends AbstractManager
         $statement->execute();
     }
 
-    public function selectAllByLevelId(int $levelId): array
+    public function selectAllTiles(): array
     {
-        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE level_id=:level_id");
-        $statement->bindValue('level_id', $levelId, \PDO::PARAM_INT);
+        $query = "SELECT * FROM " . static::TABLE . " WHERE level_id=:level_id ORDER BY y ASC, x ASC";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('level_id', $this->levelId, \PDO::PARAM_INT);
         $statement->execute();
         $tiles = [];
         foreach ($statement->fetchAll() as $tile) {
             $tiles[$tile['y']][$tile['x']] = $tile['type'];
         }
         return $tiles;
+    }
+
+    /**
+     * Get the value of levelId
+     *
+     * @return int
+     */
+    public function getLevelId(): int
+    {
+        return $this->levelId;
     }
 }
