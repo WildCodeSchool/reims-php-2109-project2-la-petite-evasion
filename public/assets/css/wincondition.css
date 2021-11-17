@@ -59,18 +59,6 @@ input {
     font-family: Parisienne;
 }
 
-.buttonEnvoyer {
-    text-align: center;
-    font-family: Parisienne;
-    padding: 15px;
-    background-color: #A5A5A5;
-    border-radius: 3rem;
-    font-size: 1.3rem;
-    opacity: 70%;
-    margin-top: 2rem;
-    align-items: center;
-}
-
 @media screen and (min-width: 680px) and (max-width: 1300px)  {
     .winBackground {
         background-image:url("../images/maze-ipad.png");
@@ -92,11 +80,6 @@ input {
         height: 3rem;
         font-size: 2rem;
     }
-    .buttonEnvoyer {
-        font-size: 2rem;
-        padding: 15px;
-    }
-}
 
 @media screen and (min-width: 1300px) {
     .winBackground {
@@ -119,8 +102,5 @@ input {
         height: 2.5rem;
         font-size: 2rem;
     }
-    .buttonEnvoyer {
-        font-size: 2rem;
-        padding: 15px;
-    }
+}
 }
