@@ -231,6 +231,7 @@ a {
     background-image: url(../images/moriarty-down.png);
 }
 
+.finish,
 .floor {
     background-color: lightgray;
 }
