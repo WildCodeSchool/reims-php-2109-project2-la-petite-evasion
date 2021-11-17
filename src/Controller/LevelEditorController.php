@@ -20,15 +20,15 @@ class LevelEditorController extends AbstractController
     {
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById($id);
-        $tileManager = new TileManager();
-        $tiles = $tileManager->selectAllByLevelId($id);
+        $tileManager = new TileManager($id);
+        $tiles = $tileManager->selectAllTiles();
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = $this->parsePost($level, $tiles);
             if (!$errors) {
                 $levelManager->update($level);
-                $tileManager->insert($level['id'], $tiles);
+                $tileManager->insert($tiles);
             }
         }
         return $this->twig->render('Editor/edit.html.twig', [
@@ -109,10 +109,10 @@ class LevelEditorController extends AbstractController
         ];
         $id = $levelManager->create($level);
 
-        $tileManager = new TileManager();
+        $tileManager = new TileManager($id);
         $row = array_fill(0, self::DEFAULT_LEVEL_SIZE, TileManager::TYPE_FLOOR);
         $tiles = array_fill(0, self::DEFAULT_LEVEL_SIZE, $row);
-        $tileManager->insert($id, $tiles);
+        $tileManager->insert($tiles);
 
         header('Location: /editor/edit?id=' . $id);
     }
