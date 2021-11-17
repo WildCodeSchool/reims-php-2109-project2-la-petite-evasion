@@ -46,11 +46,16 @@ class GameController extends AbstractController
         $levelManager = new LevelManager();
         $level = $levelManager->selectOneById($levelId);
 
-        $tileManager = new TileManager();
-        $tiles = $tileManager->selectAllByLevelId($levelId);
+        $tileManager = new TileManager($levelId);
+        $position = $this->getMovePosition($action ?? '');
+        $tiles = $this->getViewpointTiles($tileManager, $position);
 
-        $this->move($tiles, $action ?? "");
-        $position = self::getPosition();
+        if ($this->canMove($tiles, $position)) {
+            $this->move($tiles, $position);
+        } else {
+            $position = self::getPosition();
+            $tiles = $this->getViewpointTiles($tileManager, $position);
+        }
 
         $this->playerClass = self::ACTION_PLAYER_CLASS[$action] ?? "player";
         $grid = $this->generateViewpoint($tiles, $position['x'], $position['y']);
@@ -76,6 +81,35 @@ class GameController extends AbstractController
     public static function getGameLevelId(): int
     {
         return $_SESSION['levelId'];
+    }
+
+    private function getViewpointTiles(TileManager $tileManager, array $position): array
+    {
+        return $tileManager->selectByArea([
+            'x' => $position['x'] - self::VIEWPOINT_RADIUS,
+            'y' => $position['y'] - self::VIEWPOINT_RADIUS,
+            'width' => (self::VIEWPOINT_RADIUS * 2) + 1,
+            'height' => (self::VIEWPOINT_RADIUS * 2) + 1,
+        ]);
+    }
+
+    private function getMovePosition(string $action): array
+    {
+        $position = self::getPosition();
+        if (isset(self::ACTION_OFFSETS[$action])) {
+            $offsets = self::ACTION_OFFSETS[$action];
+            $position['x'] += $offsets['x'];
+            $position['y'] += $offsets['y'];
+        }
+        return $position;
+    }
+
+    private function canMove(array $tiles, array $position): bool
+    {
+        if (!isset($tiles[$position['y']][$position['x']])) {
+            return false;
+        }
+        return $tiles[$position['y']][$position['x']] !== TileManager::TYPE_WALL;
     }
 
     private function generateCellDetails(string $cellType, int $cellX, int $cellY, int $playerX, int $playerY): array
@@ -169,26 +203,12 @@ class GameController extends AbstractController
         $_SESSION['finishTime'] = new DateTime();
     }
 
-    private function move(array $tiles, string $action): void
+    private function move(array $tiles, array $position): void
     {
-        $position = self::getPosition();
-
-        if (isset(self::ACTION_OFFSETS[$action])) {
-            $offsets = self::ACTION_OFFSETS[$action];
-            $position['x'] += $offsets['x'];
-            $position['y'] += $offsets['y'];
-
-            if ($this->isFinish($tiles, $position)) {
-                header('Location: /win');
-                $this->finishGame();
-            } elseif (
-                !isset($tiles[$position['y']][$position['x']]) ||
-                $tiles[$position['y']][$position['x']] === TileManager::TYPE_WALL
-            ) {
-                $position = self::getPosition();
-            }
+        if ($this->isFinish($tiles, $position)) {
+            header('Location: /win');
+            $this->finishGame();
         }
-
         $_SESSION['position'] = $position;
     }
 }
