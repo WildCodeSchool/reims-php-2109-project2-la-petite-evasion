@@ -5,6 +5,10 @@
     padding:0;
 }
 
+:root {
+    --navbar-height: 7rem;
+}
+
 html {
     min-width: min-content;
 }
@@ -42,12 +46,12 @@ body {
     background-color: #7F7F7F;
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Home.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Home.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .homeBackground{
     background-image:url("../images/maze-mobile.png");
+    height: 100vh;
     background-size: cover;
-    height: calc(100vh - var(--navbar-height));
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,8 +94,14 @@ a {
     text-decoration: none;
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~navbar.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-@media screen and (min-width: 680px) and (max-width: 1300px)  {
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~game.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Media Queries~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+@media screen and (min-width: 680px) and (max-width: 1000px)  {
     .titleContext p {
         font-size: 2.5rem;
     }
@@ -117,16 +127,13 @@ a {
      }
 }
 
-@media screen and (min-width: 1300px) { 
+@media screen and (min-width: 1000px) { 
     .titleContext p {
         font-size: 2.5rem;
     }
     .homeBackground {
         background-image:url("../images/maze-desktop.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-color: #292929;
-        background-position: center;
+        height: calc(100vh - var(--navbar-height));
     } 
     .buttonEditor {
         display: flex;

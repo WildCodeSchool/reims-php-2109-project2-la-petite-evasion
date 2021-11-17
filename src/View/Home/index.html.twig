@@ -1,13 +1,14 @@
 {% extends 'layout.html.twig' %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="/assets/css/home.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 {% endblock %}
+
 {% block title %}
  {{ parent() }} - Accueil 
 {% endblock %}
-{% block content %}
 
+{% block content %}
     <div class="homeBackground" >
         <div class="titleContext">
             <h1> La petite évasion </h1>
@@ -19,6 +20,5 @@
             <a id="play" href="/games">Jouer</a> 
         </div>
     </div> 
-
 {% endblock %}
 
