@@ -1,21 +1,24 @@
 {% extends 'layout.html.twig' %}
+
 {% block title %}
 Leaderboard 
 {% endblock %}
+
 {% block stylesheet %}
 <link href="assets/css/leaderboard.css" rel="stylesheet">
 {% endblock %}
+
 {% block content %}
 <div class="leaderboard">
-   <h1>Classement</h1>
-   <table>
-      <tr>
-         <th>Pseudo</th>
+   <h1 class="h1-leaderboard">Classement</h1>
+   <table class="table-leaderboard">
+      <tr class="first-tr-leaderboard">
+         <th class="th-leaderboard">Pseudo</th>
          <th>Temps</th>
          <th>Niveau</th>
       </tr>
       {% for record in records %}
-      <tr>
+      <tr class="second-tr-leaderboard">
          <td>{{record.name}}</td>
          <td>{{ record.time }}</td>
          <td>{{ record.level_id }}</td>
