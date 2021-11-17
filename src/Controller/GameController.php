@@ -50,7 +50,7 @@ class GameController extends AbstractController
 
         return $this->twig->render('Game/index.html.twig', [
             'level' => $level,
-            'tiles' => $tiles, 
+            'tiles' => $tiles,
             'action' => $action ?? '',
             'position' => $position,
             'radius' => self::VIEWPOINT_RADIUS,
