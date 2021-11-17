@@ -36,6 +36,7 @@ class RecordController extends AbstractController
 
     public function index(): string
     {
+        session_start();
         $this->insertRecord();
         $recordManager = new RecordManager();
         $records = $recordManager->selectRecords();
