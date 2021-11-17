@@ -7,13 +7,28 @@
 {% block content %}
     <h1 class="level-name">{{ level.name }}</h1>
     <div class="game-container">
-        <div class="game" style="--grid-width: {{ grid|length }}; --grid-height: {{ grid|length }};">
-        {% for row in grid %}
-            {% for cell in row %}
-                <div class="{{ cell.classes|join(' ') }} game-tile">
-                {% if cell.isLink %}
-                    {% set link = "?action=" ~ cell.action %}
-                    <a class="game-direction" href="{{ link }}">{{ cell.linkText }}</a>
+        <div class="game" style="--grid-width: {{ tiles|length }}; --grid-height: {{ tiles|length }};">
+        {% for y, row in tiles %}
+            {% for x, tile in row %}
+                <div class="{{ tile }} game-tile">
+                {% if x == position.x and y == position.y %}
+                    {% if action in ['left', 'up', 'down', 'right'] %}
+                        <div class="player-{{ action }}"></div>
+                    {% else %}
+                         <div class="player"></div>
+                    {% endif %}
+                {% endif %}
+                {% if x == position.x - 1 and y == position.y %}
+                    <a class="game-direction direction-left" href="?action=left"></a>
+                {% endif %}
+                {% if x == position.x + 1 and y == position.y %}
+                    <a class="game-direction direction-right" href="?action=right"></a>
+                {% endif %}
+                {% if x == position.x and y == position.y - 1 %}
+                    <a class="game-direction direction-up" href="?action=up"></a>
+                {% endif %}
+                {% if x == position.x and y == position.y + 1 %}
+                    <a class="game-direction direction-down" href="?action=down"></a>
                 {% endif %}
                 </div>
             {% endfor %}

@@ -52,6 +52,7 @@ class GameController extends AbstractController
             'level' => $level,
             'tiles' => $tiles, 
             'action' => $action ?? '',
+            'position' => $position,
         ]);
     }
 
