@@ -39,7 +39,7 @@ nav * {
 	text-decoration: none;
 }
 
-.logo {
+.logo-image {
 	margin-left: 0rem;
 	height: 6rem;
 }
@@ -106,5 +106,4 @@ nav * {
 	clip-path: circle(200% at 90% -10%);
 	-webkit-clip-path: circle(200% at 90% -10%);
 }
-
 }
