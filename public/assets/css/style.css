@@ -16,10 +16,10 @@ html {
 body {
     font-family: 'Parisienne', cursive;
     background-image: url('../images/maze-mobile.png');
+    height: calc(100vh - var(--navbar-height));
     background-size: cover;
     background-color: #292929;
     background-repeat: no-repeat;
-    height: 100vh;
     text-align: center;
 }
 
@@ -59,6 +59,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .titleContext {
@@ -98,6 +99,67 @@ a {
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~navbar.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~wincondition.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.winBackground {
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.pictures {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(165, 165, 165, 0.2);
+    padding: 0.2rem;
+    margin-bottom: 2rem;
+}
+
+.congrats {
+    opacity: none;
+}
+
+.moriartyPicture {
+    width: 4rem;
+}
+
+.sherlockPicture {
+    width: 3.7rem;
+}
+
+.formRecord {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.timeSentence {
+    margin-bottom: 1.5rem;
+    font-size: 1.9rem;
+}
+
+.formInformations {
+    font-size: 1.4rem;
+    padding: 0 10%;
+}
+
+.win-input-container {
+    padding: 0 10%;
+}
+
+.win-input {
+    width: 100%;
+    height: 1.8rem;
+    font-size: 1.6rem;
+    font-family: Parisienne;
+}
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~game.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -266,22 +328,38 @@ a {
     .game {
         --grid-size: 5.5rem;
     }
+    .winBackground {
+        padding: 0 10%;
+    } 
+    .pictures {
+        height: 15%;
+        margin-bottom: 3rem;
+    }
+    .congrats {
+        font-size: 4rem;
+    }
+    .timeSentence {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+    .formInformations {
+        font-size: 2rem;
+    }
+    .win-input {
+        height: 3rem;
+        font-size: 2rem;
+    }
 }
 
 @media screen and (min-width: 1000px) { 
     .titleContext p {
         font-size: 2.5rem;
     }
-    .homeBackground {
-        background-image:url("../images/maze-desktop.png");
-        height: calc(100vh - var(--navbar-height));
-    } 
     body {
         background-image:url("../images/maze-desktop.png");
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
         background-color: #292929;
-        background-position: center;
     } 
     .buttonEditor {
         display: flex;
@@ -301,5 +379,26 @@ a {
     }
     .game {
         --grid-size: 6rem;
+    }
+    .winBackground {
+        padding: 0 20%;
+    } 
+    .pictures {
+        height: 15%;
+        margin-bottom: 3rem;
+    }
+    .congrats {
+        font-size: 4rem;
+    }
+    .timeSentence {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+    .formInformations {
+        font-size: 2rem;
+    }
+    .win-input {
+        height: 2.5rem;
+        font-size: 2rem;
     }
 }
