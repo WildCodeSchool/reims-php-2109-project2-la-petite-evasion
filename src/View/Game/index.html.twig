@@ -7,28 +7,28 @@
 {% block content %}
     <h1 class="level-name">{{ level.name }}</h1>
     <div class="game-container">
-        <div class="game" style="--grid-width: {{ tiles|length }}; --grid-height: {{ tiles|length }};">
-        {% for y, row in tiles %}
-            {% for x, tile in row %}
-                <div class="{{ tile }} game-tile">
+        <div class="game" style="--grid-width: {{ (radius * 2) + 1 }}; --grid-height: {{ (radius * 2) + 1 }};">
+        {% for y in position.y - radius .. position.y + radius %}
+            {% for x in position.x - radius .. position.x + radius %}
+                <div class="{{ tiles[y][x]|default('wall') }} game-tile">
                 {% if x == position.x and y == position.y %}
                     {% if action in ['left', 'up', 'down', 'right'] %}
-                        <div class="player-{{ action }}"></div>
+                        <div class="player-{{ action }} tile-content"></div>
                     {% else %}
-                         <div class="player"></div>
+                         <div class="player tile-content"></div>
                     {% endif %}
                 {% endif %}
                 {% if x == position.x - 1 and y == position.y %}
-                    <a class="game-direction direction-left" href="?action=left"></a>
+                    <a class="game-direction direction-left tile-content" href="?action=left"></a>
                 {% endif %}
                 {% if x == position.x + 1 and y == position.y %}
-                    <a class="game-direction direction-right" href="?action=right"></a>
+                    <a class="game-direction direction-right tile-content" href="?action=right"></a>
                 {% endif %}
                 {% if x == position.x and y == position.y - 1 %}
-                    <a class="game-direction direction-up" href="?action=up"></a>
+                    <a class="game-direction direction-up tile-content" href="?action=up"></a>
                 {% endif %}
                 {% if x == position.x and y == position.y + 1 %}
-                    <a class="game-direction direction-down" href="?action=down"></a>
+                    <a class="game-direction direction-down tile-content" href="?action=down"></a>
                 {% endif %}
                 </div>
             {% endfor %}
