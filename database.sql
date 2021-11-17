@@ -51,7 +51,7 @@ DROP TABLE IF EXISTS `record`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `record` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `time` timestamp NOT NULL,
+  `time` time NOT NULL,
   `name` varchar(30) NOT NULL,
   `level_id` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -60,15 +60,6 @@ CREATE TABLE `record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `record`
---
-
-LOCK TABLES `record` WRITE;
-/*!40000 ALTER TABLE `record` DISABLE KEYS */;
-INSERT INTO `record` VALUES (1,'0000-00-00 00:00:00','Mario',1),(2,'0000-00-00 00:00:00','Amandine',1),(3,'0000-00-00 00:00:00','Kévin',1),(4,'0000-00-00 00:00:00','Mauricia',1),(5,'0000-00-00 00:00:00','Sophie',1),(6,'0000-00-00 00:00:00','Marvin',1);
-/*!40000 ALTER TABLE `record` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `tile`
