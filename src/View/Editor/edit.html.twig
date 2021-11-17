@@ -12,7 +12,7 @@
 {% for error in errors %}
     <p>{{ error }}</p>
 {% endfor %}
-<form class="editor-form" action="" method="post">
+<form class="editor-form" method="post">
     <label class="editor-label" for="name">Nom du niveau: </label>
     <input class="editor-input" type="text" name="name" id="name" value="{{ level.name }}" required>
     <label class="editor-label" for="description">Description: </label>
