@@ -10,15 +10,15 @@ Leaderboard
 
 {% block content %}
 <div class="leaderboard">
-   <h1 class="h1-leaderboard">Classement</h1>
-   <table class="table-leaderboard">
-      <tr class="first-tr-leaderboard">
-         <th class="th-leaderboard">Pseudo</th>
+   <h1 class="h1-leaderboard-editor">Classement</h1>
+   <table class="table-leaderboard-editor">
+      <tr class="first-tr-leaderboard-editor">
+         <th class="th-leaderboard-editor">Pseudo</th>
          <th>Temps</th>
          <th>Niveau</th>
       </tr>
       {% for record in records %}
-      <tr class="second-tr-leaderboard">
+      <tr class="second-tr-leaderboard-editor">
          <td>{{record.name}}</td>
          <td>{{ record.time }}</td>
          <td>{{ record.level_id }}</td>
