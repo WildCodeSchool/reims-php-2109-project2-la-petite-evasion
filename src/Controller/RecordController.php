@@ -25,7 +25,7 @@ class RecordController extends AbstractController
                 $record = [
                     'name' => $_POST['name'],
                     'time' => GameController::getFinishInterval(),
-                    'levelid' => GameController::getGameLevelId(),
+                    'level_id' => GameController::getGameLevelId(),
                 ];
 
                 $recordManager = new RecordManager();
@@ -33,8 +33,10 @@ class RecordController extends AbstractController
             }
         }
     }
+
     public function index(): string
     {
+        session_start();
         $this->insertRecord();
         $recordManager = new RecordManager();
         $records = $recordManager->selectRecords();
