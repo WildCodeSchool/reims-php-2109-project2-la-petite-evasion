@@ -203,6 +203,12 @@ a {
     align-items: center;
 }
 
+.tile-content {
+    height: 100%;
+    width: 100%;
+}
+
+.game-direction,
 .player,
 .player-down,
 .player-left,
@@ -243,11 +249,20 @@ a {
     background-image: url(../images/wall.png);
 }
 
-.game-direction {
-    font-size: 3rem;
-    color: black;
-    text-decoration: none;
-    padding: 30%;
+.direction-down {
+    background-image: url(../images/arrow_down.svg);
+}
+
+.direction-right {
+    background-image: url(../images/arrow_right.svg);
+}
+
+.direction-left {
+    background-image: url(../images/arrow_left.svg);
+}
+
+.direction-up {
+    background-image: url(../images/arrow_up.svg);
 }
 
 .wall .game-direction {
