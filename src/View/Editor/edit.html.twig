@@ -4,10 +4,6 @@
  {{ parent() }} - Editeur de niveau
 {% endblock %}
 
-{% block stylesheet %}
-    <link rel="stylesheet" href="/assets/css/game.css">
-{% endblock %}
-
 {% block content %}
 {% for error in errors %}
     <p>{{ error }}</p>

@@ -100,65 +100,52 @@ a {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~navbar.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~wincondition.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~leaderboard.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-.winBackground {
-    padding: 1rem;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+.leaderboard, .level-list {
+    padding: 0 10%;
 }
 
-.pictures {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(165, 165, 165, 0.2);
-    padding: 0.2rem;
-    margin-bottom: 2rem;
+.table-leaderboard-editor {
+    margin: auto;
+    background-color: #333333;
+    border-collapse: collapse;
+    color: whitesmoke;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
 }
 
-.congrats {
-    opacity: none;
+.th-leaderboard-editor {
+  width: 33.3%;
 }
 
-.moriartyPicture {
-    width: 4rem;
+.h1-leaderboard-editor {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 2.5rem;
+}
+.first-tr-leaderboard-editor {
+    font-size: 2rem;
+    background-color: #575757;
 }
 
-.sherlockPicture {
-    width: 3.7rem;
+.second-tr-leaderboard-editor {
+    font-size: 1.5rem;
 }
 
-.formRecord {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+.first-tr-leaderboard-editor, .second-tr-leaderboard-editor {
+    height: 3rem;
     text-align: center;
 }
 
-.timeSentence {
-    margin-bottom: 1.5rem;
-    font-size: 1.9rem;
+a {
+    color: whitesmoke;
 }
 
-.formInformations {
-    font-size: 1.4rem;
-    padding: 0 10%;
-}
-
-.win-input-container {
-    padding: 0 10%;
-}
-
-.win-input {
-    width: 100%;
-    height: 1.8rem;
-    font-size: 1.6rem;
-    font-family: Parisienne;
+input.checkbox {
+    width: 25px;
+    height: 25px;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~game.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -309,6 +296,67 @@ a {
     width: 100%;
 }
 
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~wincondition.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.winBackground {
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.pictures {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(165, 165, 165, 0.2);
+    padding: 0.2rem;
+    margin-bottom: 2rem;
+}
+
+.congrats {
+    opacity: none;
+}
+
+.moriartyPicture {
+    width: 4rem;
+}
+
+.sherlockPicture {
+    width: 3.7rem;
+}
+
+.formRecord {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+.timeSentence {
+    margin-bottom: 1.5rem;
+    font-size: 1.9rem;
+}
+
+.formInformations {
+    font-size: 1.4rem;
+    padding: 0 10%;
+}
+
+.win-input-container {
+    padding: 0 10%;
+}
+
+.win-input {
+    width: 100%;
+    height: 1.8rem;
+    font-size: 1.6rem;
+    font-family: Parisienne;
+}
+
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Media Queries~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 @media screen and (min-width: 400px) and (max-width: 680px) {
@@ -391,6 +439,21 @@ a {
         width: 17rem;
         opacity: 80%;
         font-weight: bold;
+    }
+    .leaderboard .level-list {
+        margin: 0 10%;
+    }
+    .h1-leaderboard-editor {
+        font-size: 3rem;
+    }
+    .first-tr-leaderboard-editor {
+        font-size: 2.5rem;
+    }
+    .second-tr-leaderboard-editor {
+        font-size: 2rem;
+    }
+    .first-tr-leaderboard-editor, .second-tr-leaderboard-editor {
+        height: 4rem;
     }
     .game {
         --grid-size: 6rem;
