@@ -386,7 +386,6 @@ input.checkbox {
     align-items: center;
     background-color: rgba(165, 165, 165, 0.2);
     padding: 0.2rem;
-    margin-bottom: 2rem;
 }
 
 .congrats {
@@ -407,6 +406,7 @@ input.checkbox {
     justify-content: center;
     align-content: center;
     text-align: center;
+    margin-bottom: 3rem;
 }
 
 .timeSentence {
@@ -428,6 +428,7 @@ input.checkbox {
     height: 1.8rem;
     font-size: 1.6rem;
     font-family: Parisienne;
+    padding: 5px;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Media Queries~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
