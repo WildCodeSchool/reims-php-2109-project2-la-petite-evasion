@@ -148,7 +148,11 @@ div a:visited {
     color: #292929;
 }
 
-a {
+.levelName {
+    text-decoration: underline;
+}
+
+#play {
     text-decoration: none;
 }
 
