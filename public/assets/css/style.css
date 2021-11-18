@@ -179,6 +179,8 @@ div a:visited {
     max-width: 100%;
     width: 100%;
     border: 1px solid #ddd;
+    font-size: 2rem;
+    margin-top: 3rem;
 }
 
 .h1-leaderboard-editor {
@@ -208,6 +210,10 @@ a {
 input.checkbox {
     width: 25px;
     height: 25px;
+}
+
+.td-record {
+    width: 50%;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~game.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
