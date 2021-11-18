@@ -21,7 +21,7 @@
             {% if time.s > 1 %}
                 {% set secondes = secondes ~ "s" %}
             {% endif %}
-            <h2 class="timeSentence">vous avez fini en {{ minutes }}{{ time.i and time.s ? " et " : "" }}{{ secondes }}
+            <h2 class="timeSentence">Vous avez fini en {{ minutes }}{{ time.i and time.s ? " et " : "" }}{{ secondes }}
             <p class="formInformations">Veuillez entrer votre nom afin de l'enregistrer dans le classement</p>
             <form action="/records" method='post'>
                 <div class="win-input-container"><input class='win-input' type='text' placeholder='Moriarty' name='name'></div>
