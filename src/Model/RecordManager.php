@@ -23,8 +23,11 @@ class RecordManager extends AbstractManager
 
     public function selectRecords()
     {
-        $query = "SELECT *, DATE_FORMAT(time, '%i:%s') as time FROM " . static::TABLE . " ORDER BY TIME ASC";
+        $query = "SELECT level_id, record.name, level.name as level_name," .
+        "DATE_FORMAT(time, '%i:%s') as time FROM " . static::TABLE .
+        " INNER JOIN level ON record.level_id =" .
+        " level.id ORDER BY TIME ASC";
 
-        return $this->pdo->query($query)->fetchAll();
+        return $this->pdo->query($query)->fetchAll(\PDO::FETCH_GROUP);
     }
 }
