@@ -170,11 +170,6 @@ div a:visited {
     max-width: 100%;
     width: 100%;
     border: 1px solid #ddd;
-    padding-bottom: 3rem;
-}
-
-.th-leaderboard-editor {
-    width: 33.3%;
 }
 
 .h1-leaderboard-editor {
