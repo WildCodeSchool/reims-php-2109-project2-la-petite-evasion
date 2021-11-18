@@ -47,6 +47,8 @@ body {
     font-weight: bold;
     font-family: 'Parisienne', cursive;
     border-width: 0;
+    color: white;
+    font-size: 1.5rem;
 }
 
 .button:hover {
@@ -415,8 +417,8 @@ input.checkbox {
 }
 
 .formInformations {
-    font-size: 1.4rem;
-    padding: 0 10%;
+    font-size: 1.5rem;
+    padding: 2rem 10%;
 }
 
 .win-input-container {
