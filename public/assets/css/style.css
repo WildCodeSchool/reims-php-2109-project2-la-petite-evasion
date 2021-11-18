@@ -227,9 +227,10 @@ input.checkbox {
     --grid-size: 5rem;
 }
 .game-container {
-    height: 100%;
     display: flex;
     flex-direction: column;
+    margin-top: 1rem;
+    height: 100%;
     justify-content: center;
 }
 .game {
@@ -243,7 +244,11 @@ input.checkbox {
 .level-name,
 .level-description {
     color: whitesmoke;
+}
+
+.level-name {
     margin-bottom: 26px;
+    font-size: 2.5rem;
 }
 
 .level-description {
@@ -569,6 +574,9 @@ input.checkbox {
     }
     .first-tr-leaderboard-editor, .second-tr-leaderboard-editor {
         height: 4rem;
+    }
+    .level-name {
+        font-size: 3rem;
     }
     .game {
         --grid-size: 6rem;
