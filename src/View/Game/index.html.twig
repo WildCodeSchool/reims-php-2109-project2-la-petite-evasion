@@ -34,8 +34,8 @@
             {% endfor %}
         {% endfor %}
         </div>
+        {% if level.description %}
+            <p class="level-description">{{ level.description }}</p>
+        {% endif %}
     </div>
-    {% if level.description %}
-        <p class="level-description">{{ level.description }}</p>
-    {% endif %}
 {% endblock %}
