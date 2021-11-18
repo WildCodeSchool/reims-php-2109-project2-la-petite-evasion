@@ -77,6 +77,11 @@ class GameController extends AbstractController
         return $_SESSION['levelId'];
     }
 
+    public static function timeRecorded(): void
+    {
+        $_SESSION['state'] = self::GAME_STATE_STOPPED;
+    }
+
     private function getViewpointTiles(TileManager $tileManager, array $position): array
     {
         return $tileManager->selectByArea([
