@@ -131,6 +131,7 @@ class LevelEditorController extends AbstractController
 
         $tileManager = new TileManager($id);
         $tiles = $this->createFloorTiles(self::DEFAULT_LEVEL_SIZE, self::DEFAULT_LEVEL_SIZE);
+        $tiles[array_key_last($tiles)]['type'] = 'finish';
         $tileManager->insert($tiles);
 
         header('Location: /editor/edit?id=' . $id);
