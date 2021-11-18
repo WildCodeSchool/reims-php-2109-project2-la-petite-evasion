@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="level-name">{{ level.name }}</h1>
     <div class="game-container">
+        <h1 class="level-name">{{ level.name }}</h1>
         <div class="game" style="--grid-width: {{ (radius * 2) + 1 }}; --grid-height: {{ (radius * 2) + 1 }};">
         {% for y in position.y - radius .. position.y + radius %}
             {% for x in position.x - radius .. position.x + radius %}
