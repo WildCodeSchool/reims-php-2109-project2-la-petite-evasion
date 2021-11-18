@@ -5,4 +5,17 @@
 {% endblock %}
 
 {% block content %}
+<h1 class="h1-leaderboard-editor">Choisissez un niveau.</h1>
+<table class="table-leaderboard-editor">
+    <tr class="first-tr-leaderboard-editor">
+        <th class="th-leaderboard-editor">Nom</th>
+        <th>Description</th>
+    </tr>
+    {% for level in levels %}
+    <tr class="second-tr-leaderboard-editor">
+        <td><a class="levelName" href="/games?action=start&id={{ level.id }}">{{ level.name }}</a></td>
+        <td>{{ level.description|length > 50 ? level.description|slice(0, 50) ~ '...' : level.description }}</td>
+    </tr>
+    {% endfor %} 
+</table>
 {% endblock %}
