@@ -83,6 +83,10 @@ nav * {
 	text-decoration: none;
 }
 
+.nav-links li a:visited {
+    color: #f2f5f7;
+}
+
 .logo-image {
 	margin-left: 0rem;
 	height: 6rem;
@@ -423,16 +427,9 @@ input.checkbox {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Media Queries~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 1000px) {
     :root {
         --navbar-height: 0rem;
-    }
-    .leaderboard {
-        padding: 2rem 0%;
-    }
-
-    .level-list {
-        padding: 2rem 0%;
     }
     
     .navbar {
@@ -450,68 +447,33 @@ input.checkbox {
         display: block;
     }
     
-    .nav-links {
+    .nav-container {
         position: fixed;
         background: #292929;
         height: 100%;
         width: 100%;
-        flex-direction: column;
-        justify-content: space-evenly;
         clip-path: circle(50px at 90% -20%);
         -webkit-clip-path: circle(50px at 90% -10%);
         transition: all 1s ease-out;
     }
     
-    .nav-links.open {
+    .nav-container.open {
         clip-path: circle(200% at 90% -10%);
         -webkit-clip-path: circle(200% at 90% -10%);
+    }
+
+    .nav-links {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
     }
 }
 
 @media screen and (min-width: 400px) and (max-width: 680px) {
     .game {
         --grid-size: 4rem;
-    }
-    :root {
-        --navbar-height: 0rem;
-    }
-    .leaderboard {
-        padding: 2rem 0%;
-    }
-
-    .level-list {
-        padding: 2rem 0%;
-    }
-    .navbar {
-        position: fixed;
-        height: revert;
-        top: 0;
-        z-index: 3;
-    }
-    
-    .logo {
-        display: none;
-    }
-    
-    .hamburger {
-        display: block;
-    }
-    
-    .nav-links {
-        position: fixed;
-        background: #292929;
-        height: 100%;
-        width: 100%;
-        flex-direction: column;
-        justify-content: space-evenly;
-        clip-path: circle(50px at 90% -20%);
-        -webkit-clip-path: circle(50px at 90% -10%);
-        transition: all 1s ease-out;
-    }
-    
-    .nav-links.open {
-        clip-path: circle(200% at 90% -10%);
-        -webkit-clip-path: circle(200% at 90% -10%);
     }
 }
 
@@ -561,41 +523,6 @@ input.checkbox {
     .win-input {
         height: 3rem;
         font-size: 2rem;
-    }
-    :root {
-        --navbar-height: 0rem;
-    }
-    
-    .navbar {
-        position: fixed;
-        height: revert;
-        top: 0;
-        z-index: 3;
-    }
-    
-    .logo {
-        display: none;
-    }
-    
-    .hamburger {
-        display: block;
-    }
-    
-    .nav-links {
-        position: fixed;
-        background: #292929;
-        height: 100%;
-        width: 100%;
-        flex-direction: column;
-        justify-content: space-evenly;
-        clip-path: circle(50px at 90% -20%);
-        -webkit-clip-path: circle(50px at 90% -10%);
-        transition: all 1s ease-out;
-    }
-    
-    .nav-links.open {
-        clip-path: circle(200% at 90% -10%);
-        -webkit-clip-path: circle(200% at 90% -10%);
     }
 }
 
