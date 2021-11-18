@@ -17,6 +17,11 @@
     <input class="editor-input" type="number" name="width" id="width" value="{{ level.width }}" required>
     <label class="editor-label" for="height">Hauteur: </label>
     <input class="editor-input" type="number" name="height" id="height" value="{{ level.height }}" required>
+    {% if mode == "advanced" %}
+         <button class="button" name="mode" value="basic" type="submit">Basculer vers éditeur basique</button>
+    {% else %}
+         <button class="button" name="mode" value="advanced" type="submit">Basculer vers éditeur avancé</button>
+    {% endif %}
     <div class="level-grid" style="--grid-width: {{ level.width }}; --grid-height: {{ level.height }};">
     {% for tile in tiles %}
         <div class="level-tile">
@@ -24,12 +29,26 @@
             {% set wallId = name ~ '-wall' %}
             {% set floorId = name ~ '-floor' %}
             {% set finishId = name ~ '-finish' %}
+            {% set startId = name ~ '-start' %}
+            {% if mode == "advanced" %}
+                {% set wallLabelFor = floorId %}
+                {% set floorLabelFor = finishId %}
+                {% set finishLabelFor = startId %}
+                {% set startLabelFor = wallId %}
+            {% else %}
+                {% set wallLabelFor = floorId %}
+                {% set floorLabelFor = wallId %}
+                {% set finishLabelFor = floorId %}
+                {% set startLabelFor = floorId %}
+            {% endif %}
             <input class="level-input" type="radio" name="{{ name }}" value="wall" id="{{ wallId }}" {{tile.type == "wall" ? 'checked' : ""}}>
-            <label class="level-label wall" for="{{ floorId }}"></label>
+            <label class="level-label wall" for="{{ wallLabelFor }}"></label>
             <input class="level-input" type="radio" name="{{ name }}" value="floor" id="{{ floorId }}" {{tile.type == "floor" ? 'checked' : ""}}>
-            <label class="level-label floor" for="{{ wallId }}"></label>
+            <label class="level-label floor" for="{{ floorLabelFor }}"></label>
             <input class="level-input" type="radio" name="{{ name }}" value="finish" id="{{ finishId }}" {{tile.type == "finish" ? 'checked' : ""}}>
-            <label class="level-label finish" for="{{ floorId }}"></label>
+            <label class="level-label finish" for="{{ finishLabelFor }}"></label>
+            <input class="level-input" type="radio" name="{{ name }}" value="start" id="{{ startId }}" {{tile.x == level.start_x and tile.y == level.start_y ? 'checked' : ""}}>
+            <label class="level-label player floor" for="{{ startLabelFor }}"></label>
         </div>
     {% endfor %}
     </div>
