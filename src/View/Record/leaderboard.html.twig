@@ -9,15 +9,13 @@ Leaderboard
    <h1 class="h1-leaderboard-editor">Classement</h1>
    <table class="table-leaderboard-editor">
       <tr class="first-tr-leaderboard-editor">
-         <th class="th-leaderboard-editor">Pseudo</th>
+         <th class="th-leaderboard-editor">Nom du niveau</th>
          <th>Temps</th>
-         <th>Niveau</th>
       </tr>
       {% for record in records %}
       <tr class="second-tr-leaderboard-editor">
          <td>{{record.name}}</td>
          <td>{{ record.time }}</td>
-         <td>{{ record.level_id }}</td>
       </tr>
       {% endfor %} 
    </table>
