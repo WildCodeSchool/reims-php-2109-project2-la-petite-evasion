@@ -383,6 +383,7 @@ input.checkbox {
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    box-sizing: border-box;
 }
 
 .pictures {
@@ -411,11 +412,10 @@ input.checkbox {
     justify-content: center;
     align-content: center;
     text-align: center;
-    margin-bottom: 3rem;
 }
 
 .timeSentence {
-    margin-bottom: 1.5rem;
+    margin: 1.5rem;
     font-size: 1.9rem;
 }
 
