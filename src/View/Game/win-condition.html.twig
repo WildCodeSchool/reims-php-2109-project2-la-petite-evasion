@@ -12,9 +12,16 @@
             <h1 class="congrats">Félicitations</h1>
             <img class="moriartyPicture" src="assets/images/moriarty2.png" alt=""/>
         </div>
-
         <div class="formRecord">
-            <h2 class="timeSentence">Vous avez fini le niveau en XX minutes et XX secondes</h2>
+            {% set minutes = time.i ? time.i ~ " minute" : "" %}
+            {% if time.i > 1 %}
+                {% set minutes = minutes ~ "s" %}
+            {% endif %}
+            {% set secondes = time.s ? time.s ~ " seconde" : "" %}
+            {% if time.s > 1 %}
+                {% set secondes = secondes ~ "s" %}
+            {% endif %}
+            <h2 class="timeSentence">vous avez fini en {{ minutes }}{{ time.i and time.s ? " et " : "" }}{{ secondes }}
             <p class="formInformations">Veuillez entrer votre nom afin de l'enregistrer dans le classement</p>
             <form action="/records" method='post'>
                 <div class="win-input-container"><input class='win-input' type='text' placeholder='Moriarty' name='name'></div>
@@ -24,6 +31,3 @@
 
     </div>
 {% endblock %}
-
-
-
