@@ -25,11 +25,9 @@ class LevelEditorController extends AbstractController
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $mode = $_POST['mode'] ?? 'basic';
             $errors = $this->parsePost($level, $tiles);
             if (!$errors) {
-                // TODO: dont hardcode finish position
-                $tiles[($level['height'] * $level['width']) - 1]['type'] = 'finish';
-
                 $levelManager->update($level);
                 $tileManager->insert($tiles);
             }
@@ -37,7 +35,8 @@ class LevelEditorController extends AbstractController
         return $this->twig->render('Editor/edit.html.twig', [
             'level' => $level,
             'tiles' => $tiles,
-            'errors' => $errors
+            'errors' => $errors,
+            'mode' => $mode ?? 'basic',
         ]);
     }
 
@@ -99,11 +98,16 @@ class LevelEditorController extends AbstractController
         foreach ($_POST as $entry => $value) {
             $capture = [];
             if (preg_match("/^cell-(?<x>[0-9]+)-(?<y>[0-9]+)$/", $entry, $capture)) {
+                $posX = intval($capture['x']);
+                $posY = intval($capture['y']);
+                if ($value === 'start') {
+                    $level['start_x'] =  $posX;
+                    $level['start_y'] =  $posY;
+                    continue;
+                }
                 if (!in_array($value, TileManager::TYPES)) {
                     return false;
                 }
-                $posX = intval($capture['x']);
-                $posY = intval($capture['y']);
                 if ($posX < $level['width'] && $posY < $level['height']) {
                     $tiles[($posY * $level['width']) + $posX]['type'] = $value;
                 }
