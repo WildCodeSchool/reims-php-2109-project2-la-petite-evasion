@@ -24,17 +24,25 @@ class GameController extends AbstractController
     /**
      * Show first level
      */
-    public function index(?string $action): string
+    public function index(?string $action, ?int $id): string
     {
-        $levelId = 1;
         session_start();
 
         $levelManager = new LevelManager();
-        $level = $levelManager->selectOneById($levelId);
 
         $state = self::getGameState();
-        if ($action === 'reset' || $state !== self::GAME_STATE_STARTED) {
+        if ($action === 'start') {
+            $levelId = $id ?? 1;
+            $level = $levelManager->selectOneById($levelId);
             $this->startGame($level);
+        } elseif ($action === 'reset' || $state !== self::GAME_STATE_STARTED) {
+            $levels = $levelManager->selectAll();
+            return $this->twig->render('Game/list.html.twig', [
+                'levels' => $levels,
+            ]);
+        } else {
+            $levelId = self::getGameLevelId();
+            $level = $levelManager->selectOneById($levelId);
         }
 
         $tileManager = new TileManager($levelId);

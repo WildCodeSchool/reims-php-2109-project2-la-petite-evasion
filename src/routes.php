@@ -14,7 +14,7 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     'records' => ['RecordController', 'index',],
-    'games' => ['GameController', 'index', ['action']],
+    'games' => ['GameController', 'index', ['action', 'id']],
     'win' => ['WinController', 'index',],
     'editor' => ['LevelEditorController', 'list',],
     'editor/edit' => ['LevelEditorController', 'edit', ['id']],
