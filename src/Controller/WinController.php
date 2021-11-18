@@ -6,6 +6,8 @@ class WinController extends AbstractController
 {
     public function index(): string
     {
-        return $this->twig->render('Game/win-condition.html.twig');
+        session_start();
+        $time = GameController::getFinishInterval();
+        return $this->twig->render('Game/win-condition.html.twig', ['time' => $time,]);
     }
 }
