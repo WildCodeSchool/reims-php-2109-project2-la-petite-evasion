@@ -24,7 +24,7 @@ class GameController extends AbstractController
     /**
      * Show first level
      */
-    public function index(?string $action, ?string $id): string
+    public function index(?string $action, ?int $id): string
     {
         session_start();
 
@@ -32,10 +32,7 @@ class GameController extends AbstractController
 
         $state = self::getGameState();
         if ($action === 'start') {
-            $levelId = filter_var($id, FILTER_VALIDATE_INT);
-            if ($levelId === false) {
-                $levelId = 1;
-            }
+            $levelId = $id ?? 1;
             $level = $levelManager->selectOneById($levelId);
             $this->startGame($level);
         } elseif ($action === 'reset' || $state !== self::GAME_STATE_STARTED) {
