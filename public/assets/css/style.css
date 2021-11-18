@@ -104,6 +104,11 @@ nav * {
 
 .hamburger {
 	display: none;
+    position: absolute;
+    left: calc(100vw - 50px);
+    top: 10px;
+    z-index: 2;
+    transition: all 0.7s ease;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Home.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -443,12 +448,6 @@ input.checkbox {
     
     .hamburger {
         display: block;
-        position: absolute;
-        right: 5%;
-        top: 50%;
-        transform: translate(-0%, 30%);
-        z-index: 2;
-        transition: all 0.7s ease;
     }
     
     .nav-links {
@@ -496,12 +495,6 @@ input.checkbox {
     
     .hamburger {
         display: block;
-        position: absolute;
-        right: 5%;
-        top: 50%;
-        transform: translate(-0%, 30%);
-        z-index: 2;
-        transition: all 0.7s ease;
     }
     
     .nav-links {
@@ -586,12 +579,6 @@ input.checkbox {
     
     .hamburger {
         display: block;
-        position: absolute;
-        right: 5%;
-        top: 50%;
-        transform: translate(-0%, 30%);
-        z-index: 2;
-        transition: all 0.7s ease;
     }
     
     .nav-links {
