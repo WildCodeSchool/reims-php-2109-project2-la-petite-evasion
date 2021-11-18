@@ -260,6 +260,10 @@ input.checkbox {
     background-repeat: no-repeat;
 }
 
+.game-direction {
+    background-size: 3rem;
+}
+
 .player {
     background-image: url(../images/moriarty.png);
 }
