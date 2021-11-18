@@ -77,6 +77,11 @@ class GameController extends AbstractController
         return $_SESSION['levelId'];
     }
 
+    public static function timeRecorded(): void
+    {
+        $_SESSION['state'] = self::GAME_STATE_STOPPED;
+    }
+
     private function getViewpointTiles(TileManager $tileManager, array $position): array
     {
         return $tileManager->selectByArea([
@@ -124,17 +129,27 @@ class GameController extends AbstractController
         ];
     }
 
-    private function finishGame(): void
+    private function finishGame(): bool
     {
+        $finishTime = new DateTime();
+        $timeDiff = $finishTime->diff($_SESSION['startTime']);
+        if ($timeDiff->y || $timeDiff->m || $timeDiff->d || $timeDiff->h) {
+            $_SESSION['state'] = self::GAME_STATE_STOPPED;
+            return false;
+        }
         $_SESSION['state'] = self::GAME_STATE_FINISHED;
-        $_SESSION['finishTime'] = new DateTime();
+        $_SESSION['finishTime'] = $finishTime;
+        return true;
     }
 
     private function move(array $tiles, array $position): void
     {
         if ($this->isFinish($tiles, $position)) {
-            header('Location: /win');
-            $this->finishGame();
+            if ($this->finishGame()) {
+                header('Location: /win');
+            } else {
+                header('Location: /');
+            }
         }
         $_SESSION['position'] = $position;
     }

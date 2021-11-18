@@ -38,6 +38,7 @@ class RecordController extends AbstractController
     {
         session_start();
         $this->insertRecord();
+        GameController::timeRecorded();
         $recordManager = new RecordManager();
         $records = $recordManager->selectRecords();
 

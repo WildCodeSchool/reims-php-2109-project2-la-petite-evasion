@@ -151,22 +151,25 @@ div a:visited {
     color: #292929;
 }
 
-a {
+.levelName {
+    text-decoration: underline;
+}
+
+#play {
     text-decoration: none;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~leaderboard.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .leaderboard, .level-list {
-    padding: 0 10%;
+    padding: 2rem 10%;
 }
-
 .table-leaderboard-editor {
     margin: auto;
     background-color: #333333;
-    border-collapse: collapse;
     color: whitesmoke;
     border-spacing: 0;
+    max-width: 100%;
     width: 100%;
     border: 1px solid #ddd;
     padding-bottom: 3rem;
@@ -180,6 +183,7 @@ a {
     color: whitesmoke;
     text-align: center;
     font-size: 2.5rem;
+    padding-bottom: 1rem;
 }
 .first-tr-leaderboard-editor {
     font-size: 2rem;
@@ -220,7 +224,12 @@ input.checkbox {
 .level-grid {
     --grid-size: 5rem;
 }
-
+.game-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .game {
     justify-content: center;
 }
@@ -232,6 +241,7 @@ input.checkbox {
 .level-name,
 .level-description {
     color: whitesmoke;
+    margin-bottom: 26px;
 }
 
 .level-description {
@@ -420,6 +430,13 @@ input.checkbox {
     :root {
         --navbar-height: 0rem;
     }
+    .leaderboard {
+        padding: 2rem 0%;
+    }
+
+    .level-list {
+        padding: 2rem 0%;
+    }
     
     .navbar {
         position: fixed;
@@ -467,7 +484,13 @@ input.checkbox {
     :root {
         --navbar-height: 0rem;
     }
-    
+    .leaderboard {
+        padding: 2rem 0%;
+    }
+
+    .level-list {
+        padding: 2rem 0%;
+    }
     .navbar {
         position: fixed;
         height: revert;
@@ -623,9 +646,7 @@ input.checkbox {
         opacity: 80%;
         font-weight: bold;
     }
-    .leaderboard .level-list {
-        margin: 0 10%;
-    }
+
     .h1-leaderboard-editor {
         font-size: 3rem;
     }
