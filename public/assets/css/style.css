@@ -233,6 +233,7 @@ input.checkbox {
 .level-name,
 .level-description {
     color: whitesmoke;
+    margin-bottom: 26px;
 }
 
 .level-description {
