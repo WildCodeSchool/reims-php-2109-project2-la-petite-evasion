@@ -30,12 +30,16 @@ class GameController extends AbstractController
 
         $levelManager = new LevelManager();
 
+        if ($action === 'reset') {
+            $_SESSION['state'] = self::GAME_STATE_STOPPED;
+        }
+
         $state = self::getGameState();
         if ($action === 'start') {
             $levelId = $id ?? 1;
             $level = $levelManager->selectOneById($levelId);
             $this->startGame($level);
-        } elseif ($action === 'reset' || $state !== self::GAME_STATE_STARTED) {
+        } elseif ($state !== self::GAME_STATE_STARTED) {
             $levels = $levelManager->selectAll();
             return $this->twig->render('Game/list.html.twig', [
                 'levels' => $levels,
