@@ -554,9 +554,8 @@ input.checkbox {
     }
     body {
         background-image:url("../images/maze-desktop.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-color: #292929;
+        background-size: contain;
+        background-position: center;
     } 
     .buttonEditor {
         display: flex;
