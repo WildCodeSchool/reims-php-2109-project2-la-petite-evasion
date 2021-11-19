@@ -16,7 +16,6 @@ html {
 body {
     font-family: 'Parisienne', cursive;
     background-image: url('../images/maze-mobile.png');
-    height: calc(100vh - var(--navbar-height));
     background-size: cover;
     background-color: #292929;
     background-repeat: no-repeat;
@@ -77,6 +76,7 @@ nav * {
 	align-items: center;
 	font-size: 2.5rem;
 	justify-content: space-around;
+    width: 100vw;
 }
 
 .nav-links li a {
@@ -112,7 +112,6 @@ nav * {
     left: calc(100vw - 50px);
     top: 10px;
     z-index: 2;
-    transition: all 0.7s ease;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Home.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -122,7 +121,7 @@ nav * {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    min-height: calc(100vh - var(--navbar-height));
 }
 
 .titleContext {
@@ -175,7 +174,7 @@ nav * {
     width: 100%;
     border: 1px solid #ddd;
     font-size: 2rem;
-    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .h1-leaderboard-editor {
@@ -230,7 +229,7 @@ input.checkbox {
 .game-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: calc(100vh - var(--navbar-height));
     justify-content: center;
 }
 .game {
@@ -247,8 +246,8 @@ input.checkbox {
 }
 
 .level-name {
-    margin-bottom: 26px;
     font-size: 2.5rem;
+    margin: 1rem 0;
 }
 
 .level-description {
@@ -383,7 +382,7 @@ input.checkbox {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
+    min-height: calc(100vh - var(--navbar-height));
     box-sizing: border-box;
 }
 
@@ -499,22 +498,6 @@ input.checkbox {
     body {
         background-image:url("../images/maze-ipad.png") ;
     } 
-    .buttonEditor {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }  
-    .button {
-        text-align: center;
-        padding: 30px;
-        margin-top: 2rem;
-        background-color: #3b3b3b;
-        border-color: #413e3e;
-        border-radius: 100% 100% 100% 100%;
-        width: 17rem;
-        opacity: 80%;
-        font-weight: bold;
-    }
     .game {
         --grid-size: 5.5rem;
     }
@@ -550,27 +533,14 @@ input.checkbox {
     }
     body {
         background-image:url("../images/maze-desktop.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-color: #292929;
+        background-size: contain;
+        background-position: center;
     } 
     .buttonEditor {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-    }  
-    .button {
-        text-align: center;
-        padding: 30px;
-        margin-top: 2rem;
-        background-color: #3b3b3b;
-        border-color: #413e3e;
-        border-radius: 100% 100% 100% 100%;
-        width: 17rem;
-        opacity: 80%;
-        font-weight: bold;
     }
-
     .h1-leaderboard-editor {
         font-size: 3rem;
     }
