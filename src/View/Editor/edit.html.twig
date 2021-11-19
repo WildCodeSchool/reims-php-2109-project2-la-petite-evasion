@@ -18,9 +18,9 @@
     <label class="editor-label" for="height">Hauteur: </label>
     <input class="editor-input" type="number" name="height" id="height" value="{{ level.height }}" required>
     {% if mode == "advanced" %}
-         <button class="button" name="mode" value="basic" type="submit">Basculer vers éditeur basique</button>
+         <button class="button button-advanced" name="mode" value="basic" type="submit">Basculer vers éditeur basique</button>
     {% else %}
-         <button class="button" name="mode" value="advanced" type="submit">Basculer vers éditeur avancé</button>
+         <button class="button button-advanced" name="mode" value="advanced" type="submit">Basculer vers éditeur avancé</button>
     {% endif %}
     <div class="level-grid" style="--grid-width: {{ level.width }}; --grid-height: {{ level.height }};">
     {% for tile in tiles %}
