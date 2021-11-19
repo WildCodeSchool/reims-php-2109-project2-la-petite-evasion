@@ -503,22 +503,6 @@ input.checkbox {
     body {
         background-image:url("../images/maze-ipad.png") ;
     } 
-    .buttonEditor {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }  
-    .button {
-        text-align: center;
-        padding: 30px;
-        margin-top: 2rem;
-        background-color: #3b3b3b;
-        border-color: #413e3e;
-        border-radius: 100% 100% 100% 100%;
-        width: 17rem;
-        opacity: 80%;
-        font-weight: bold;
-    }
     .game {
         --grid-size: 5.5rem;
     }
@@ -561,19 +545,7 @@ input.checkbox {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-    }  
-    .button {
-        text-align: center;
-        padding: 30px;
-        margin-top: 2rem;
-        background-color: #3b3b3b;
-        border-color: #413e3e;
-        border-radius: 100% 100% 100% 100%;
-        width: 17rem;
-        opacity: 80%;
-        font-weight: bold;
     }
-
     .h1-leaderboard-editor {
         font-size: 3rem;
     }
