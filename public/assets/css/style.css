@@ -167,7 +167,9 @@ nav * {
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~leaderboard.css~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .leaderboard, .level-list {
+    min-height: calc(100vh - var(--navbar-height));
     padding: 2rem 0;
+    box-sizing: border-box;
 }
 
 .table-leaderboard-editor {
