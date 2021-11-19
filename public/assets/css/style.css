@@ -152,11 +152,6 @@ nav * {
     padding-right: 0.1rem;
 }
 
-
-div a:visited {
-    color: #292929;
-}
-
 .levelName {
     text-decoration: underline;
 }
