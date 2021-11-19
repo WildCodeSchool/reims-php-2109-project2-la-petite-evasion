@@ -254,12 +254,11 @@ input.checkbox {
 
 .level-name {
     font-size: 2.5rem;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 }
 
 .level-description {
     font-size: 2rem;
-    margin: 1.5rem;
 }
 
 .game-tile,
